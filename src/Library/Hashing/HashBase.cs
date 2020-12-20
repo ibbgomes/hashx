@@ -70,7 +70,7 @@
                 throw new ArgumentNullException(nameof(filePath));
             }
 
-            using FileStream fileStream = new FileStream(filePath, FileMode.Open);
+            using FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
 
             return this.GetHash(fileStream);
         }

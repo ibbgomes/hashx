@@ -7,6 +7,7 @@
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
     using Hashx.Application.Commands;
     using Hashx.Library.Contracts;
     using Hashx.Library.Exporting;
@@ -86,12 +87,12 @@
 
             ICollection<HashResult> results = new List<HashResult>();
 
-            foreach (IHash targetHashAlgo in targetHashAlgos)
+            Parallel.ForEach(targetHashAlgos, (targetHashAlgo) =>
             {
                 HashResult result = targetHashAlgo.GetHash(input);
 
                 results.Add(result);
-            }
+            });
 
             return results;
         }
