@@ -13,12 +13,6 @@
     /// <seealso cref="Hashx.Library.Contracts.IHash"/>
     public abstract class HashBase : IHash
     {
-        #region Constants
-
-        private const string StringToReplace = "-";
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
@@ -93,7 +87,7 @@
         private static string Normalize(byte[] hashValue)
         {
             return BitConverter.ToString(hashValue)
-                 .Replace(StringToReplace, string.Empty, StringComparison.OrdinalIgnoreCase)
+                 .Replace("-", string.Empty, StringComparison.OrdinalIgnoreCase)
                  .ToLower(CultureInfo.InvariantCulture);
         }
 
