@@ -1,6 +1,7 @@
 ﻿namespace Hashx.Application.Handlers
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.CommandLine;
     using System.CommandLine.IO;
@@ -45,7 +46,7 @@
             {
                 IEnumerable<IHash> hashAlgos = InitHashAlgos();
 
-                ICollection<HashResult> results = ComputeHashes(hashAlgos, input, algorithms);
+                IEnumerable<HashResult> results = ComputeHashes(hashAlgos, input, algorithms);
 
                 if (output != null)
                 {
@@ -79,13 +80,13 @@
 
         #region Private Methods
 
-        private static ICollection<HashResult> ComputeHashes(IEnumerable<IHash> hashAlgos, FileInfo input, ICollection<string> algoNames)
+        private static IEnumerable<HashResult> ComputeHashes(IEnumerable<IHash> hashAlgos, FileInfo input, ICollection<string> algoNames)
         {
             ValidateAlgoNames(algoNames);
 
             IEnumerable<IHash> targetHashAlgos = GetTargetHashAlgos(hashAlgos, algoNames);
 
-            ICollection<HashResult> results = new List<HashResult>();
+            ConcurrentBag<HashResult> results = new ConcurrentBag<HashResult>();
 
             Parallel.ForEach(targetHashAlgos, (targetHashAlgo) =>
             {
@@ -162,9 +163,9 @@
             console.Out.WriteLine($"No checksum matches the specified checksum.");
         }
 
-        private static void PrintResults(ICollection<HashResult> hashResults, IConsole console)
+        private static void PrintResults(IEnumerable<HashResult> hashResults, IConsole console)
         {
-            if (hashResults.Count == 1)
+            if (hashResults.Count() == 1)
             {
                 console.Out.WriteLine(hashResults.First().Value);
 
