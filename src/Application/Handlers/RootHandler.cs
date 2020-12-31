@@ -82,7 +82,7 @@
 
         private static IEnumerable<HashResult> ComputeHashes(IEnumerable<IHash> hashAlgos, FileInfo input, ICollection<string> algoNames)
         {
-            ValidateAlgoNames(algoNames);
+            ValidateAlgoNames(hashAlgos, algoNames);
 
             IEnumerable<IHash> targetHashAlgos = GetTargetHashAlgos(hashAlgos, algoNames);
 
@@ -178,11 +178,16 @@
             }
         }
 
-        private static void ValidateAlgoNames(IEnumerable<string> algoNames)
+        private static void ValidateAlgoNames(IEnumerable<IHash> hashAlgos, IEnumerable<string> algoNames)
         {
             foreach (string algoName in algoNames)
             {
                 if (!Regex.IsMatch(algoName, ValidAlgoNamePattern))
+                {
+                    throw new ArgumentException($"The specified '{algoName}' algorithm is invalid. Algorithms must be alphanumeric. Aborting.");
+                }
+
+                if (!hashAlgos.Any(x => x.Name.Equals(algoName, StringComparison.OrdinalIgnoreCase)))
                 {
                     throw new ArgumentException($"The specified '{algoName}' algorithm is not supported. Aborting.");
                 }
