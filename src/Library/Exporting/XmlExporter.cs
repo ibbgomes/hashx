@@ -14,19 +14,12 @@
     {
         #region Public Methods
 
-        /// <inheritdoc/>
-        public void Export(ExportableResult result, string path)
-        {
-            string text = Serialize(result);
-
-            File.WriteAllText(path, text);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private static string Serialize(ExportableResult result)
+        /// <summary>
+        /// Serializes the specified <see cref="ExportableResult"/>.
+        /// </summary>
+        /// <param name="result">The result.</param>
+        /// <returns>The XML string.</returns>
+        public static string Serialize(ExportableResult result)
         {
             if (result is null)
             {
@@ -40,6 +33,14 @@
             serializer.Serialize(writer, result);
 
             return writer.ToString();
+        }
+
+        /// <inheritdoc/>
+        public void Export(ExportableResult result, string path)
+        {
+            string text = Serialize(result);
+
+            File.WriteAllText(path, text);
         }
 
         #endregion
