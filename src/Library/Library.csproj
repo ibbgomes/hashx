@@ -7,7 +7,7 @@
     <Description>Class library that contains types that support Hashx application.</Description>
     <Product>Hashx</Product>
     <Authors>Ivo Gomes</Authors>
-    <Copyright>Ivo Gomes © 2020. All Rights Reserved.</Copyright>
+    <Copyright>Ivo Gomes © 2021. All Rights Reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.1">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
