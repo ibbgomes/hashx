@@ -11,6 +11,12 @@
     /// <seealso cref="Hashx.Application.Commands.CmdBase"/>
     internal sealed class RootCmd : CmdBase
     {
+        #region Fields
+
+        private readonly string[] algorithms = { "md5", "sha1", "sha256", "sha384", "sha512" };
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -22,12 +28,14 @@
             this.Command = new RootCommand()
             {
                 Description = "A multi-platform, command line interface, checksum utility",
-                Handler = CommandHandler.Create<FileInfo, string[], string, FileInfo, IConsole>(RootHandler.Handle),
+                Handler = CommandHandler.Create<FileInfo, string[], string, bool, bool, IConsole>(RootHandler.Handle),
             };
 
             this.AddCommandArguments();
 
             this.AddCommandOptions();
+
+            this.AddCommandValidators();
         }
 
         #endregion
@@ -41,18 +49,18 @@
                 Name = "input",
                 Description = "The path of the file to be handled",
                 Arity = ArgumentArity.ExactlyOne,
-            };
+            }.ExistingOnly();
 
             this.Command.AddArgument(input);
         }
 
         private void AddCommandOptions()
         {
-            Option<string[]> algorithms = new Option<string[]>(new[] { "-a", "--algorithms" })
+            Option<string[]> algorithms = new Option<string[]>(new[] { "-a", "--algorithm" })
             {
-                Description = "Define the hashing algorithms used to generate the checksums. Supports MD5, SHA1, SHA256, SHA384 and SHA512",
+                Description = "Define a hashing algorithm used to generate the checksums",
                 IsRequired = true,
-            };
+            }.FromAmong(this.algorithms);
 
             Option<string> compare = new Option<string>(new[] { "-c", "--compare" })
             {
@@ -60,15 +68,48 @@
                 IsRequired = false,
             };
 
-            Option<FileInfo> output = new Option<FileInfo>(new[] { "-o", "--output" })
+            Option json = new Option<bool>("--json")
             {
-                Description = "Output the generated checksums to the specified path. Supports JSON, XML and plain-text",
+                Description = "Output the generated checksums as JSON",
+                IsRequired = false,
+            };
+
+            Option xml = new Option<bool>("--xml")
+            {
+                Description = "Output the generated checksums as XML",
                 IsRequired = false,
             };
 
             this.Command.AddOption(algorithms);
             this.Command.AddOption(compare);
-            this.Command.AddOption(output);
+            this.Command.AddOption(json);
+            this.Command.AddOption(xml);
+        }
+
+        private void AddCommandValidators()
+        {
+            this.Command.AddValidator(result =>
+            {
+                if (result.Children.Contains("--compare") &&
+                    result.Children.Contains("--json"))
+                {
+                    return "Options '--compare' and '--json' cannot be used together.";
+                }
+
+                if (result.Children.Contains("--compare") &&
+                    result.Children.Contains("--xml"))
+                {
+                    return "Options '--compare' and '--xml' cannot be used together.";
+                }
+
+                if (result.Children.Contains("--json") &&
+                    result.Children.Contains("--xml"))
+                {
+                    return "Options '--json' and '--xml' cannot be used together.";
+                }
+
+                return null;
+            });
         }
 
         #endregion

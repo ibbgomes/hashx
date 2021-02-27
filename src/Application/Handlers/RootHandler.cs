@@ -7,57 +7,57 @@
     using System.CommandLine.IO;
     using System.IO;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using Hashx.Application.Commands;
     using Hashx.Library.Contracts;
-    using Hashx.Library.Exporting;
     using Hashx.Library.Hashing;
     using Hashx.Library.Models;
+    using Hashx.Library.Serializers;
 
     /// <summary>
     /// Defines the <see cref="RootCmd"/> handler.
     /// </summary>
     internal static class RootHandler
     {
-        #region Constants
-
-        /// <summary>
-        /// The valid algorithm name reg-ex pattern.
-        /// </summary>
-        private const string ValidAlgoNamePattern = @"^[\w\d]+$";
-
-        #endregion
-
         #region Internal Methods
 
         /// <summary>
         /// Handles the <see cref="RootCmd"/>.
         /// </summary>
         /// <param name="input">The input argument.</param>
-        /// <param name="algorithms">The algorithms option.</param>
+        /// <param name="algorithm">The algorithm option.</param>
         /// <param name="compare">The compare option.</param>
-        /// <param name="output">The output option.</param>
+        /// <param name="json">The JSON option.</param>
+        /// <param name="xml">The XML option.</param>
         /// <param name="console">The console.</param>
         /// <returns>The operation result code.</returns>
-        internal static int Handle(FileInfo input, string[] algorithms, string compare, FileInfo output, IConsole console)
+        internal static int Handle(FileInfo input, string[] algorithm, string compare, bool json, bool xml, IConsole console)
         {
             try
             {
                 IEnumerable<IHash> hashAlgos = InitHashAlgos();
 
-                IEnumerable<HashResult> results = ComputeHashes(hashAlgos, input, algorithms);
+                IEnumerable<HashResult> hashes = ComputeHashes(hashAlgos, input, algorithm);
 
-                if (output != null)
+                if (json)
                 {
-                    WriteResults(input, results, output);
+                    PrintResultsAsJson(input, hashes, console);
+
+                    return 0;
                 }
 
-                PrintResults(results, console);
+                if (xml)
+                {
+                    PrintResultsAsXml(input, hashes, console);
+
+                    return 0;
+                }
+
+                PrintResults(hashes, console);
 
                 if (!string.IsNullOrEmpty(compare))
                 {
-                    PrintComparison(results, compare, console);
+                    PrintComparison(hashes, compare, console);
                 }
 
                 return 0;
@@ -65,12 +65,6 @@
             catch (ArgumentException e)
             {
                 console.Error.WriteLine(e.Message);
-
-                return 1;
-            }
-            catch (FileNotFoundException)
-            {
-                console.Error.WriteLine("The specified file was not found. Aborting.");
 
                 return 1;
             }
@@ -82,8 +76,6 @@
 
         private static IEnumerable<HashResult> ComputeHashes(IEnumerable<IHash> hashAlgos, FileInfo input, ICollection<string> algoNames)
         {
-            ValidateAlgoNames(hashAlgos, algoNames);
-
             IEnumerable<IHash> targetHashAlgos = GetTargetHashAlgos(hashAlgos, algoNames);
 
             ConcurrentBag<HashResult> results = new ConcurrentBag<HashResult>();
@@ -96,26 +88,6 @@
             });
 
             return results;
-        }
-
-        private static IExporter GetExporter(string fileExtension)
-        {
-            if (fileExtension.Equals(".json", StringComparison.OrdinalIgnoreCase))
-            {
-                return new JsonExporter();
-            }
-
-            if (fileExtension.Equals(".xml", StringComparison.OrdinalIgnoreCase))
-            {
-                return new XmlExporter();
-            }
-
-            if (fileExtension.Equals(".txt", StringComparison.OrdinalIgnoreCase))
-            {
-                return new PlainTextExporter();
-            }
-
-            throw new ArgumentException($"The specified output path extension '{fileExtension}' is not supported. Aborting.");
         }
 
         private static IEnumerable<IHash> GetTargetHashAlgos(IEnumerable<IHash> hashAlgos, IEnumerable<string> algoNames)
@@ -148,13 +120,13 @@
             };
         }
 
-        private static void PrintComparison(IEnumerable<HashResult> hashResults, string compare, IConsole console)
+        private static void PrintComparison(IEnumerable<HashResult> hashes, string compare, IConsole console)
         {
-            foreach (HashResult hashResult in hashResults)
+            foreach (HashResult hash in hashes)
             {
-                if (hashResult.Value.Equals(compare, StringComparison.OrdinalIgnoreCase))
+                if (hash.Value.Equals(compare, StringComparison.OrdinalIgnoreCase))
                 {
-                    console.Out.WriteLine($"{hashResult.Algorithm} checksum matches the specified checksum.");
+                    console.Out.WriteLine($"{hash.Algorithm} checksum matches the specified checksum.");
 
                     return;
                 }
@@ -163,44 +135,37 @@
             console.Out.WriteLine($"No checksum matches the specified checksum.");
         }
 
-        private static void PrintResults(IEnumerable<HashResult> hashResults, IConsole console)
+        private static void PrintResults(IEnumerable<HashResult> hashes, IConsole console)
         {
-            if (hashResults.Count() == 1)
+            if (hashes.Count() == 1)
             {
-                console.Out.WriteLine(hashResults.First().Value);
+                console.Out.WriteLine(hashes.First().Value);
 
                 return;
             }
 
-            foreach (HashResult hashResult in hashResults)
+            foreach (HashResult hash in hashes)
             {
-                console.Out.WriteLine($"{hashResult.Algorithm}\t{hashResult.Value}");
+                console.Out.WriteLine($"{hash.Algorithm}\t{hash.Value}");
             }
         }
 
-        private static void ValidateAlgoNames(IEnumerable<IHash> hashAlgos, IEnumerable<string> algoNames)
+        private static void PrintResultsAsJson(FileInfo input, IEnumerable<HashResult> hashes, IConsole console)
         {
-            foreach (string algoName in algoNames)
-            {
-                if (!Regex.IsMatch(algoName, ValidAlgoNamePattern))
-                {
-                    throw new ArgumentException($"The specified '{algoName}' algorithm is invalid. Algorithms must be alphanumeric. Aborting.");
-                }
+            ExportableResult result = new ExportableResult(input, hashes);
 
-                if (!hashAlgos.Any(x => x.Name.Equals(algoName, StringComparison.OrdinalIgnoreCase)))
-                {
-                    throw new ArgumentException($"The specified '{algoName}' algorithm is not supported. Aborting.");
-                }
-            }
+            string json = JsonSerializer.Serialize(result);
+
+            console.Out.WriteLine(json);
         }
 
-        private static void WriteResults(FileInfo input, IEnumerable<HashResult> hashResults, FileInfo output)
+        private static void PrintResultsAsXml(FileInfo input, IEnumerable<HashResult> hashes, IConsole console)
         {
-            ExportableResult exportableResult = new ExportableResult(input, hashResults);
+            ExportableResult result = new ExportableResult(input, hashes);
 
-            IExporter exporter = GetExporter(output.Extension);
+            string xml = XmlSerializer.Serialize(result);
 
-            exporter.Export(exportableResult, output.FullName);
+            console.Out.WriteLine(xml);
         }
 
         #endregion

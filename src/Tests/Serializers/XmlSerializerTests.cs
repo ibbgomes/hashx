@@ -1,44 +1,44 @@
-﻿namespace Hashx.Tests.Exporting
+﻿namespace Hashx.Tests.Serializers
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Hashx.Library.Contracts;
-    using Hashx.Library.Exporting;
     using Hashx.Library.Hashing;
     using Hashx.Library.Models;
+    using Hashx.Library.Serializers;
     using Xunit;
 
     /// <summary>
-    /// Defines unit tests related with the <see cref="XmlExporter"/> type.
+    /// Defines unit tests related with the <see cref="XmlSerializer"/> type.
     /// </summary>
     [Collection(nameof(Library))]
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
-    public sealed class XmlExporterTests
+    public sealed class XmlSerializerTests
     {
         #region Public Methods
 
         /// <summary>
-        /// Tests the <see cref="XmlExporter.Serialize(ExportableResult)"/> method with null arguments.
+        /// Tests the <see cref="XmlSerializer.Serialize(ExportableResult)"/> method with null arguments.
         /// </summary>
         [Fact]
-        public void XmlExporter_Serialize_Null()
+        public void XmlSerializer_Serialize_Null()
         {
-            static string Serialize() => XmlExporter.Serialize(null);
+            static string Serialize() => XmlSerializer.Serialize(null);
 
             Assert.Throws<ArgumentNullException>(Serialize);
         }
 
         /// <summary>
-        /// Tests the <see cref="XmlExporter.Serialize(ExportableResult)"/> method with valid arguments.
+        /// Tests the <see cref="XmlSerializer.Serialize(ExportableResult)"/> method with valid arguments.
         /// </summary>
         [Fact]
-        public void XmlExporter_Serialize_Valid()
+        public void XmlSerializer_Serialize_Valid()
         {
             string expected = File.ReadAllText(Constants.Data.XmlExportFilePath);
 
-            string actual = XmlExporter.Serialize(GetResult());
+            string actual = XmlSerializer.Serialize(GetResult());
 
             Assert.Equal(expected, actual);
         }

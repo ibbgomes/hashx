@@ -1,44 +1,44 @@
-﻿namespace Hashx.Tests.Exporting
+﻿namespace Hashx.Tests.Serializers
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Hashx.Library.Contracts;
-    using Hashx.Library.Exporting;
     using Hashx.Library.Hashing;
     using Hashx.Library.Models;
+    using Hashx.Library.Serializers;
     using Xunit;
 
     /// <summary>
-    /// Defines unit tests related with the <see cref="JsonExporter"/> type.
+    /// Defines unit tests related with the <see cref="JsonSerializer"/> type.
     /// </summary>
     [Collection(nameof(Library))]
     [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
-    public sealed class JsonExporterTests
+    public sealed class JsonSerializerTests
     {
         #region Public Methods
 
         /// <summary>
-        /// Tests the <see cref="JsonExporter.Serialize(ExportableResult)"/> method with null arguments.
+        /// Tests the <see cref="JsonSerializer.Serialize(ExportableResult)"/> method with null arguments.
         /// </summary>
         [Fact]
-        public void JsonExporter_Serialize_Null()
+        public void JsonSerializer_Serialize_Null()
         {
-            static string Serialize() => JsonExporter.Serialize(null);
+            static string Serialize() => JsonSerializer.Serialize(null);
 
             Assert.Throws<ArgumentNullException>(Serialize);
         }
 
         /// <summary>
-        /// Tests the <see cref="JsonExporter.Serialize(ExportableResult)"/> method with valid arguments.
+        /// Tests the <see cref="JsonSerializer.Serialize(ExportableResult)"/> method with valid arguments.
         /// </summary>
         [Fact]
-        public void JsonExporter_Serialize_Valid()
+        public void JsonSerializer_Serialize_Valid()
         {
             string expected = File.ReadAllText(Constants.Data.JsonExportFilePath);
 
-            string actual = JsonExporter.Serialize(GetResult());
+            string actual = JsonSerializer.Serialize(GetResult());
 
             Assert.Equal(expected, actual);
         }
