@@ -65,7 +65,7 @@
             }
             catch (ArgumentException e)
             {
-                console.Error.WriteLine(e.Message);
+                console.WriteError(e.Message);
 
                 return 1;
             }
