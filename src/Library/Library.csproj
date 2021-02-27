@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
     <CodeAnalysisRuleSet>..\Hashx.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
