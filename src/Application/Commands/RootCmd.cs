@@ -56,9 +56,9 @@
 
         private void AddCommandOptions()
         {
-            Option<string[]> algorithms = new Option<string[]>(new[] { "-a", "--algorithm" })
+            Option<string[]> algorithms = new Option<string[]>(new[] { "-a", "--algorithms" })
             {
-                Description = "Define a hashing algorithm used to generate the checksums",
+                Description = "Define the hashing algorithms used to generate the checksums",
                 IsRequired = true,
             }.FromAmong(this.algorithms);
 

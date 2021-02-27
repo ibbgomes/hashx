@@ -9,6 +9,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Hashx.Application.Commands;
+    using Hashx.Application.Extensions;
     using Hashx.Library.Contracts;
     using Hashx.Library.Hashing;
     using Hashx.Library.Models;
@@ -25,19 +26,19 @@
         /// Handles the <see cref="RootCmd"/>.
         /// </summary>
         /// <param name="input">The input argument.</param>
-        /// <param name="algorithm">The algorithm option.</param>
+        /// <param name="algorithms">The algorithms option.</param>
         /// <param name="compare">The compare option.</param>
         /// <param name="json">The JSON option.</param>
         /// <param name="xml">The XML option.</param>
         /// <param name="console">The console.</param>
         /// <returns>The operation result code.</returns>
-        internal static int Handle(FileInfo input, string[] algorithm, string compare, bool json, bool xml, IConsole console)
+        internal static int Handle(FileInfo input, string[] algorithms, string compare, bool json, bool xml, IConsole console)
         {
             try
             {
                 IEnumerable<IHash> hashAlgos = InitHashAlgos();
 
-                IEnumerable<HashResult> hashes = ComputeHashes(hashAlgos, input, algorithm);
+                IEnumerable<HashResult> hashes = ComputeHashes(hashAlgos, input, algorithms);
 
                 if (json)
                 {
@@ -126,27 +127,27 @@
             {
                 if (hash.Value.Equals(compare, StringComparison.OrdinalIgnoreCase))
                 {
-                    console.Out.WriteLine($"{hash.Algorithm} checksum matches the specified checksum.");
+                    console.WriteSuccess($"{hash.Algorithm} checksum matches the specified checksum.");
 
                     return;
                 }
             }
 
-            console.Out.WriteLine($"No checksum matches the specified checksum.");
+            console.WriteError($"No checksum matches the specified checksum.");
         }
 
         private static void PrintResults(IEnumerable<HashResult> hashes, IConsole console)
         {
             if (hashes.Count() == 1)
             {
-                console.Out.WriteLine(hashes.First().Value);
+                console.Write(hashes.First().Value);
 
                 return;
             }
 
             foreach (HashResult hash in hashes)
             {
-                console.Out.WriteLine($"{hash.Algorithm}\t{hash.Value}");
+                console.Write($"{hash.Algorithm}\t{hash.Value}");
             }
         }
 
@@ -156,7 +157,7 @@
 
             string json = JsonSerializer.Serialize(result);
 
-            console.Out.WriteLine(json);
+            console.Write(json);
         }
 
         private static void PrintResultsAsXml(FileInfo input, IEnumerable<HashResult> hashes, IConsole console)
@@ -165,7 +166,7 @@
 
             string xml = XmlSerializer.Serialize(result);
 
-            console.Out.WriteLine(xml);
+            console.Write(xml);
         }
 
         #endregion
