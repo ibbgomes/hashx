@@ -34,7 +34,7 @@
         }
 
         /// <summary>
-        /// Writes an success message.
+        /// Writes a success message.
         /// </summary>
         /// <param name="console">The console.</param>
         /// <param name="message">The message.</param>

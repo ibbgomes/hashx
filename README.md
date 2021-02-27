@@ -17,10 +17,10 @@ Arguments:
   <input>    The path of the file to be handled
 
 Options:
-  -a, --algorithm <md5|sha1|sha256|sha384|sha512> (REQUIRED)    Define a hashing algorithm used to generate the checksums
-  -c, --compare <compare>                                       Compare the generated checksums against the specified checksum
-  --json                                                        Output the generated checksums as JSON
-  --xml                                                         Output the generated checksums as XML
-  --version                                                     Show version information
-  -?, -h, --help                                                Show help and usage information
+  -a, --algorithms <md5|sha1|sha256|sha384|sha512> (REQUIRED)    Define the hashing algorithms used to generate the checksums
+  -c, --compare <compare>                                        Compare the generated checksums against the specified checksum
+  --json                                                         Output the generated checksums as JSON
+  --xml                                                          Output the generated checksums as XML
+  --version                                                      Show version information
+  -?, -h, --help                                                 Show help and usage information
 ```
