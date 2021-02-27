@@ -9,6 +9,9 @@
     <Authors>Ivo Gomes</Authors>
     <Copyright>Ivo Gomes © 2021. All Rights Reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -56,10 +59,10 @@
     <None Update="Data\expected-hash.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\export.json">
+    <None Update="Data\exportable-result.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\export.xml">
+    <None Update="Data\exportable-result.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

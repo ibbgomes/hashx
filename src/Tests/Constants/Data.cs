@@ -16,13 +16,13 @@
         internal const string InvalidFilePath = @"Data/invalid-path.json";
 
         /// <summary>
-        /// The path of the file that contains a JSON export.
+        /// The path of the file that contains a JSON exportable result.
         /// </summary>
-        internal const string JsonExportFilePath = @"Data/export.json";
+        internal const string JsonExportFilePath = @"Data/exportable-result.json";
 
         /// <summary>
-        /// The path of the file that contains a XML export.
+        /// The path of the file that contains a XML exportable result.
         /// </summary>
-        internal const string XmlExportFilePath = @"Data/export.xml";
+        internal const string XmlExportFilePath = @"Data/exportable-result.xml";
     }
 }

@@ -9,6 +9,9 @@
     <Authors>Ivo Gomes</Authors>
     <Copyright>Ivo Gomes © 2021. All Rights Reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
