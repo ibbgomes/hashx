@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Hashx.Library.Contracts;
     using Hashx.Library.Hashing;
@@ -13,7 +12,6 @@
     /// Defines unit tests related with the <see cref="ExportableResult"/> type.
     /// </summary>
     [Collection(nameof(Library))]
-    [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
     public sealed class ExportableResultTests
     {
         #region Public Methods
@@ -24,9 +22,9 @@
         [Fact]
         public void ExportableResult_Empty()
         {
-            FileInfo fileInfo = new FileInfo(Constants.Data.ExpectedHashFilePath);
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
-            ExportableResult Constructor() => new ExportableResult(fileInfo, new List<HashResult>());
+            ExportableResult Constructor() => new (fileInfo, new List<HashResult>());
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -37,7 +35,7 @@
         [Fact]
         public void ExportableResult_Null_1()
         {
-            static ExportableResult Constructor() => new ExportableResult(null, null);
+            static ExportableResult Constructor() => new (null, null);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -48,9 +46,9 @@
         [Fact]
         public void ExportableResult_Null_2()
         {
-            FileInfo fileInfo = new FileInfo(Constants.Data.ExpectedHashFilePath);
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
-            ExportableResult Constructor() => new ExportableResult(fileInfo, null);
+            ExportableResult Constructor() => new (fileInfo, null);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -63,7 +61,7 @@
         {
             ICollection<HashResult> hashResults = GetHashResults(new FileInfo(Constants.Data.ExpectedHashFilePath));
 
-            ExportableResult Constructor() => new ExportableResult(null, hashResults);
+            ExportableResult Constructor() => new (null, hashResults);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -74,11 +72,11 @@
         [Fact]
         public void ExportableResult_Valid()
         {
-            FileInfo fileInfo = new FileInfo(Constants.Data.ExpectedHashFilePath);
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
             ICollection<HashResult> hashResults = GetHashResults(fileInfo);
 
-            ExportableResult exportableResult = new ExportableResult(fileInfo, hashResults);
+            ExportableResult exportableResult = new (fileInfo, hashResults);
 
             Assert.NotNull(exportableResult);
             Assert.NotNull(exportableResult.Filename);

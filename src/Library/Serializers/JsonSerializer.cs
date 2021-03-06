@@ -22,7 +22,7 @@
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            JsonSerializerOptions options = new JsonSerializerOptions
+            JsonSerializerOptions options = new ()
             {
                 WriteIndented = true,
             };

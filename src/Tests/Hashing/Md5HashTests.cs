@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Tests.Hashing
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Hashx.Library.Contracts;
     using Hashx.Library.Hashing;
@@ -12,7 +11,6 @@
     /// Defines unit tests related with the <see cref="Md5Hash"/> type.
     /// </summary>
     [Collection(nameof(Library))]
-    [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
     public sealed class Md5HashTests
     {
         #region Constants
@@ -85,7 +83,7 @@
         {
             IHash hashAlgo = new Md5Hash();
 
-            using FileStream fileStream = new FileStream(Constants.Data.ExpectedHashFilePath, FileMode.Open);
+            using FileStream fileStream = new (Constants.Data.ExpectedHashFilePath, FileMode.Open);
 
             HashResult hashResult = hashAlgo.GetHash(fileStream);
 
@@ -115,7 +113,7 @@
         {
             IHash hashAlgo = new Md5Hash();
 
-            FileInfo fileInfo = new FileInfo(Constants.Data.ExpectedHashFilePath);
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
             HashResult hashResult = hashAlgo.GetHash(fileInfo);
 

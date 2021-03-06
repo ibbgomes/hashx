@@ -4,7 +4,6 @@
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.CommandLine;
-    using System.CommandLine.IO;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
@@ -79,7 +78,7 @@
         {
             IEnumerable<IHash> targetHashAlgos = GetTargetHashAlgos(hashAlgos, algoNames);
 
-            ConcurrentBag<HashResult> results = new ConcurrentBag<HashResult>();
+            ConcurrentBag<HashResult> results = new ();
 
             Parallel.ForEach(targetHashAlgos, (targetHashAlgo) =>
             {
@@ -153,7 +152,7 @@
 
         private static void PrintResultsAsJson(FileInfo input, IEnumerable<HashResult> hashes, IConsole console)
         {
-            ExportableResult result = new ExportableResult(input, hashes);
+            ExportableResult result = new (input, hashes);
 
             string json = JsonSerializer.Serialize(result);
 
@@ -162,7 +161,7 @@
 
         private static void PrintResultsAsXml(FileInfo input, IEnumerable<HashResult> hashes, IConsole console)
         {
-            ExportableResult result = new ExportableResult(input, hashes);
+            ExportableResult result = new (input, hashes);
 
             string xml = XmlSerializer.Serialize(result);
 

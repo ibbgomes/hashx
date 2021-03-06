@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using Hashx.Library.Contracts;
     using Hashx.Library.Hashing;
@@ -14,7 +13,6 @@
     /// Defines unit tests related with the <see cref="JsonSerializer"/> type.
     /// </summary>
     [Collection(nameof(Library))]
-    [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
     public sealed class JsonSerializerTests
     {
         #region Public Methods
@@ -72,9 +70,9 @@
                 results.Add(result);
             }
 
-            FileInfo fileInfo = new FileInfo(Constants.Data.ExpectedHashFilePath);
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
-            return new ExportableResult(fileInfo, results);
+            return new (fileInfo, results);
         }
 
         #endregion

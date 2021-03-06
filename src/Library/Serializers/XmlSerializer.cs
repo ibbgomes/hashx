@@ -22,9 +22,9 @@
                 throw new ArgumentNullException(nameof(obj));
             }
 
-            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(obj.GetType());
+            System.Xml.Serialization.XmlSerializer serializer = new (obj.GetType());
 
-            using StringWriter writer = new StringWriter();
+            using StringWriter writer = new ();
 
             serializer.Serialize(writer, obj);
 

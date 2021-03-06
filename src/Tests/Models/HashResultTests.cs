@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Tests.Models
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using Hashx.Library.Models;
     using Xunit;
 
@@ -9,7 +8,6 @@
     /// Defines unit tests related with the <see cref="HashResult"/> type.
     /// </summary>
     [Collection(nameof(Library))]
-    [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit test.")]
     public sealed class HashResultTests
     {
         #region Public Methods
@@ -20,7 +18,7 @@
         [Fact]
         public void HashResult_Empty_1()
         {
-            static HashResult Constructor() => new HashResult(string.Empty, string.Empty);
+            static HashResult Constructor() => new (string.Empty, string.Empty);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -31,7 +29,7 @@
         [Fact]
         public void HashResult_Empty_2()
         {
-            static HashResult Constructor() => new HashResult(Constants.Samples.String, string.Empty);
+            static HashResult Constructor() => new (Constants.Samples.String, string.Empty);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -42,7 +40,7 @@
         [Fact]
         public void HashResult_Empty_3()
         {
-            static HashResult Constructor() => new HashResult(string.Empty, Constants.Samples.String);
+            static HashResult Constructor() => new (string.Empty, Constants.Samples.String);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -53,7 +51,7 @@
         [Fact]
         public void HashResult_Null_1()
         {
-            static HashResult Constructor() => new HashResult(null, null);
+            static HashResult Constructor() => new (null, null);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -64,7 +62,7 @@
         [Fact]
         public void HashResult_Null_2()
         {
-            static HashResult Constructor() => new HashResult(Constants.Samples.String, null);
+            static HashResult Constructor() => new (Constants.Samples.String, null);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -75,7 +73,7 @@
         [Fact]
         public void HashResult_Null_3()
         {
-            static HashResult Constructor() => new HashResult(null, Constants.Samples.String);
+            static HashResult Constructor() => new (null, Constants.Samples.String);
 
             Assert.Throws<ArgumentNullException>(Constructor);
         }
@@ -86,7 +84,7 @@
         [Fact]
         public void HashResult_Valid()
         {
-            HashResult hashResult = new HashResult(Constants.Samples.String, Constants.Samples.String);
+            HashResult hashResult = new (Constants.Samples.String, Constants.Samples.String);
 
             Assert.NotNull(hashResult);
             Assert.NotNull(hashResult.Algorithm);

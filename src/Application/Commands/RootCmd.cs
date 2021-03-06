@@ -62,19 +62,19 @@
                 IsRequired = true,
             }.FromAmong(this.algorithms);
 
-            Option<string> compare = new Option<string>(new[] { "-c", "--compare" })
+            Option<string> compare = new (new[] { "-c", "--compare" })
             {
                 Description = "Compare the generated checksums against the specified checksum",
                 IsRequired = false,
             };
 
-            Option json = new Option<bool>("--json")
+            Option json = new ("--json")
             {
                 Description = "Output the generated checksums as JSON",
                 IsRequired = false,
             };
 
-            Option xml = new Option<bool>("--xml")
+            Option xml = new ("--xml")
             {
                 Description = "Output the generated checksums as XML",
                 IsRequired = false,
