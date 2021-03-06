@@ -19,7 +19,7 @@
         [SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Dependency injection.")]
         public async Task<int> RunAsync(string[] args)
         {
-            RootCmd rootCommand = new ();
+            RootCommand rootCommand = new ();
 
             return await rootCommand.InvokeAsync(args)
                 .ConfigureAwait(false);

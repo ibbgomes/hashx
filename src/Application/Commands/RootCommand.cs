@@ -8,8 +8,8 @@
     /// <summary>
     /// Defines the root command.
     /// </summary>
-    /// <seealso cref="Hashx.Application.Commands.CmdBase"/>
-    internal sealed class RootCmd : CmdBase
+    /// <seealso cref="Hashx.Application.Commands.CommandBase"/>
+    internal sealed class RootCommand : CommandBase
     {
         #region Fields
 
@@ -20,12 +20,12 @@
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RootCmd"/> class.
+        /// Initializes a new instance of the <see cref="RootCommand"/> class.
         /// </summary>
-        public RootCmd()
+        public RootCommand()
             : base()
         {
-            this.Command = new RootCommand()
+            this.Command = new System.CommandLine.RootCommand()
             {
                 Description = "A multi-platform, command line interface, checksum utility",
                 Handler = CommandHandler.Create<FileInfo, string[], string, bool, bool, IConsole>(RootHandler.Handle),

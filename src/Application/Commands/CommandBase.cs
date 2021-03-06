@@ -6,15 +6,15 @@
     /// <summary>
     /// Defines the base implementation of a command.
     /// </summary>
-    internal abstract class CmdBase
+    internal abstract class CommandBase
     {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CmdBase"/> class.
+        /// Initializes a new instance of the <see cref="CommandBase"/> class.
         /// </summary>
         /// <param name="command">The command.</param>
-        protected CmdBase()
+        protected CommandBase()
         {
         }
 

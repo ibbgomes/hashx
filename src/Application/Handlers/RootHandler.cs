@@ -15,14 +15,14 @@
     using Hashx.Library.Serializers;
 
     /// <summary>
-    /// Defines the <see cref="RootCmd"/> handler.
+    /// Defines the <see cref="RootCommand"/> handler.
     /// </summary>
     internal static class RootHandler
     {
         #region Internal Methods
 
         /// <summary>
-        /// Handles the <see cref="RootCmd"/>.
+        /// Handles the <see cref="RootCommand"/>.
         /// </summary>
         /// <param name="input">The input argument.</param>
         /// <param name="algorithms">The algorithms option.</param>
