@@ -3,6 +3,7 @@
     using System.CommandLine;
     using System.CommandLine.Invocation;
     using System.IO;
+    using Hashx.Application.Arguments;
     using Hashx.Application.Handlers;
 
     /// <summary>
@@ -28,7 +29,8 @@
             this.Command = new System.CommandLine.RootCommand()
             {
                 Description = "A multi-platform, command line interface, checksum utility",
-                Handler = CommandHandler.Create<FileInfo, string[], string, bool, bool, IConsole>(RootHandler.Handle),
+                Handler = CommandHandler.Create(
+                    (RootArguments args, IConsole console) => RootHandler.Handle(args, console)),
             };
 
             this.AddCommandArguments();

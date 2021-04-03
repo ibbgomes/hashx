@@ -7,6 +7,7 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+    using Hashx.Application.Arguments;
     using Hashx.Application.Commands;
     using Hashx.Application.Extensions;
     using Hashx.Library.Contracts;
@@ -24,40 +25,36 @@
         /// <summary>
         /// Handles the <see cref="RootCommand"/>.
         /// </summary>
-        /// <param name="input">The input argument.</param>
-        /// <param name="algorithms">The algorithms option.</param>
-        /// <param name="compare">The compare option.</param>
-        /// <param name="json">The JSON option.</param>
-        /// <param name="xml">The XML option.</param>
+        /// <param name="args">The arguments.</param>
         /// <param name="console">The console.</param>
         /// <returns>The operation result code.</returns>
-        internal static int Handle(FileInfo input, string[] algorithms, string compare, bool json, bool xml, IConsole console)
+        internal static int Handle(RootArguments args, IConsole console)
         {
             try
             {
                 IEnumerable<IHash> hashAlgos = InitHashAlgos();
 
-                IEnumerable<HashResult> hashes = ComputeHashes(hashAlgos, input, algorithms);
+                IEnumerable<HashResult> hashes = ComputeHashes(hashAlgos, args.Input, args.Algorithms);
 
-                if (json)
+                if (args.Json)
                 {
-                    PrintResultsAsJson(input, hashes, console);
+                    PrintResultsAsJson(args.Input, hashes, console);
 
                     return 0;
                 }
 
-                if (xml)
+                if (args.Xml)
                 {
-                    PrintResultsAsXml(input, hashes, console);
+                    PrintResultsAsXml(args.Input, hashes, console);
 
                     return 0;
                 }
 
                 PrintResults(hashes, console);
 
-                if (!string.IsNullOrEmpty(compare))
+                if (!string.IsNullOrEmpty(args.Compare))
                 {
-                    PrintComparison(hashes, compare, console);
+                    PrintComparison(hashes, args.Compare, console);
                 }
 
                 return 0;
