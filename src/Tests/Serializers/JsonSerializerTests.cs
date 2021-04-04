@@ -1,12 +1,10 @@
 ﻿namespace Hashx.Tests.Serializers
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
-    using Hashx.Library.Contracts;
-    using Hashx.Library.Hashing;
     using Hashx.Library.Models;
     using Hashx.Library.Serializers;
+    using Hashx.Tests.Common;
     using Xunit;
 
     /// <summary>
@@ -34,45 +32,15 @@
         [Fact]
         public void JsonSerializer_Serialize_Valid()
         {
-            string expected = File.ReadAllText(Constants.Data.JsonExportFilePath);
-
-            string actual = JsonSerializer.Serialize(GetResult());
-
-            Assert.Equal(expected, actual);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private static IEnumerable<IHash> GetHashAlgos()
-        {
-            return new List<IHash>()
-            {
-                new Md5Hash(),
-                new Sha1Hash(),
-                new Sha256Hash(),
-                new Sha384Hash(),
-                new Sha512Hash(),
-            };
-        }
-
-        private static ExportableResult GetResult()
-        {
-            IEnumerable<IHash> hashAlgos = GetHashAlgos();
-
-            ICollection<HashResult> results = new List<HashResult>();
-
-            foreach (IHash hashAlgo in hashAlgos)
-            {
-                HashResult result = hashAlgo.GetHash(Constants.Data.ExpectedHashFilePath);
-
-                results.Add(result);
-            }
-
             FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
-            return new (fileInfo, results);
+            ExportableResult result = Models.GetExportableResult(fileInfo);
+
+            string expected = File.ReadAllText(Constants.Data.JsonExportFilePath);
+
+            string actual = JsonSerializer.Serialize(result);
+
+            Assert.Equal(expected, actual);
         }
 
         #endregion

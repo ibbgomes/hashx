@@ -6,7 +6,6 @@
     /// <summary>
     /// Defines a hashing operation result.
     /// </summary>
-    /// <seealso cref="Hashx.Library.Contracts.IHashResult"/>
     [XmlType(TypeName = "Hash")]
     public class HashResult
     {

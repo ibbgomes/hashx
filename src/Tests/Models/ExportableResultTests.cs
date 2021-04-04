@@ -3,9 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using Hashx.Library.Contracts;
-    using Hashx.Library.Hashing;
     using Hashx.Library.Models;
+    using Hashx.Tests.Common;
     using Xunit;
 
     /// <summary>
@@ -59,7 +58,9 @@
         [Fact]
         public void ExportableResult_Null_3()
         {
-            ICollection<HashResult> hashResults = GetHashResults(new FileInfo(Constants.Data.ExpectedHashFilePath));
+            FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
+
+            ICollection<HashResult> hashResults = Models.GetHashResults(fileInfo);
 
             ExportableResult Constructor() => new (null, hashResults);
 
@@ -74,7 +75,7 @@
         {
             FileInfo fileInfo = new (Constants.Data.ExpectedHashFilePath);
 
-            ICollection<HashResult> hashResults = GetHashResults(fileInfo);
+            ICollection<HashResult> hashResults = Models.GetHashResults(fileInfo);
 
             ExportableResult exportableResult = new (fileInfo, hashResults);
 
@@ -83,36 +84,6 @@
             Assert.NotNull(exportableResult.Hashes);
             Assert.NotEmpty(exportableResult.Filename);
             Assert.NotEmpty(exportableResult.Hashes);
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private static ICollection<IHash> GetHashAlgos()
-        {
-            return new List<IHash>()
-            {
-                new Md5Hash(),
-                new Sha1Hash(),
-                new Sha256Hash(),
-                new Sha384Hash(),
-                new Sha512Hash(),
-            };
-        }
-
-        private static ICollection<HashResult> GetHashResults(FileInfo fileInfo)
-        {
-            ICollection<IHash> hashAlgos = GetHashAlgos();
-
-            ICollection<HashResult> hashResults = new List<HashResult>();
-
-            foreach (IHash hashAlgo in hashAlgos)
-            {
-                hashResults.Add(hashAlgo.GetHash(fileInfo));
-            }
-
-            return hashResults;
         }
 
         #endregion

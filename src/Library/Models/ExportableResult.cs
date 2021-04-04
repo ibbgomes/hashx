@@ -9,7 +9,6 @@
     /// <summary>
     /// Defines an exportable result.
     /// </summary>
-    /// <seealso cref="Hashx.Library.Contracts.IResult"/>
     [XmlType(TypeName = "Result")]
     public class ExportableResult
     {
