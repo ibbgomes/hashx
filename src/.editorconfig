@@ -1,0 +1,12 @@
+[*.cs]
+
+# Disabled rules
+
+dotnet_diagnostic.CA5350.severity = silent
+dotnet_diagnostic.CA5351.severity = silent
+dotnet_diagnostic.SA1124.severity = silent
+dotnet_diagnostic.SA1633.severity = silent
+
+# Require file scoped namespaces
+
+csharp_style_namespace_declarations = file_scoped:warning
