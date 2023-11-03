@@ -54,26 +54,8 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     public RootCommand()
         : base("A cross-platform, command-line interface, checksum utility")
     {
-        this.AddArguments();
-
-        this.AddOptions();
-
-        this.AddValidators();
-
-        this.SetHandler();
-    }
-
-    #endregion
-
-    #region Private Methods
-
-    private void AddArguments()
-    {
         this.AddArgument(this.inputArgument);
-    }
 
-    private void AddOptions()
-    {
         this.AddOption(this.algorithmOption);
 
         this.AddOption(this.compareOption);
@@ -81,10 +63,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         this.AddOption(this.jsonOption);
 
         this.AddOption(this.xmlOption);
-    }
 
-    private void AddValidators()
-    {
         this.AddValidator(
             (result) =>
             {
@@ -123,10 +102,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                     result.ErrorMessage = "Options '--compare' and '--xml' cannot be used together.";
                 }
             });
-    }
 
-    private void SetHandler()
-    {
         this.SetHandler(
             (context) =>
             {
