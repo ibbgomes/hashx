@@ -25,10 +25,7 @@ public class ExportableResult
     /// <param name="results">The hashing results.</param>
     public ExportableResult(FileInfo fileInfo, IReadOnlyCollection<HashingResult> results)
     {
-        if (fileInfo is null)
-        {
-            throw new ArgumentNullException(nameof(fileInfo));
-        }
+        ArgumentNullException.ThrowIfNull(fileInfo);
 
         this.Filename = fileInfo.Name;
 

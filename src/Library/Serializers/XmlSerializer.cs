@@ -18,10 +18,7 @@ public sealed class XmlSerializer
     /// <returns>The serialized object.</returns>
     public static string Serialize(object obj)
     {
-        if (obj is null)
-        {
-            throw new ArgumentNullException(nameof(obj));
-        }
+        ArgumentNullException.ThrowIfNull(obj);
 
         System.Xml.Serialization.XmlSerializer serializer = new(obj.GetType());
 
