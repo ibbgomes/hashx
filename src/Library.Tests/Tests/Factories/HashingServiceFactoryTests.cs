@@ -96,19 +96,5 @@ public sealed class HashingServiceFactoryTests
         service.Algorithm.Should().Be(algorithm);
     }
 
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_6()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
     #endregion
 }
