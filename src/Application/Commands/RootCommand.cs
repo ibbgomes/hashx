@@ -14,7 +14,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     private readonly Option<HashingAlgorithm[]> algorithmOption = new(new[] { "-a", "--algorithm" })
     {
-        Description = "Specify a hashing algorithm",
+        Description = "Specify a hashing algorithm (MD5, SHA1, SHA256, SHA384 or SHA512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
     };
