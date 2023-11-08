@@ -1,5 +1,6 @@
 ﻿namespace Hashx.Library.Tests;
 
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using FluentAssertions;
@@ -22,11 +23,20 @@ public sealed class XmlSerializerTests
     {
         FileInfo fileInfo = new(Data.MockFilePath);
 
-        ExportableResult result = Serialization.GetExportableResult(fileInfo);
+        List<HashingResult> results = new()
+        {
+            new(HashingAlgorithm.MD5, Hashes.MD5),
+            new(HashingAlgorithm.SHA1, Hashes.SHA1),
+            new(HashingAlgorithm.SHA256, Hashes.SHA256),
+            new(HashingAlgorithm.SHA384, Hashes.SHA384),
+            new(HashingAlgorithm.SHA512, Hashes.SHA512),
+        };
+
+        ExportableResult exportableResult = new(fileInfo, results);
+
+        string actual = XmlSerializer.Serialize(exportableResult);
 
         string expected = File.ReadAllText(Data.XmlResultFilePath);
-
-        string actual = XmlSerializer.Serialize(result);
 
         actual.Should().Be(expected);
     }

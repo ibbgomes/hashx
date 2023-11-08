@@ -28,10 +28,7 @@ public class ExportableResult
         ArgumentNullException.ThrowIfNull(fileInfo);
 
         this.Filename = fileInfo.Name;
-
-        this.Hashes = results
-            .OrderBy(x => x.Algorithm)
-            .ToList();
+        this.Hashes = results.ToList();
     }
 
     /// <summary>

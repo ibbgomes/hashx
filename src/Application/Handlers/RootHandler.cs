@@ -90,7 +90,10 @@ internal static class RootHandler
             results.Add(result);
         });
 
-        return results;
+        return results
+            .OrderBy(x => x.Algorithm)
+            .ToList()
+            .AsReadOnly();
     }
 
     private static void PrintComparison(IReadOnlyCollection<HashingResult> results, string checksum, IConsole console)
