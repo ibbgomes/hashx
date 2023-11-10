@@ -4,6 +4,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.CommandLine;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ internal static class RootHandler
     /// <param name="args">The arguments.</param>
     /// <param name="console">The console.</param>
     /// <returns>The exit code.</returns>
+    [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ensures graceful error handling.")]
     internal static int Handle(RootArguments args, IConsole console)
     {
         try
@@ -31,29 +33,26 @@ internal static class RootHandler
             if (args.Json)
             {
                 PrintResultsAsJson(args.Input, results, console);
-
-                return 0;
             }
-
-            if (args.Xml)
+            else if (args.Xml)
             {
                 PrintResultsAsXml(args.Input, results, console);
-
-                return 0;
             }
-
-            PrintResults(results, console);
-
-            if (!string.IsNullOrEmpty(args.Checksum))
+            else
             {
-                PrintComparison(results, args.Checksum, console);
+                PrintResults(results, console);
+
+                if (!string.IsNullOrWhiteSpace(args.Checksum))
+                {
+                    PrintComparison(results, args.Checksum, console);
+                }
             }
 
             return 0;
         }
-        catch (InvalidOperationException e)
+        catch (Exception e)
         {
-            console.WriteError(e.Message);
+            console.WriteError($"An error occurred: {e.Message}.");
 
             return 1;
         }
@@ -63,23 +62,9 @@ internal static class RootHandler
 
     #region Private Methods
 
-    private static IEnumerable<IHashingService> GetHashingServices(IEnumerable<HashingAlgorithm> algorithms)
-    {
-        List<IHashingService> services = new();
-
-        foreach (HashingAlgorithm algorithm in algorithms)
-        {
-            IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-            services.Add(service);
-        }
-
-        return services;
-    }
-
     private static IReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {
-        IEnumerable<IHashingService> services = GetHashingServices(algorithms);
+        IEnumerable<IHashingService> services = algorithms.Select(HashingServiceFactory.GetInstance);
 
         ConcurrentBag<HashingResult> results = new();
 
@@ -98,31 +83,30 @@ internal static class RootHandler
 
     private static void PrintComparison(IReadOnlyCollection<HashingResult> results, string checksum, IConsole console)
     {
-        foreach (HashingResult result in results)
+        HashingResult? match = results.FirstOrDefault(result => result.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase));
+
+        if (match is not null)
         {
-            if (result.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase))
-            {
-                console.WriteSuccess($"{result.Algorithm} result matches the checksum.");
-
-                return;
-            }
+            console.WriteSuccess($"{match.Algorithm} result matches the checksum.");
         }
-
-        console.WriteError("No result matches the checksum.");
+        else
+        {
+            console.WriteError("No result matches the checksum.");
+        }
     }
 
-    private static void PrintResults(IReadOnlyCollection<HashingResult> hashes, IConsole console)
+    private static void PrintResults(IReadOnlyCollection<HashingResult> results, IConsole console)
     {
-        if (hashes.Count is 1)
+        if (results.Count == 1)
         {
-            console.Write(hashes.First().Value);
-
-            return;
+            console.Write(results.First().Value);
         }
-
-        foreach (HashingResult hash in hashes)
+        else
         {
-            console.Write($"{hash.Algorithm}\t{hash.Value}");
+            foreach (HashingResult result in results)
+            {
+                console.Write($"{result.Algorithm}\t{result.Value}");
+            }
         }
     }
 
