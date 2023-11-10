@@ -9,8 +9,8 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="RootCommand"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit tests.")]
-[SuppressMessage("Style", "VSTHRD200:UseAsyncSuffixForAsyncMethods", Justification = "Unit tests.")]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
+[SuppressMessage("Style", "VSTHRD200:Use Async suffix for async methods", Justification = "Unit tests.")]
 public sealed class RootCommandTests
 {
     #region Public Methods

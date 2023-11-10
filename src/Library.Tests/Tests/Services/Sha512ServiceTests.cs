@@ -9,7 +9,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="Sha512Service"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit tests.")]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class Sha512ServiceTests
 {
     #region Public Methods
