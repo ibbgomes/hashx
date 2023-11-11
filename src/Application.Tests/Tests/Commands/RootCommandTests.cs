@@ -9,6 +9,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="RootCommand"/>.
 /// </summary>
+[SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "Unit tests.")]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 [SuppressMessage("Style", "VSTHRD200:Use Async suffix for async methods", Justification = "Unit tests.")]
 public sealed class RootCommandTests
@@ -32,8 +33,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -55,8 +55,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -79,8 +78,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -103,8 +101,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -125,8 +122,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -147,8 +143,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -169,8 +164,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -192,8 +186,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -214,8 +207,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -237,8 +229,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -260,8 +251,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -283,8 +273,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -305,8 +294,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -327,8 +315,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -349,8 +336,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -372,8 +358,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -395,8 +380,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -418,8 +402,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -441,8 +424,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -464,8 +446,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -486,8 +467,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -515,8 +495,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -540,8 +519,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -565,8 +543,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -590,8 +567,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -615,8 +591,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -640,8 +615,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -665,8 +639,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -690,8 +663,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -714,8 +686,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -739,8 +710,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -768,8 +738,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -791,8 +760,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -815,8 +783,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -838,8 +805,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -861,8 +827,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -885,8 +850,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -914,8 +878,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -937,8 +900,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -961,8 +923,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -985,8 +946,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -1005,8 +965,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
@@ -1029,8 +988,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -1049,8 +1007,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -1069,8 +1026,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(0);
     }
@@ -1089,8 +1045,7 @@ public sealed class RootCommandTests
 
         int exitCode = await new Application
             .RootCommand()
-            .InvokeAsync(args)
-            .ConfigureAwait(false);
+            .InvokeAsync(args);
 
         exitCode.Should().Be(1);
     }
