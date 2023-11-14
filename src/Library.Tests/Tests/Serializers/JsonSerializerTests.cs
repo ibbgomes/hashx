@@ -23,14 +23,14 @@ public sealed class JsonSerializerTests
     {
         FileInfo fileInfo = new(Data.MockFilePath);
 
-        List<HashingResult> results = new()
-        {
+        List<HashingResult> results =
+        [
             new(HashingAlgorithm.MD5, Hashes.MD5),
             new(HashingAlgorithm.SHA1, Hashes.SHA1),
             new(HashingAlgorithm.SHA256, Hashes.SHA256),
             new(HashingAlgorithm.SHA384, Hashes.SHA384),
             new(HashingAlgorithm.SHA512, Hashes.SHA512),
-        };
+        ];
 
         ExportableResult exportableResult = new(fileInfo, results);
 

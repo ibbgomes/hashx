@@ -26,10 +26,10 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Empty()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -47,11 +47,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Invalid()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "sha123",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -68,13 +68,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Many_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-a",
             "sha1",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -91,13 +91,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Many_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "md5",
             "--algorithm",
             "sha1",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -114,11 +114,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Md5_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -135,11 +135,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Md5_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -156,11 +156,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Md5_3()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "MD5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -178,11 +178,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Reversed()
     {
         string[] args =
-        {
+        [
             "-a",
             "md5",
             Data.MockFilePath,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -199,11 +199,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha1_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "sha1",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -221,11 +221,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha1_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "sha1",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -243,11 +243,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha1_3()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "SHA1",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -265,11 +265,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha256_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "sha256",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -286,11 +286,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha256_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "sha256",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -307,11 +307,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha256_3()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "SHA256",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -328,11 +328,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha384_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "sha384",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -350,11 +350,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha384_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "sha384",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -372,11 +372,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha384_3()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "SHA384",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -394,11 +394,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha512_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "sha512",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -416,11 +416,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha512_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "sha512",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -438,11 +438,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Sha512_3()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "SHA512",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -459,11 +459,11 @@ public sealed class RootCommandTests
     public async Task RootCommand_Algorithms_Uppercase()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-A",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -485,13 +485,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Expected_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-c",
             Hashes.MD5,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -509,13 +509,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Expected_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "md5",
             "--compare",
             Hashes.MD5,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -532,14 +532,14 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Json()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-c",
             Hashes.MD5,
             "--json",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -557,13 +557,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Reversed_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-c",
             Hashes.MD5,
             "-a",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -581,13 +581,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Reversed_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--compare",
             Hashes.MD5,
             "--algorithm",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -605,13 +605,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Reversed_3()
     {
         string[] args =
-        {
+        [
             "-a",
             "md5",
             "-c",
             Hashes.MD5,
             Data.MockFilePath,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -629,13 +629,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Unexpected_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-c",
             "unexpected-hash",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -653,13 +653,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Unexpected_2()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--algorithm",
             "md5",
             "--compare",
             "unexpected-hash",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -676,13 +676,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Uppercase()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-C",
             Hashes.MD5,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -699,14 +699,14 @@ public sealed class RootCommandTests
     public async Task RootCommand_Compare_Xml()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-c",
             Hashes.MD5,
             "--xml",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -727,14 +727,14 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Many()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-a",
             "sha1",
             "--json",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -751,12 +751,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Reversed_1()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "--json",
             "-a",
             "md5",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -774,12 +774,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Reversed_2()
     {
         string[] args =
-        {
+        [
             "-a",
             "md5",
             "--json",
             Data.MockFilePath,
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -796,12 +796,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Single()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "--json",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -818,12 +818,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Uppercase()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "--JSON",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -840,13 +840,13 @@ public sealed class RootCommandTests
     public async Task RootCommand_Json_Xml()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "--json",
             "--xml",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -867,14 +867,14 @@ public sealed class RootCommandTests
     public async Task RootCommand_Xml_Many()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "-a",
             "sha1",
             "--xml",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -891,12 +891,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Xml_Single()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "--xml",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -917,9 +917,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Version()
     {
         string[] args =
-        {
+        [
             "--version",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -937,12 +937,12 @@ public sealed class RootCommandTests
     public async Task RootCommand_Version_Exclusive()
     {
         string[] args =
-        {
+        [
             Data.MockFilePath,
             "-a",
             "md5",
             "--version",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -959,9 +959,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Version_Uppercase()
     {
         string[] args =
-        {
+        [
             "--VERSION",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -982,9 +982,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Help_1()
     {
         string[] args =
-        {
+        [
             "-h",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -1001,9 +1001,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Help_2()
     {
         string[] args =
-        {
+        [
             "-?",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -1020,9 +1020,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Help_3()
     {
         string[] args =
-        {
+        [
             "--help",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()
@@ -1039,9 +1039,9 @@ public sealed class RootCommandTests
     public async Task RootCommand_Help_Uppercase()
     {
         string[] args =
-        {
+        [
             "-H",
-        };
+        ];
 
         int exitCode = await new Application
             .RootCommand()

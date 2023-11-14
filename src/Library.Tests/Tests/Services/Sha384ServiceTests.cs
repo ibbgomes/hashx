@@ -20,7 +20,7 @@ public sealed class Sha384ServiceTests
     [Fact]
     public void Sha384Service_GetHash_Expected()
     {
-        IHashingService service = new Sha384Service();
+        Sha384Service service = new();
 
         FileInfo fileInfo = new(Data.MockFilePath);
 

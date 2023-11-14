@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.CommandLine;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -62,11 +63,11 @@ internal static class RootHandler
 
     #region Private Methods
 
-    private static IReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
+    private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {
         IEnumerable<IHashingService> services = algorithms.Select(HashingServiceFactory.GetInstance);
 
-        ConcurrentBag<HashingResult> results = new();
+        ConcurrentBag<HashingResult> results = [];
 
         Parallel.ForEach(services, (service) =>
         {

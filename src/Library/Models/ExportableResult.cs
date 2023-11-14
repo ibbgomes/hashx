@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
 using System.Xml.Serialization;
 
 /// <summary>
@@ -28,7 +27,7 @@ public class ExportableResult
         ArgumentNullException.ThrowIfNull(fileInfo);
 
         this.Filename = fileInfo.Name;
-        this.Hashes = results.ToList();
+        this.Hashes = [.. results];
     }
 
     /// <summary>

@@ -20,7 +20,7 @@ public sealed class Md5ServiceTests
     [Fact]
     public void Md5Service_GetHash_Expected()
     {
-        IHashingService service = new Md5Service();
+        Md5Service service = new();
 
         FileInfo fileInfo = new(Data.MockFilePath);
 

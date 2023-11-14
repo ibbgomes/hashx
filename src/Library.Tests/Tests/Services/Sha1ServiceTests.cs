@@ -20,7 +20,7 @@ public sealed class Sha1ServiceTests
     [Fact]
     public void Sha1Service_GetHash_Expected()
     {
-        IHashingService service = new Sha1Service();
+        Sha1Service service = new();
 
         FileInfo fileInfo = new(Data.MockFilePath);
 
