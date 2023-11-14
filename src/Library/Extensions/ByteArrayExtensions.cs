@@ -10,11 +10,11 @@ internal static class ByteArrayExtensions
     #region Internal Methods
 
     /// <summary>
-    /// Converts this <see cref="byte"/> array to a formatted <see cref="string"/>.
+    /// Converts this <see cref="byte"/> array to a hexadecimal <see cref="string"/>.
     /// </summary>
     /// <param name="bytes">The byte array.</param>
-    /// <returns>The formatted string.</returns>
-    internal static string ToFormattedString(this byte[] bytes)
+    /// <returns>The hexadecimal string.</returns>
+    internal static string ToHexString(this byte[] bytes)
     {
         return BitConverter
             .ToString(bytes)

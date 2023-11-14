@@ -8,7 +8,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="HashingServiceFactory"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit tests.")]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class HashingServiceFactoryTests
 {
     #region Public Methods
@@ -88,20 +88,6 @@ public sealed class HashingServiceFactoryTests
     /// </summary>
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_5()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_6()
     {
         HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
 

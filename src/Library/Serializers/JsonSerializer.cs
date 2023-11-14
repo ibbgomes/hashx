@@ -8,6 +8,15 @@ using System.Text.Json.Serialization;
 /// </summary>
 public sealed class JsonSerializer
 {
+    #region Fields
+
+    private static readonly JsonSerializerOptions Options = new()
+    {
+        WriteIndented = true,
+    };
+
+    #endregion
+
     #region Public Methods
 
     /// <summary>
@@ -17,14 +26,9 @@ public sealed class JsonSerializer
     /// <returns>The serialized object.</returns>
     public static string Serialize(object obj)
     {
-        JsonSerializerOptions options = new()
-        {
-            WriteIndented = true,
-        };
+        Options.Converters.Add(new JsonStringEnumConverter());
 
-        options.Converters.Add(new JsonStringEnumConverter());
-
-        return System.Text.Json.JsonSerializer.Serialize(obj, options);
+        return System.Text.Json.JsonSerializer.Serialize(obj, Options);
     }
 
     #endregion

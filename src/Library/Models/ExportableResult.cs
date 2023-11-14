@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
 using System.Xml.Serialization;
 
 /// <summary>
@@ -25,16 +24,10 @@ public class ExportableResult
     /// <param name="results">The hashing results.</param>
     public ExportableResult(FileInfo fileInfo, IReadOnlyCollection<HashingResult> results)
     {
-        if (fileInfo is null)
-        {
-            throw new ArgumentNullException(nameof(fileInfo));
-        }
+        ArgumentNullException.ThrowIfNull(fileInfo);
 
         this.Filename = fileInfo.Name;
-
-        this.Hashes = results
-            .OrderBy(x => x.Algorithm)
-            .ToList();
+        this.Hashes = [.. results];
     }
 
     /// <summary>

@@ -50,7 +50,7 @@ internal abstract class HashingService : IHashingService
         string hash = this
             .Implementation
             .ComputeHash(fileStream)
-            .ToFormattedString();
+            .ToHexString();
 
         return new(this.Algorithm, hash);
     }

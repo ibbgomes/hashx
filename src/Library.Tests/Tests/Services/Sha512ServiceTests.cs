@@ -9,7 +9,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="Sha512Service"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit tests.")]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class Sha512ServiceTests
 {
     #region Public Methods
@@ -20,7 +20,7 @@ public sealed class Sha512ServiceTests
     [Fact]
     public void Sha512Service_GetHash_Expected()
     {
-        IHashingService service = new Sha512Service();
+        Sha512Service service = new();
 
         FileInfo fileInfo = new(Data.MockFilePath);
 

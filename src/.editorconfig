@@ -2,10 +2,11 @@
 
 # Disabled rules
 
-dotnet_diagnostic.CA5350.severity = silent
-dotnet_diagnostic.CA5351.severity = silent
-dotnet_diagnostic.SA1124.severity = silent
-dotnet_diagnostic.SA1633.severity = silent
+dotnet_diagnostic.CA5350.severity = none
+dotnet_diagnostic.CA5351.severity = none
+dotnet_diagnostic.SA1010.severity = none
+dotnet_diagnostic.SA1124.severity = none
+dotnet_diagnostic.SA1633.severity = none
 
 # Require file scoped namespaces
 

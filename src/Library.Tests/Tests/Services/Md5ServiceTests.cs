@@ -9,7 +9,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="Md5Service"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "Unit tests.")]
+[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class Md5ServiceTests
 {
     #region Public Methods
@@ -20,7 +20,7 @@ public sealed class Md5ServiceTests
     [Fact]
     public void Md5Service_GetHash_Expected()
     {
-        IHashingService service = new Md5Service();
+        Md5Service service = new();
 
         FileInfo fileInfo = new(Data.MockFilePath);
 
