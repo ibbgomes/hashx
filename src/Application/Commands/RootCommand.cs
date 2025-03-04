@@ -12,14 +12,14 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     #region Fields
 
-    private readonly Option<HashingAlgorithm[]> algorithmOption = new(new[] { "-a", "--algorithm" })
+    private readonly Option<HashingAlgorithm[]> algorithmOption = new(["-a", "--algorithm"])
     {
         Description = "Specify a hashing algorithm (MD5, SHA1, SHA256, SHA384 or SHA512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
     };
 
-    private readonly Option<string> compareOption = new(new[] { "-c", "--compare" })
+    private readonly Option<string> compareOption = new(["-c", "--compare"])
     {
         Description = "Compare the results against a checksum",
         IsRequired = false,
@@ -67,11 +67,11 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         this.AddValidator(
             (result) =>
             {
-                bool jsonOption = result.GetValueForOption(this.jsonOption);
+                bool json = result.GetValueForOption(this.jsonOption);
 
-                bool xmlOption = result.GetValueForOption(this.xmlOption);
+                bool xml = result.GetValueForOption(this.xmlOption);
 
-                if (jsonOption && xmlOption)
+                if (json && xml)
                 {
                     result.ErrorMessage = "Options '--json' and '--xml' cannot be used together.";
                 }
@@ -80,11 +80,11 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         this.AddValidator(
             (result) =>
             {
-                string? compareOption = result.GetValueForOption(this.compareOption);
+                string? compare = result.GetValueForOption(this.compareOption);
 
-                bool jsonOption = result.GetValueForOption(this.jsonOption);
+                bool json = result.GetValueForOption(this.jsonOption);
 
-                if (compareOption is not null && jsonOption)
+                if (compare is not null && json)
                 {
                     result.ErrorMessage = "Options '--compare' and '--json' cannot be used together.";
                 }
@@ -93,11 +93,11 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         this.AddValidator(
             (result) =>
             {
-                string? compareOption = result.GetValueForOption(this.compareOption);
+                string? compare = result.GetValueForOption(this.compareOption);
 
-                bool xmlOption = result.GetValueForOption(this.xmlOption);
+                bool xml = result.GetValueForOption(this.xmlOption);
 
-                if (compareOption is not null && xmlOption)
+                if (compare is not null && xml)
                 {
                     result.ErrorMessage = "Options '--compare' and '--xml' cannot be used together.";
                 }

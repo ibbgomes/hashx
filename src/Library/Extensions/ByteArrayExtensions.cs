@@ -16,10 +16,7 @@ internal static class ByteArrayExtensions
     /// <returns>The hexadecimal string.</returns>
     internal static string ToHexString(this byte[] bytes)
     {
-        return BitConverter
-            .ToString(bytes)
-            .Replace("-", string.Empty, StringComparison.OrdinalIgnoreCase)
-            .ToUpperInvariant();
+        return Convert.ToHexString(bytes);
     }
 
     #endregion

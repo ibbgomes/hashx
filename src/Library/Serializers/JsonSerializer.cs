@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 /// <summary>
 /// Defines a JSON serializer.
 /// </summary>
-public sealed class JsonSerializer
+public static class JsonSerializer
 {
     #region Fields
 

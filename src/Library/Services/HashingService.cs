@@ -7,27 +7,12 @@ using System.Security.Cryptography;
 /// Defines the base implementation of a hashing service.
 /// </summary>
 /// <seealso cref="IHashingService"/>
-internal abstract class HashingService : IHashingService
+internal abstract class HashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
 {
-    #region Constructors
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HashingService"/> class.
-    /// </summary>
-    /// <param name="algorithm">The algorithm.</param>
-    /// <param name="implementation">The implementation.</param>
-    protected HashingService(HashingAlgorithm algorithm, HashAlgorithm implementation)
-    {
-        this.Algorithm = algorithm;
-        this.Implementation = implementation;
-    }
-
-    #endregion
-
     #region Public Properties
 
     /// <inheritdoc/>
-    public HashingAlgorithm Algorithm { get; }
+    public HashingAlgorithm Algorithm { get; } = algorithm;
 
     #endregion
 
@@ -36,7 +21,7 @@ internal abstract class HashingService : IHashingService
     /// <summary>
     /// Gets the hashing service implementation.
     /// </summary>
-    protected HashAlgorithm Implementation { get; }
+    protected HashAlgorithm Implementation { get; } = implementation;
 
     #endregion
 

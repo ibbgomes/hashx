@@ -7,7 +7,7 @@ using System.Xml;
 /// <summary>
 /// Defines a XML serializer.
 /// </summary>
-public sealed class XmlSerializer
+public static class XmlSerializer
 {
     #region Public Methods
 
