@@ -30,10 +30,6 @@ internal static class RootHandler
             {
                 PrintResultsAsJson(args.Input, results, console);
             }
-            else if (args.Xml)
-            {
-                PrintResultsAsXml(args.Input, results, console);
-            }
             else
             {
                 PrintResults(results, console);
@@ -113,15 +109,6 @@ internal static class RootHandler
         string json = JsonSerializer.Serialize(exportableResult);
 
         console.Write(json);
-    }
-
-    private static void PrintResultsAsXml(FileInfo input, IReadOnlyCollection<HashingResult> results, IConsole console)
-    {
-        ExportableResult exportableResult = new(input, results);
-
-        string xml = XmlSerializer.Serialize(exportableResult);
-
-        console.Write(xml);
     }
 
     #endregion

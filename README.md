@@ -20,7 +20,6 @@ Options:
   -a, --algorithms <algorithms> (REQUIRED)  Specify the hashing algorithms (MD5, SHA1, SHA256, SHA384 or SHA512)
   -c, --compare <compare>                   Compare the results against a checksum
   --json                                    Print the results in JSON format
-  --xml                                     Print the results in XML format
   --version                                 Show version information
   -?, -h, --help                            Show help and usage information
 ```

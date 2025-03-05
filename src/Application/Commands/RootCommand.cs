@@ -38,12 +38,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         IsRequired = false,
     };
 
-    private readonly Option<bool> xmlOption = new("--xml")
-    {
-        Description = "Print the results in XML format",
-        IsRequired = false,
-    };
-
     #endregion
 
     #region Constructors
@@ -62,21 +56,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
         this.AddOption(this.jsonOption);
 
-        this.AddOption(this.xmlOption);
-
-        this.AddValidator(
-            (result) =>
-            {
-                bool json = result.GetValueForOption(this.jsonOption);
-
-                bool xml = result.GetValueForOption(this.xmlOption);
-
-                if (json && xml)
-                {
-                    result.ErrorMessage = "Options '--json' and '--xml' cannot be used together.";
-                }
-            });
-
         this.AddValidator(
             (result) =>
             {
@@ -90,19 +69,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 }
             });
 
-        this.AddValidator(
-            (result) =>
-            {
-                string? compare = result.GetValueForOption(this.compareOption);
-
-                bool xml = result.GetValueForOption(this.xmlOption);
-
-                if (compare is not null && xml)
-                {
-                    result.ErrorMessage = "Options '--compare' and '--xml' cannot be used together.";
-                }
-            });
-
         this.SetHandler(
             (context) =>
             {
@@ -112,7 +78,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                     Algorithms = context.ParseResult.GetValueForOption(this.algorithmsOption)!,
                     Checksum = context.ParseResult.GetValueForOption(this.compareOption),
                     Json = context.ParseResult.GetValueForOption(this.jsonOption),
-                    Xml = context.ParseResult.GetValueForOption(this.xmlOption),
                 };
 
                 RootHandler.Handle(args, context.Console);

@@ -29,10 +29,5 @@ internal sealed class RootArguments
     /// </summary>
     internal bool Json { get; init; }
 
-    /// <summary>
-    /// Gets a value indicating whether the results should be printed in XML.
-    /// </summary>
-    internal bool Xml { get; init; }
-
     #endregion
 }

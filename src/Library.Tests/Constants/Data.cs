@@ -17,10 +17,5 @@ internal static class Data
     /// </summary>
     internal const string MockFilePath = @"Data/mock.json";
 
-    /// <summary>
-    /// The XML result file path.
-    /// </summary>
-    internal const string XmlResultFilePath = @"Data/result.xml";
-
     #endregion
 }

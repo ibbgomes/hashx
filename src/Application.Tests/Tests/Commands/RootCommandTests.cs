@@ -698,29 +698,6 @@ public sealed class RootCommandTests
         exitCode.Should().Be(1);
     }
 
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with both the compare and XML options, runs unsuccessfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Compare_Xml()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "-c",
-            Hashes.MD5,
-            "--xml",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(1);
-    }
-
     #endregion
 
     #region JSON Option
@@ -831,76 +808,6 @@ public sealed class RootCommandTests
             .Invoke(args);
 
         exitCode.Should().Be(1);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with both the JSON and XML options, runs unsuccessfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Json_Xml()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "--json",
-            "--xml",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(1);
-    }
-
-    #endregion
-
-    #region XML Option
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the XML option and many algorithms, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Xml_Many()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "-a",
-            "sha1",
-            "--xml",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the XML option and a single algorithm, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Xml_Single()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "--xml",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
     }
 
     #endregion
