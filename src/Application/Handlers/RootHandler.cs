@@ -92,13 +92,13 @@ internal static class RootHandler
         if (results.Count == 1)
         {
             console.Write(results.First().Value);
+
+            return;
         }
-        else
+
+        foreach (HashingResult result in results)
         {
-            foreach (HashingResult result in results)
-            {
-                console.Write($"{result.Algorithm}\t{result.Value}");
-            }
+            console.Write($"{result.Algorithm}\t{result.Value}");
         }
     }
 
