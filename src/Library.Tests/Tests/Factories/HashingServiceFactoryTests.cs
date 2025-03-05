@@ -16,7 +16,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Exception()
     {
-        HashingAlgorithm algorithm = (HashingAlgorithm)5;
+        const HashingAlgorithm algorithm = (HashingAlgorithm)5;
 
         Action action = () => HashingServiceFactory.GetInstance(algorithm);
 
@@ -30,7 +30,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_1()
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.MD5;
+        const HashingAlgorithm algorithm = HashingAlgorithm.MD5;
 
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
@@ -44,7 +44,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_2()
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA1;
+        const HashingAlgorithm algorithm = HashingAlgorithm.SHA1;
 
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
@@ -58,7 +58,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_3()
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA256;
+        const HashingAlgorithm algorithm = HashingAlgorithm.SHA256;
 
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
@@ -72,7 +72,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_4()
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA384;
+        const HashingAlgorithm algorithm = HashingAlgorithm.SHA384;
 
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
@@ -86,7 +86,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Expected_5()
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
+        const HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
 
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
