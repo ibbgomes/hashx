@@ -9,9 +9,9 @@ internal static class Program
 {
     #region Private Methods
 
-    private static Task<int> Main(string[] args)
+    private static int Main(string[] args)
     {
-        return new RootCommand().InvokeAsync(args);
+        return new RootCommand().Invoke(args);
     }
 
     #endregion

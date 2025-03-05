@@ -8,9 +8,7 @@ using Xunit;
 /// <summary>
 /// Defines unit tests for <see cref="RootCommand"/>.
 /// </summary>
-[SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "Unit tests.")]
 [SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
-[SuppressMessage("Style", "VSTHRD200:Use Async suffix for async methods", Justification = "Unit tests.")]
 public sealed class RootCommandTests
 {
     #region Public Methods
@@ -20,9 +18,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and no value, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Empty()
+    public void RootCommand_Algorithms_Empty()
     {
         string[] args =
         [
@@ -30,9 +27,9 @@ public sealed class RootCommandTests
             "-a",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -41,9 +38,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and an invalid value,
     /// runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Invalid()
+    public void RootCommand_Algorithms_Invalid()
     {
         string[] args =
         [
@@ -52,9 +48,9 @@ public sealed class RootCommandTests
             "sha123",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -62,9 +58,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Many_1()
+    public void RootCommand_Algorithms_Many_1()
     {
         string[] args =
         [
@@ -75,9 +70,9 @@ public sealed class RootCommandTests
             "sha1",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -85,9 +80,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Many_2()
+    public void RootCommand_Algorithms_Many_2()
     {
         string[] args =
         [
@@ -98,9 +92,9 @@ public sealed class RootCommandTests
             "sha1",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -108,9 +102,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Md5_1()
+    public void RootCommand_Algorithms_Md5_1()
     {
         string[] args =
         [
@@ -119,9 +112,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -129,9 +122,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Md5_2()
+    public void RootCommand_Algorithms_Md5_2()
     {
         string[] args =
         [
@@ -140,9 +132,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -150,9 +142,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Md5_3()
+    public void RootCommand_Algorithms_Md5_3()
     {
         string[] args =
         [
@@ -161,9 +152,9 @@ public sealed class RootCommandTests
             "MD5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -172,9 +163,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option before the file path
     /// argument, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Reversed()
+    public void RootCommand_Algorithms_Reversed()
     {
         string[] args =
         [
@@ -183,9 +173,9 @@ public sealed class RootCommandTests
             Data.MockFilePath,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -193,9 +183,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that <see cref="RootCommand"/>, with the algorithms option and the SHA1 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha1_1()
+    public void RootCommand_Algorithms_Sha1_1()
     {
         string[] args =
         [
@@ -204,9 +193,9 @@ public sealed class RootCommandTests
             "sha1",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -215,9 +204,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA1 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha1_2()
+    public void RootCommand_Algorithms_Sha1_2()
     {
         string[] args =
         [
@@ -226,9 +214,9 @@ public sealed class RootCommandTests
             "sha1",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -237,9 +225,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA1 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha1_3()
+    public void RootCommand_Algorithms_Sha1_3()
     {
         string[] args =
         [
@@ -248,9 +235,9 @@ public sealed class RootCommandTests
             "SHA1",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -259,9 +246,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha256_1()
+    public void RootCommand_Algorithms_Sha256_1()
     {
         string[] args =
         [
@@ -270,9 +256,9 @@ public sealed class RootCommandTests
             "sha256",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -280,9 +266,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha256_2()
+    public void RootCommand_Algorithms_Sha256_2()
     {
         string[] args =
         [
@@ -291,9 +276,9 @@ public sealed class RootCommandTests
             "sha256",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -301,9 +286,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha256_3()
+    public void RootCommand_Algorithms_Sha256_3()
     {
         string[] args =
         [
@@ -312,9 +296,9 @@ public sealed class RootCommandTests
             "SHA256",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -322,9 +306,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha384_1()
+    public void RootCommand_Algorithms_Sha384_1()
     {
         string[] args =
         [
@@ -333,9 +316,9 @@ public sealed class RootCommandTests
             "sha384",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -344,9 +327,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha384_2()
+    public void RootCommand_Algorithms_Sha384_2()
     {
         string[] args =
         [
@@ -355,9 +337,9 @@ public sealed class RootCommandTests
             "sha384",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -366,9 +348,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha384_3()
+    public void RootCommand_Algorithms_Sha384_3()
     {
         string[] args =
         [
@@ -377,9 +358,9 @@ public sealed class RootCommandTests
             "SHA384",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -388,9 +369,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha512_1()
+    public void RootCommand_Algorithms_Sha512_1()
     {
         string[] args =
         [
@@ -399,9 +379,9 @@ public sealed class RootCommandTests
             "sha512",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -410,9 +390,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha512_2()
+    public void RootCommand_Algorithms_Sha512_2()
     {
         string[] args =
         [
@@ -421,9 +400,9 @@ public sealed class RootCommandTests
             "sha512",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -432,9 +411,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Sha512_3()
+    public void RootCommand_Algorithms_Sha512_3()
     {
         string[] args =
         [
@@ -443,9 +421,9 @@ public sealed class RootCommandTests
             "SHA512",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -453,9 +431,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option in uppercase, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Algorithms_Uppercase()
+    public void RootCommand_Algorithms_Uppercase()
     {
         string[] args =
         [
@@ -464,9 +441,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -479,9 +456,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option and an expected value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Expected_1()
+    public void RootCommand_Compare_Expected_1()
     {
         string[] args =
         [
@@ -492,9 +468,9 @@ public sealed class RootCommandTests
             Hashes.MD5,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -503,9 +479,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option and an expected value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Expected_2()
+    public void RootCommand_Compare_Expected_2()
     {
         string[] args =
         [
@@ -516,9 +491,9 @@ public sealed class RootCommandTests
             Hashes.MD5,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -526,9 +501,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with both the compare and JSON options, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Json()
+    public void RootCommand_Compare_Json()
     {
         string[] args =
         [
@@ -540,9 +514,9 @@ public sealed class RootCommandTests
             "--json",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -551,9 +525,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option before the algorithms
     /// option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Reversed_1()
+    public void RootCommand_Compare_Reversed_1()
     {
         string[] args =
         [
@@ -564,9 +537,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -575,9 +548,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option before the algorithms
     /// option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Reversed_2()
+    public void RootCommand_Compare_Reversed_2()
     {
         string[] args =
         [
@@ -588,9 +560,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -599,9 +571,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option before the file path
     /// argument, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Reversed_3()
+    public void RootCommand_Compare_Reversed_3()
     {
         string[] args =
         [
@@ -612,9 +583,9 @@ public sealed class RootCommandTests
             Data.MockFilePath,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -623,9 +594,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option and an unexpected value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Unexpected_1()
+    public void RootCommand_Compare_Unexpected_1()
     {
         string[] args =
         [
@@ -636,9 +606,9 @@ public sealed class RootCommandTests
             "unexpected-hash",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -647,9 +617,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with the compare option and an unexpected value,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Unexpected_2()
+    public void RootCommand_Compare_Unexpected_2()
     {
         string[] args =
         [
@@ -660,9 +629,9 @@ public sealed class RootCommandTests
             "unexpected-hash",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -670,9 +639,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the compare option in uppercase, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Uppercase()
+    public void RootCommand_Compare_Uppercase()
     {
         string[] args =
         [
@@ -683,9 +651,9 @@ public sealed class RootCommandTests
             Hashes.MD5,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -693,9 +661,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with both the compare and XML options, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Compare_Xml()
+    public void RootCommand_Compare_Xml()
     {
         string[] args =
         [
@@ -707,9 +674,9 @@ public sealed class RootCommandTests
             "--xml",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -721,9 +688,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the JSON option and many algorithm, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Many()
+    public void RootCommand_Json_Many()
     {
         string[] args =
         [
@@ -735,9 +701,9 @@ public sealed class RootCommandTests
             "--json",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -745,9 +711,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests the <see cref="RootCommand"/> with the JSON option before the algorithms option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Reversed_1()
+    public void RootCommand_Json_Reversed_1()
     {
         string[] args =
         [
@@ -757,9 +722,9 @@ public sealed class RootCommandTests
             "md5",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -768,9 +733,8 @@ public sealed class RootCommandTests
     /// Tests the <see cref="RootCommand"/>, with the JSON option before the file path argument,
     /// runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Reversed_2()
+    public void RootCommand_Json_Reversed_2()
     {
         string[] args =
         [
@@ -780,9 +744,9 @@ public sealed class RootCommandTests
             Data.MockFilePath,
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -790,9 +754,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the JSON option and a single algorithm, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Single()
+    public void RootCommand_Json_Single()
     {
         string[] args =
         [
@@ -802,9 +765,9 @@ public sealed class RootCommandTests
             "--json",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -812,9 +775,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the JSON option in uppercase, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Uppercase()
+    public void RootCommand_Json_Uppercase()
     {
         string[] args =
         [
@@ -824,9 +786,9 @@ public sealed class RootCommandTests
             "--JSON",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -834,9 +796,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with both the JSON and XML options, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Json_Xml()
+    public void RootCommand_Json_Xml()
     {
         string[] args =
         [
@@ -847,9 +808,9 @@ public sealed class RootCommandTests
             "--xml",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -861,9 +822,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the XML option and many algorithms, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Xml_Many()
+    public void RootCommand_Xml_Many()
     {
         string[] args =
         [
@@ -875,9 +835,9 @@ public sealed class RootCommandTests
             "--xml",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -885,9 +845,8 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the XML option and a single algorithm, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Xml_Single()
+    public void RootCommand_Xml_Single()
     {
         string[] args =
         [
@@ -897,9 +856,9 @@ public sealed class RootCommandTests
             "--xml",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -911,18 +870,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the version option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Version()
+    public void RootCommand_Version()
     {
         string[] args =
         [
             "--version",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -931,9 +889,8 @@ public sealed class RootCommandTests
     /// Tests that the <see cref="RootCommand"/>, with both the version option and other options,
     /// run unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Version_Exclusive()
+    public void RootCommand_Version_Exclusive()
     {
         string[] args =
         [
@@ -943,9 +900,9 @@ public sealed class RootCommandTests
             "--version",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -953,18 +910,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the version option in uppercase, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Version_Uppercase()
+    public void RootCommand_Version_Uppercase()
     {
         string[] args =
         [
             "--VERSION",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
@@ -976,18 +932,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Help_1()
+    public void RootCommand_Help_1()
     {
         string[] args =
         [
             "-h",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -995,18 +950,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Help_2()
+    public void RootCommand_Help_2()
     {
         string[] args =
         [
             "-?",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -1014,18 +968,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Help_3()
+    public void RootCommand_Help_3()
     {
         string[] args =
         [
             "--help",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(0);
     }
@@ -1033,18 +986,17 @@ public sealed class RootCommandTests
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the help option in uppercase, runs unsuccessfully.
     /// </summary>
-    /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Fact]
-    public async Task RootCommand_Help_Uppercase()
+    public void RootCommand_Help_Uppercase()
     {
         string[] args =
         [
             "-H",
         ];
 
-        int exitCode = await new Application
+        int exitCode = new Application
             .RootCommand()
-            .InvokeAsync(args);
+            .Invoke(args);
 
         exitCode.Should().Be(1);
     }
