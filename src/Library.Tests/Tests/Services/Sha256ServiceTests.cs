@@ -1,13 +1,11 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="Sha256Service"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class Sha256ServiceTests
 {
     #region Public Methods

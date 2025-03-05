@@ -1,14 +1,12 @@
 ﻿namespace Hashx.Application.Tests;
 
 using System.CommandLine;
-using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="RootCommand"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class RootCommandTests
 {
     #region Public Methods

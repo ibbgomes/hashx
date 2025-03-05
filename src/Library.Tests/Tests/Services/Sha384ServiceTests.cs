@@ -1,13 +1,11 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="Sha384Service"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class Sha384ServiceTests
 {
     #region Public Methods

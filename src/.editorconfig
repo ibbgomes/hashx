@@ -10,6 +10,10 @@ dotnet_diagnostic.CA2000.severity = none
 dotnet_diagnostic.CA5350.severity = none
 dotnet_diagnostic.CA5351.severity = none
 
+[*/Tests/*/*.cs]
+
+dotnet_diagnostic.CA1707.severity = none
+
 # Require file scoped namespaces
 
 csharp_style_namespace_declarations = file_scoped:warning
