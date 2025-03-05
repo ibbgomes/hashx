@@ -105,7 +105,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "md5",
             "sha1",
         ];
@@ -126,9 +126,9 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "md5",
-            "--algorithm",
+            "--algorithms",
             "sha1",
         ];
 
@@ -168,7 +168,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "md5",
         ];
 
@@ -250,7 +250,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "sha1",
         ];
 
@@ -312,7 +312,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "sha256",
         ];
 
@@ -373,7 +373,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "sha384",
         ];
 
@@ -436,7 +436,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "sha512",
         ];
 
@@ -525,7 +525,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "md5",
             "--compare",
             Hashes.MD5,
@@ -596,7 +596,7 @@ public sealed class RootCommandTests
             Data.MockFilePath,
             "--compare",
             Hashes.MD5,
-            "--algorithm",
+            "--algorithms",
             "md5",
         ];
 
@@ -663,7 +663,7 @@ public sealed class RootCommandTests
         string[] args =
         [
             Data.MockFilePath,
-            "--algorithm",
+            "--algorithms",
             "md5",
             "--compare",
             "unexpected-hash",

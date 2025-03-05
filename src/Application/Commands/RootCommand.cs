@@ -11,9 +11,9 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     #region Fields
 
-    private readonly Option<HashingAlgorithm[]> algorithmOption = new(["-a", "--algorithm"])
+    private readonly Option<HashingAlgorithm[]> algorithmsOption = new(["-a", "--algorithms"])
     {
-        Description = "Specify a hashing algorithm (MD5, SHA1, SHA256, SHA384 or SHA512)",
+        Description = "Specify the hashing algorithms (MD5, SHA1, SHA256, SHA384 or SHA512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
@@ -56,7 +56,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     {
         this.AddArgument(this.inputArgument);
 
-        this.AddOption(this.algorithmOption);
+        this.AddOption(this.algorithmsOption);
 
         this.AddOption(this.compareOption);
 
@@ -109,7 +109,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 RootArguments args = new()
                 {
                     Input = context.ParseResult.GetValueForArgument(this.inputArgument),
-                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmOption)!,
+                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmsOption)!,
                     Checksum = context.ParseResult.GetValueForOption(this.compareOption),
                     Json = context.ParseResult.GetValueForOption(this.jsonOption),
                     Xml = context.ParseResult.GetValueForOption(this.xmlOption),
