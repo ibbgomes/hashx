@@ -12,7 +12,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<AnalysisLevel>latest-all</AnalysisLevel>
+		<AnalysisMode>recommended</AnalysisMode>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
