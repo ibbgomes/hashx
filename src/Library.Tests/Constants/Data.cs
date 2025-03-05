@@ -10,12 +10,12 @@ internal static class Data
     /// <summary>
     /// The JSON result file path.
     /// </summary>
-    internal const string JsonResultFilePath = @"Data/result.json";
+    internal const string JsonResultFilePath = "Data/result.json";
 
     /// <summary>
     /// The mock file path.
     /// </summary>
-    internal const string MockFilePath = @"Data/mock.json";
+    internal const string MockFilePath = "Data/mock.json";
 
     #endregion
 }
