@@ -54,10 +54,31 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_1()
+    {
+        string[] args =
+        [
+            Data.MockFilePath,
+            "-a",
+            "md5",
+            "sha1",
+        ];
+
+        int exitCode = new Application
+            .RootCommand()
+            .Invoke(args);
+
+        exitCode.Should().Be(0);
+    }
+
+    /// <summary>
+    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// </summary>
+    [Fact]
+    public void RootCommand_Algorithms_Many_2()
     {
         string[] args =
         [
@@ -79,7 +100,28 @@ public sealed class RootCommandTests
     /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
     /// </summary>
     [Fact]
-    public void RootCommand_Algorithms_Many_2()
+    public void RootCommand_Algorithms_Many_3()
+    {
+        string[] args =
+        [
+            Data.MockFilePath,
+            "--algorithm",
+            "md5",
+            "sha1",
+        ];
+
+        int exitCode = new Application
+            .RootCommand()
+            .Invoke(args);
+
+        exitCode.Should().Be(0);
+    }
+
+    /// <summary>
+    /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// </summary>
+    [Fact]
+    public void RootCommand_Algorithms_Many_4()
     {
         string[] args =
         [
@@ -159,7 +201,7 @@ public sealed class RootCommandTests
 
     /// <summary>
     /// Tests that the <see cref="RootCommand"/>, with the algorithms option before the file path
-    /// argument, runs successfully.
+    /// argument, runs unsuccessfully.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Reversed()
@@ -175,7 +217,7 @@ public sealed class RootCommandTests
             .RootCommand()
             .Invoke(args);
 
-        exitCode.Should().Be(0);
+        exitCode.Should().Be(1);
     }
 
     /// <summary>

@@ -16,6 +16,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         Description = "Specify a hashing algorithm (MD5, SHA1, SHA256, SHA384 or SHA512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
+        AllowMultipleArgumentsPerToken = true,
     };
 
     private readonly Option<string> compareOption = new(["-c", "--compare"])
