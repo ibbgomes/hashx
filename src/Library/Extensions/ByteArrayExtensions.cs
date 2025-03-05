@@ -1,7 +1,5 @@
 ﻿namespace Hashx.Library;
 
-using System;
-
 /// <summary>
 /// Provides extension methods for <see cref="byte"/> arrays.
 /// </summary>

@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Xunit;

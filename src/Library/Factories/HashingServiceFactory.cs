@@ -1,7 +1,5 @@
 ﻿namespace Hashx.Library;
 
-using System;
-
 /// <summary>
 /// Defines an <see cref="IHashingService"/> factory.
 /// </summary>

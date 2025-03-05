@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Application;
 
-using System.IO;
 using Hashx.Library;
 
 /// <summary>

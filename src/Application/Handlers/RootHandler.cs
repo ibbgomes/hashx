@@ -1,14 +1,9 @@
 ﻿namespace Hashx.Application;
 
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.CommandLine;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Hashx.Library;
 
 /// <summary>

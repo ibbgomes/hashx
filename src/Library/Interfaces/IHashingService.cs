@@ -1,7 +1,5 @@
 ﻿namespace Hashx.Library;
 
-using System.IO;
-
 /// <summary>
 /// Defines the interface of a hashing service.
 /// </summary>

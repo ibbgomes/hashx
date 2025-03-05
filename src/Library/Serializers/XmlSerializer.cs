@@ -1,7 +1,5 @@
 ﻿namespace Hashx.Library;
 
-using System;
-using System.IO;
 using System.Xml;
 
 /// <summary>

@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Application;
 
 using System.CommandLine;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Defines the starting point of the program.

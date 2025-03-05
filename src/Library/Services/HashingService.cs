@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library;
 
-using System.IO;
 using System.Security.Cryptography;
 
 /// <summary>
