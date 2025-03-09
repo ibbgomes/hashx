@@ -12,7 +12,7 @@ internal sealed class RootArguments
     /// <summary>
     /// Gets the hashing algorithms.
     /// </summary>
-    internal HashingAlgorithm[] Algorithms { get; init; } = default!;
+    internal required  HashingAlgorithm[] Algorithms { get; init; }
 
     /// <summary>
     /// Gets the checksum that should be compared against the results.
@@ -22,7 +22,7 @@ internal sealed class RootArguments
     /// <summary>
     /// Gets the input file.
     /// </summary>
-    internal FileInfo Input { get; init; } = default!;
+    internal required FileInfo Input { get; init; }
 
     /// <summary>
     /// Gets a value indicating whether the results should be printed in JSON.
