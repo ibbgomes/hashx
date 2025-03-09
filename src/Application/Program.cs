@@ -9,10 +9,7 @@ internal static class Program
 {
     #region Private Methods
 
-    private static int Main(string[] args)
-    {
-        return new RootCommand().Invoke(args);
-    }
+    private static int Main(string[] args) => new RootCommand().Invoke(args);
 
     #endregion
 }

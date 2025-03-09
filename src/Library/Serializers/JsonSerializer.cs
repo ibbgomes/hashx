@@ -13,6 +13,10 @@ public static class JsonSerializer
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
+        Converters =
+        {
+            new JsonStringEnumConverter(),
+        }
     };
 
     #endregion
@@ -24,12 +28,7 @@ public static class JsonSerializer
     /// </summary>
     /// <param name="obj">The object.</param>
     /// <returns>The serialized object.</returns>
-    public static string Serialize(object obj)
-    {
-        Options.Converters.Add(new JsonStringEnumConverter());
-
-        return System.Text.Json.JsonSerializer.Serialize(obj, Options);
-    }
+    public static string Serialize(object obj) => System.Text.Json.JsonSerializer.Serialize(obj, Options);
 
     #endregion
 }

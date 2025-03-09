@@ -12,18 +12,15 @@ public static class HashingServiceFactory
     /// </summary>
     /// <param name="algorithm">The hashing algorithm.</param>
     /// <returns>The hashing service instance.</returns>
-    public static IHashingService GetInstance(HashingAlgorithm algorithm)
+    public static IHashingService GetInstance(HashingAlgorithm algorithm) => algorithm switch
     {
-        return algorithm switch
-        {
-            HashingAlgorithm.MD5 => new Md5Service(),
-            HashingAlgorithm.SHA1 => new Sha1Service(),
-            HashingAlgorithm.SHA256 => new Sha256Service(),
-            HashingAlgorithm.SHA384 => new Sha384Service(),
-            HashingAlgorithm.SHA512 => new Sha512Service(),
-            _ => throw new InvalidOperationException("The specified algorithm is invalid."),
-        };
-    }
+        HashingAlgorithm.MD5 => new Md5Service(),
+        HashingAlgorithm.SHA1 => new Sha1Service(),
+        HashingAlgorithm.SHA256 => new Sha256Service(),
+        HashingAlgorithm.SHA384 => new Sha384Service(),
+        HashingAlgorithm.SHA512 => new Sha512Service(),
+        _ => throw new InvalidOperationException("The specified algorithm is invalid."),
+    };
 
     #endregion
 }

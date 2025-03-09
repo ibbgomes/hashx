@@ -15,10 +15,7 @@ internal static class IConsoleExtensions
     /// </summary>
     /// <param name="console">The console.</param>
     /// <param name="message">The message.</param>
-    internal static void Write(this IConsole console, string message)
-    {
-        console.Out.WriteLine(message);
-    }
+    internal static void Write(this IConsole console, string message) => console.Out.WriteLine(message);
 
     /// <summary>
     /// Writes an error message.
