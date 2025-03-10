@@ -27,67 +27,14 @@ public sealed class HashingServiceFactoryTests
     /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
     /// expected <see cref="IHashingService"/>.
     /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_1()
+    [Theory]
+    [InlineData(HashingAlgorithm.MD5)]
+    [InlineData(HashingAlgorithm.SHA1)]
+    [InlineData(HashingAlgorithm.SHA256)]
+    [InlineData(HashingAlgorithm.SHA384)]
+    [InlineData(HashingAlgorithm.SHA512)]
+    public void HashingServiceFactory_GetInstance_Expected(HashingAlgorithm algorithm)
     {
-        const HashingAlgorithm algorithm = HashingAlgorithm.MD5;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_2()
-    {
-        const HashingAlgorithm algorithm = HashingAlgorithm.SHA1;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_3()
-    {
-        const HashingAlgorithm algorithm = HashingAlgorithm.SHA256;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_4()
-    {
-        const HashingAlgorithm algorithm = HashingAlgorithm.SHA384;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_5()
-    {
-        const HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
-
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
         service.Algorithm.Should().Be(algorithm);

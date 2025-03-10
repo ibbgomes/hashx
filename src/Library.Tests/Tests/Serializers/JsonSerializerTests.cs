@@ -11,10 +11,10 @@ public sealed class JsonSerializerTests
     #region Public Methods
 
     /// <summary>
-    /// Tests the <see cref="JsonSerializer.Serialize(object)"/> method with valid arguments.
+    /// Tests the <see cref="JsonSerializer.Serialize(object)"/> returns the expected <see cref="string"/>.
     /// </summary>
     [Fact]
-    public void JsonSerializer_Serialize_Valid()
+    public void JsonSerializer_Serialize_Expected()
     {
         FileInfo fileInfo = new(Data.MockFilePath);
 

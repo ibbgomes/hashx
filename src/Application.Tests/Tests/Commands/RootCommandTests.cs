@@ -14,7 +14,8 @@ public sealed class RootCommandTests
     #region Algorithms Option
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and no value, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
+    /// provided without a value.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Empty()
@@ -33,8 +34,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and an invalid value,
-    /// runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
+    /// provided with an invalid value.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Invalid()
@@ -54,7 +55,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
+    /// provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_1()
@@ -75,7 +77,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
+    /// provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_2()
@@ -97,7 +100,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
+    /// provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_3()
@@ -118,7 +122,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and many values, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
+    /// provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_4()
@@ -140,68 +145,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Md5_1()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Md5_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "md5",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="RootCommand"/>, with the algorithms option and the MD5 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Md5_3()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "MD5",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option before the file path
-    /// argument, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
+    /// provided before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Reversed()
@@ -221,16 +166,27 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that <see cref="RootCommand"/>, with the algorithms option and the SHA1 value, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
+    /// provided with a single valid value.
     /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha1_1()
+    [Theory]
+    [InlineData("-a", "md5")]
+    [InlineData("-a", "sha1")]
+    [InlineData("-a", "sha256")]
+    [InlineData("-a", "sha384")]
+    [InlineData("-a", "sha512")]
+    [InlineData("--algorithms", "md5")]
+    [InlineData("--algorithms", "sha1")]
+    [InlineData("--algorithms", "sha256")]
+    [InlineData("--algorithms", "sha384")]
+    [InlineData("--algorithms", "sha512")]
+    public void RootCommand_Algorithms_Single(string option, string value)
     {
         string[] args =
         [
             Data.MockFilePath,
-            "-a",
-            "sha1",
+            option,
+            value,
         ];
 
         int exitCode = new Application
@@ -241,235 +197,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA1 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha1_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "sha1",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA1 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha1_3()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "SHA1",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha256_1()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "sha256",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha256_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "sha256",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA256 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha256_3()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "SHA256",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha384_1()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "sha384",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha384_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "sha384",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA384 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha384_3()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "SHA384",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha512_1()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "sha512",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha512_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "sha512",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option and the SHA512 value,
-    /// runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Algorithms_Sha512_3()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "SHA512",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the algorithms option in uppercase, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
+    /// provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Uppercase()
@@ -493,8 +222,8 @@ public sealed class RootCommandTests
     #region Compare Option
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option and an expected value,
-    /// runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided with an expected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Expected_1()
@@ -516,8 +245,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option and an expected value,
-    /// runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided with an expected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Expected_2()
@@ -539,7 +268,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with both the compare and JSON options, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when both the compare and JSON
+    /// options are provided.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Json()
@@ -562,8 +292,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option before the algorithms
-    /// option, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_1()
@@ -585,8 +315,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option before the algorithms
-    /// option, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_2()
@@ -608,8 +338,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option before the file path
-    /// argument, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_3()
@@ -631,8 +361,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option and an unexpected value,
-    /// runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided with an unexpected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Unexpected_1()
@@ -654,8 +384,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option and an unexpected value,
-    /// runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
+    /// provided with an unexpected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Unexpected_2()
@@ -677,7 +407,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the compare option in uppercase, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
+    /// provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Uppercase()
@@ -703,7 +434,8 @@ public sealed class RootCommandTests
     #region JSON Option
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the JSON option and many algorithm, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
+    /// with many algorithms.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Many()
@@ -726,7 +458,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests the <see cref="RootCommand"/> with the JSON option before the algorithms option, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
+    /// before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Reversed_1()
@@ -747,8 +480,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests the <see cref="RootCommand"/>, with the JSON option before the file path argument,
-    /// runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
+    /// before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Reversed_2()
@@ -769,7 +502,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the JSON option and a single algorithm, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
+    /// with a single algorithm.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Single()
@@ -790,7 +524,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the JSON option in uppercase, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the JSON option is
+    /// provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Uppercase()
@@ -815,7 +550,7 @@ public sealed class RootCommandTests
     #region Version Option
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the version option, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the version option is provided.
     /// </summary>
     [Fact]
     public void RootCommand_Version()
@@ -833,8 +568,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with both the version option and other options,
-    /// run unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when both the version option
+    /// and other options are provided.
     /// </summary>
     [Fact]
     public void RootCommand_Version_Exclusive()
@@ -855,7 +590,8 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the version option in uppercase, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the version option is
+    /// provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Version_Uppercase()
@@ -877,61 +613,24 @@ public sealed class RootCommandTests
     #region Help Option
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the help option is provided.
     /// </summary>
-    [Fact]
-    public void RootCommand_Help_1()
+    [Theory]
+    [InlineData("-?")]
+    [InlineData("-h")]
+    [InlineData("--help")]
+    public void RootCommand_Help(string option)
     {
-        string[] args =
-        [
-            "-h",
-        ];
-
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Invoke(option);
 
         exitCode.Should().Be(0);
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Help_2()
-    {
-        string[] args =
-        [
-            "-?",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the help option, runs successfully.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Help_3()
-    {
-        string[] args =
-        [
-            "--help",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/>, with the help option in uppercase, runs unsuccessfully.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the help option is
+    /// provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Help_Uppercase()
