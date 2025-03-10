@@ -17,7 +17,7 @@ Arguments:
   <input>  Specify the input file path
 
 Options:
-  -a, --algorithms <algorithms> (REQUIRED)  Specify the hashing algorithms (MD5, SHA1, SHA256, SHA384 or SHA512)
+  -a, --algorithms <algorithms> (REQUIRED)  Specify the hashing algorithms (md5, sha1, sha256, sha384 or sha512)
   -c, --compare <compare>                   Compare the results against a checksum
   --json                                    Print the results in JSON format
   --version                                 Show version information
