@@ -13,7 +13,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     private readonly Option<HashingAlgorithm[]> algorithmsOption = new(["-a", "--algorithms"])
     {
-        Description = "Specify the hashing algorithms (MD5, SHA1, SHA256, SHA384 or SHA512)",
+        Description = "Specify the hashing algorithms (md5, sha1, sha256, sha384 or sha512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
