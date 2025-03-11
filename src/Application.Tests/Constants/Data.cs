@@ -10,7 +10,7 @@ internal static class Data
     /// <summary>
     /// The mock file path.
     /// </summary>
-    internal const string MockFilePath = @"Data/mock.json";
+    internal const string MockFilePath = "Data/mock.json";
 
     #endregion
 }

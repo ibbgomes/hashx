@@ -1,14 +1,9 @@
 ﻿namespace Hashx.Application;
 
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.CommandLine;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Hashx.Library;
 
 /// <summary>
@@ -34,10 +29,6 @@ internal static class RootHandler
             if (args.Json)
             {
                 PrintResultsAsJson(args.Input, results, console);
-            }
-            else if (args.Xml)
-            {
-                PrintResultsAsXml(args.Input, results, console);
             }
             else
             {
@@ -101,13 +92,13 @@ internal static class RootHandler
         if (results.Count == 1)
         {
             console.Write(results.First().Value);
+
+            return;
         }
-        else
+
+        foreach (HashingResult result in results)
         {
-            foreach (HashingResult result in results)
-            {
-                console.Write($"{result.Algorithm}\t{result.Value}");
-            }
+            console.Write($"{result.Algorithm}\t{result.Value}");
         }
     }
 
@@ -118,15 +109,6 @@ internal static class RootHandler
         string json = JsonSerializer.Serialize(exportableResult);
 
         console.Write(json);
-    }
-
-    private static void PrintResultsAsXml(FileInfo input, IReadOnlyCollection<HashingResult> results, IConsole console)
-    {
-        ExportableResult exportableResult = new(input, results);
-
-        string xml = XmlSerializer.Serialize(exportableResult);
-
-        console.Write(xml);
     }
 
     #endregion

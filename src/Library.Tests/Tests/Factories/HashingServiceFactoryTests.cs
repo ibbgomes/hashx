@@ -1,14 +1,11 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System;
-using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="HashingServiceFactory"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class HashingServiceFactoryTests
 {
     #region Public Methods
@@ -19,7 +16,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Exception()
     {
-        HashingAlgorithm algorithm = (HashingAlgorithm)5;
+        const HashingAlgorithm algorithm = (HashingAlgorithm)5;
 
         Action action = () => HashingServiceFactory.GetInstance(algorithm);
 
@@ -30,67 +27,14 @@ public sealed class HashingServiceFactoryTests
     /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
     /// expected <see cref="IHashingService"/>.
     /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_1()
+    [Theory]
+    [InlineData(HashingAlgorithm.MD5)]
+    [InlineData(HashingAlgorithm.SHA1)]
+    [InlineData(HashingAlgorithm.SHA256)]
+    [InlineData(HashingAlgorithm.SHA384)]
+    [InlineData(HashingAlgorithm.SHA512)]
+    public void HashingServiceFactory_GetInstance_Expected(HashingAlgorithm algorithm)
     {
-        HashingAlgorithm algorithm = HashingAlgorithm.MD5;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_2()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA1;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_3()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA256;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_4()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA384;
-
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
-
-        service.Algorithm.Should().Be(algorithm);
-    }
-
-    /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
-    /// </summary>
-    [Fact]
-    public void HashingServiceFactory_GetInstance_Expected_5()
-    {
-        HashingAlgorithm algorithm = HashingAlgorithm.SHA512;
-
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
         service.Algorithm.Should().Be(algorithm);

@@ -1,25 +1,20 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using FluentAssertions;
-using Hashx.Library;
 using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="JsonSerializer"/>.
 /// </summary>
-[SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "Unit tests.")]
 public sealed class JsonSerializerTests
 {
     #region Public Methods
 
     /// <summary>
-    /// Tests the <see cref="JsonSerializer.Serialize(object)"/> method with valid arguments.
+    /// Tests the <see cref="JsonSerializer.Serialize(object)"/> returns the expected <see cref="string"/>.
     /// </summary>
     [Fact]
-    public void JsonSerializer_Serialize_Valid()
+    public void JsonSerializer_Serialize_Expected()
     {
         FileInfo fileInfo = new(Data.MockFilePath);
 

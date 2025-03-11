@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Application;
 
 using System.CommandLine;
-using System.IO;
 using Hashx.Library;
 
 /// <summary>
@@ -12,14 +11,15 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     #region Fields
 
-    private readonly Option<HashingAlgorithm[]> algorithmOption = new(new[] { "-a", "--algorithm" })
+    private readonly Option<HashingAlgorithm[]> algorithmsOption = new(["-a", "--algorithms"])
     {
-        Description = "Specify a hashing algorithm (MD5, SHA1, SHA256, SHA384 or SHA512)",
+        Description = "Specify the hashing algorithms (MD5, SHA1, SHA256, SHA384 or SHA512)",
         IsRequired = true,
         Arity = ArgumentArity.OneOrMore,
+        AllowMultipleArgumentsPerToken = true,
     };
 
-    private readonly Option<string> compareOption = new(new[] { "-c", "--compare" })
+    private readonly Option<string> compareOption = new(["-c", "--compare"])
     {
         Description = "Compare the results against a checksum",
         IsRequired = false,
@@ -38,12 +38,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         IsRequired = false,
     };
 
-    private readonly Option<bool> xmlOption = new("--xml")
-    {
-        Description = "Print the results in XML format",
-        IsRequired = false,
-    };
-
     #endregion
 
     #region Constructors
@@ -56,50 +50,22 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     {
         this.AddArgument(this.inputArgument);
 
-        this.AddOption(this.algorithmOption);
+        this.AddOption(this.algorithmsOption);
 
         this.AddOption(this.compareOption);
 
         this.AddOption(this.jsonOption);
 
-        this.AddOption(this.xmlOption);
-
         this.AddValidator(
             (result) =>
             {
-                bool jsonOption = result.GetValueForOption(this.jsonOption);
+                string? compare = result.GetValueForOption(this.compareOption);
 
-                bool xmlOption = result.GetValueForOption(this.xmlOption);
+                bool json = result.GetValueForOption(this.jsonOption);
 
-                if (jsonOption && xmlOption)
-                {
-                    result.ErrorMessage = "Options '--json' and '--xml' cannot be used together.";
-                }
-            });
-
-        this.AddValidator(
-            (result) =>
-            {
-                string? compareOption = result.GetValueForOption(this.compareOption);
-
-                bool jsonOption = result.GetValueForOption(this.jsonOption);
-
-                if (compareOption is not null && jsonOption)
+                if (compare is not null && json)
                 {
                     result.ErrorMessage = "Options '--compare' and '--json' cannot be used together.";
-                }
-            });
-
-        this.AddValidator(
-            (result) =>
-            {
-                string? compareOption = result.GetValueForOption(this.compareOption);
-
-                bool xmlOption = result.GetValueForOption(this.xmlOption);
-
-                if (compareOption is not null && xmlOption)
-                {
-                    result.ErrorMessage = "Options '--compare' and '--xml' cannot be used together.";
                 }
             });
 
@@ -109,10 +75,9 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 RootArguments args = new()
                 {
                     Input = context.ParseResult.GetValueForArgument(this.inputArgument),
-                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmOption)!,
+                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmsOption)!,
                     Checksum = context.ParseResult.GetValueForOption(this.compareOption),
                     Json = context.ParseResult.GetValueForOption(this.jsonOption),
-                    Xml = context.ParseResult.GetValueForOption(this.xmlOption),
                 };
 
                 RootHandler.Handle(args, context.Console);

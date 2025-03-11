@@ -1,12 +1,18 @@
-[*.cs]
-
 # Disabled rules
 
+[*.cs]
+
+dotnet_diagnostic.IDE0130.severity = none
+
+[/Library/Services/*.cs]
+
+dotnet_diagnostic.CA2000.severity = none
 dotnet_diagnostic.CA5350.severity = none
 dotnet_diagnostic.CA5351.severity = none
-dotnet_diagnostic.SA1010.severity = none
-dotnet_diagnostic.SA1124.severity = none
-dotnet_diagnostic.SA1633.severity = none
+
+[*/Tests/*/*.cs]
+
+dotnet_diagnostic.CA1707.severity = none
 
 # Require file scoped namespaces
 

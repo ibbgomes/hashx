@@ -6,13 +6,17 @@ using System.Text.Json.Serialization;
 /// <summary>
 /// Defines a JSON serializer.
 /// </summary>
-public sealed class JsonSerializer
+public static class JsonSerializer
 {
     #region Fields
 
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
+        Converters =
+        {
+            new JsonStringEnumConverter(),
+        }
     };
 
     #endregion
@@ -24,12 +28,7 @@ public sealed class JsonSerializer
     /// </summary>
     /// <param name="obj">The object.</param>
     /// <returns>The serialized object.</returns>
-    public static string Serialize(object obj)
-    {
-        Options.Converters.Add(new JsonStringEnumConverter());
-
-        return System.Text.Json.JsonSerializer.Serialize(obj, Options);
-    }
+    public static string Serialize(object obj) => System.Text.Json.JsonSerializer.Serialize(obj, Options);
 
     #endregion
 }
