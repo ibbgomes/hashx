@@ -8,8 +8,6 @@ using Xunit;
 /// </summary>
 public sealed class Md5ServiceTests
 {
-    #region Public Methods
-
     /// <summary>
     /// Tests that <see cref="HashingService.GetHash(FileInfo)"/> returns the expected <see cref="HashingResult"/>.
     /// </summary>
@@ -25,6 +23,4 @@ public sealed class Md5ServiceTests
         result.Algorithm.Should().Be(HashingAlgorithm.MD5);
         result.Value.Should().Be(Hashes.MD5);
     }
-
-    #endregion
 }

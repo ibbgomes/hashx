@@ -8,8 +8,6 @@ using Xunit;
 /// </summary>
 public sealed class HashingServiceFactoryTests
 {
-    #region Public Methods
-
     /// <summary>
     /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns an <see cref="InvalidOperationException"/>.
     /// </summary>
@@ -39,6 +37,4 @@ public sealed class HashingServiceFactoryTests
 
         service.Algorithm.Should().Be(algorithm);
     }
-
-    #endregion
 }

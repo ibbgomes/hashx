@@ -9,10 +9,6 @@ using Xunit;
 /// </summary>
 public sealed class RootCommandTests
 {
-    #region Public Methods
-
-    #region Algorithms Option
-
     /// <summary>
     /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
     /// provided without a value.
@@ -225,10 +221,6 @@ public sealed class RootCommandTests
 
         exitCode.Should().Be(1);
     }
-
-    #endregion
-
-    #region Compare Option
 
     /// <summary>
     /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
@@ -447,9 +439,42 @@ public sealed class RootCommandTests
         exitCode.Should().Be(1);
     }
 
-    #endregion
+    /// <summary>
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the help option is provided.
+    /// </summary>
+    [Theory]
+    [InlineData("-?")]
+    [InlineData("-h")]
+    [InlineData("--help")]
+    public void RootCommand_Help(string option)
+    {
+        int exitCode = new Application
+            .RootCommand()
+            .Parse(option)
+            .Invoke();
 
-    #region JSON Option
+        exitCode.Should().Be(0);
+    }
+
+    /// <summary>
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the help option is
+    /// provided in uppercase.
+    /// </summary>
+    [Fact]
+    public void RootCommand_Help_Uppercase()
+    {
+        string[] args =
+        [
+            "-H",
+        ];
+
+        int exitCode = new Application
+            .RootCommand()
+            .Parse(args)
+            .Invoke();
+
+        exitCode.Should().Be(1);
+    }
 
     /// <summary>
     /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
@@ -568,10 +593,6 @@ public sealed class RootCommandTests
         exitCode.Should().Be(1);
     }
 
-    #endregion
-
-    #region Version Option
-
     /// <summary>
     /// Tests that the <see cref="RootCommand"/> runs successfully when the version option is provided.
     /// </summary>
@@ -610,49 +631,4 @@ public sealed class RootCommandTests
 
         exitCode.Should().Be(1);
     }
-
-    #endregion
-
-    #region Help Option
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the help option is provided.
-    /// </summary>
-    [Theory]
-    [InlineData("-?")]
-    [InlineData("-h")]
-    [InlineData("--help")]
-    public void RootCommand_Help(string option)
-    {
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(option)
-            .Invoke();
-
-        exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the help option is
-    /// provided in uppercase.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Help_Uppercase()
-    {
-        string[] args =
-        [
-            "-H",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke();
-
-        exitCode.Should().Be(1);
-    }
-
-    #endregion
-
-    #endregion
 }

@@ -8,8 +8,6 @@ using System.Text.Json.Serialization;
 /// </summary>
 public static class JsonSerializer
 {
-    #region Fields
-
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
@@ -19,16 +17,10 @@ public static class JsonSerializer
         }
     };
 
-    #endregion
-
-    #region Public Methods
-
     /// <summary>
     /// Serializes the specified object.
     /// </summary>
     /// <param name="obj">The object.</param>
     /// <returns>The serialized object.</returns>
     public static string Serialize(object obj) => System.Text.Json.JsonSerializer.Serialize(obj, Options);
-
-    #endregion
 }

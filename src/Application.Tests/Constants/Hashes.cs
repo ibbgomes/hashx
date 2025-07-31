@@ -5,8 +5,6 @@
 /// </summary>
 internal static class Hashes
 {
-    #region Constants
-
     /// <summary>
     /// The MD5 hash.
     /// </summary>
@@ -31,6 +29,4 @@ internal static class Hashes
     /// The SHA512 hash.
     /// </summary>
     internal const string SHA512 = "EEF9995ABC271935A9FE5BE4C8C758FE03BECB40E77A42D0FEB83F5C191551FF896AE4139F496D40E904F29896EB61CFA7B275775C2B4763CE40FF5D9EE25870";
-
-    #endregion
 }

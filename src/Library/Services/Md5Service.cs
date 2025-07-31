@@ -8,8 +8,6 @@ using System.Security.Cryptography;
 /// <seealso cref="HashingService"/>
 internal sealed class Md5Service : HashingService
 {
-    #region Constructors
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Md5Service"/> class.
     /// </summary>
@@ -17,6 +15,4 @@ internal sealed class Md5Service : HashingService
         : base(HashingAlgorithm.MD5, MD5.Create())
     {
     }
-
-    #endregion
 }

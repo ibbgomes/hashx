@@ -8,8 +8,6 @@ using System.Security.Cryptography;
 /// <seealso cref="HashingService"/>
 internal sealed class Sha512Service : HashingService
 {
-    #region Constructors
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Sha512Service"/> class.
     /// </summary>
@@ -17,6 +15,4 @@ internal sealed class Sha512Service : HashingService
         : base(HashingAlgorithm.SHA512, SHA512.Create())
     {
     }
-
-    #endregion
 }

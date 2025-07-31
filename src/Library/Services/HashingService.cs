@@ -8,23 +8,13 @@ using System.Security.Cryptography;
 /// <seealso cref="IHashingService"/>
 internal abstract class HashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
 {
-    #region Public Properties
-
     /// <inheritdoc/>
     public HashingAlgorithm Algorithm { get; } = algorithm;
-
-    #endregion
-
-    #region Protected Properties
 
     /// <summary>
     /// Gets the hashing service implementation.
     /// </summary>
     protected HashAlgorithm Implementation { get; } = implementation;
-
-    #endregion
-
-    #region Public Methods
 
     /// <inheritdoc/>
     public HashingResult GetHash(FileInfo fileInfo)
@@ -38,6 +28,4 @@ internal abstract class HashingService(HashingAlgorithm algorithm, HashAlgorithm
 
         return new(this.Algorithm, hash);
     }
-
-    #endregion
 }

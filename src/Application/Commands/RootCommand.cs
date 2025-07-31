@@ -9,8 +9,6 @@ using Hashx.Library;
 /// <seealso cref="System.CommandLine.RootCommand"/>
 internal sealed class RootCommand : System.CommandLine.RootCommand
 {
-    #region Fields
-
     private readonly Option<HashingAlgorithm[]> algorithmsOption = new("--algorithms", "-a")
     {
         Description = "Specify the hashing algorithms (md5, sha1, sha256, sha384 or sha512)",
@@ -36,10 +34,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         Description = "Print the results in JSON format",
         Required = false,
     };
-
-    #endregion
-
-    #region Constructors
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RootCommand"/> class.
@@ -82,6 +76,4 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 RootHandler.Handle(args);
             });
     }
-
-    #endregion
 }

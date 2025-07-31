@@ -7,12 +7,10 @@ using Hashx.Library;
 /// </summary>
 internal sealed class RootArguments
 {
-    #region Public Properties
-
     /// <summary>
     /// Gets the hashing algorithms.
     /// </summary>
-    internal required  HashingAlgorithm[] Algorithms { get; init; }
+    internal required HashingAlgorithm[] Algorithms { get; init; }
 
     /// <summary>
     /// Gets the checksum that should be compared against the results.
@@ -28,6 +26,4 @@ internal sealed class RootArguments
     /// Gets a value indicating whether the results should be printed in JSON.
     /// </summary>
     internal bool Json { get; init; }
-
-    #endregion
 }

@@ -5,8 +5,6 @@
 /// </summary>
 public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> results)
 {
-    #region Public Properties
-
     /// <summary>
     /// Gets the filename.
     /// </summary>
@@ -16,6 +14,4 @@ public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> resu
     /// Gets the hashes.
     /// </summary>
     public IEnumerable<HashingResult> Hashes { get; } = results;
-
-    #endregion
 }

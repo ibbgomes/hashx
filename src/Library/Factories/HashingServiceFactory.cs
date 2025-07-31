@@ -5,8 +5,6 @@
 /// </summary>
 public static class HashingServiceFactory
 {
-    #region Public Methods
-
     /// <summary>
     /// Gets an instance of an <see cref="IHashingService"/> through the specified <see cref="HashingAlgorithm"/>.
     /// </summary>
@@ -21,6 +19,4 @@ public static class HashingServiceFactory
         HashingAlgorithm.SHA512 => new Sha512Service(),
         _ => throw new InvalidOperationException("The specified algorithm is invalid."),
     };
-
-    #endregion
 }

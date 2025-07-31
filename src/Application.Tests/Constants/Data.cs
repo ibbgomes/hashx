@@ -5,12 +5,8 @@
 /// </summary>
 internal static class Data
 {
-    #region Constants
-
     /// <summary>
     /// The mock file path.
     /// </summary>
     internal const string MockFilePath = "Data/mock.json";
-
-    #endregion
 }

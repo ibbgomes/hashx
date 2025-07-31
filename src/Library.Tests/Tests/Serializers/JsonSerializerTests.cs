@@ -8,8 +8,6 @@ using Xunit;
 /// </summary>
 public sealed class JsonSerializerTests
 {
-    #region Public Methods
-
     /// <summary>
     /// Tests the <see cref="JsonSerializer.Serialize(object)"/> returns the expected <see cref="string"/>.
     /// </summary>
@@ -35,6 +33,4 @@ public sealed class JsonSerializerTests
 
         actual.Should().Be(expected);
     }
-
-    #endregion
 }

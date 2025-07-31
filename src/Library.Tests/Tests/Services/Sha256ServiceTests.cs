@@ -8,8 +8,6 @@ using Xunit;
 /// </summary>
 public sealed class Sha256ServiceTests
 {
-    #region Public Methods
-
     /// <summary>
     /// Tests that <see cref="HashingService.GetHash(FileInfo)"/> returns the expected <see cref="HashingResult"/>.
     /// </summary>
@@ -25,6 +23,4 @@ public sealed class Sha256ServiceTests
         result.Algorithm.Should().Be(HashingAlgorithm.SHA256);
         result.Value.Should().Be(Hashes.SHA256);
     }
-
-    #endregion
 }

@@ -5,8 +5,6 @@
 /// </summary>
 internal static class ConsoleWriter
 {
-    #region Internal Methods
-
     /// <summary>
     /// Writes a message.
     /// </summary>
@@ -38,6 +36,4 @@ internal static class ConsoleWriter
 
         Console.ResetColor();
     }
-
-    #endregion
 }

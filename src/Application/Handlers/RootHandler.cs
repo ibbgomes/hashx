@@ -10,8 +10,6 @@ using Hashx.Library;
 /// </summary>
 internal static class RootHandler
 {
-    #region Internal Methods
-
     /// <summary>
     /// Handles the <see cref="RootCommand"/>.
     /// </summary>
@@ -47,10 +45,6 @@ internal static class RootHandler
             return 1;
         }
     }
-
-    #endregion
-
-    #region Private Methods
 
     private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {
@@ -108,6 +102,4 @@ internal static class RootHandler
 
         ConsoleWriter.Write(json);
     }
-
-    #endregion
 }

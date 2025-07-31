@@ -8,8 +8,6 @@ using System.Security.Cryptography;
 /// <seealso cref="HashingService"/>
 internal sealed class Sha256Service : HashingService
 {
-    #region Constructors
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Sha256Service"/> class.
     /// </summary>
@@ -17,6 +15,4 @@ internal sealed class Sha256Service : HashingService
         : base(HashingAlgorithm.SHA256, SHA256.Create())
     {
     }
-
-    #endregion
 }
