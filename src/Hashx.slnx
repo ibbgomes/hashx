@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Application.Tests/Application.Tests.csproj" />
+    <Project Path="Library.Tests/Library.Tests.csproj" />
+  </Folder>
+  <Project Path="Application/Application.csproj" />
+  <Project Path="Library/Library.csproj" />
+</Solution>
