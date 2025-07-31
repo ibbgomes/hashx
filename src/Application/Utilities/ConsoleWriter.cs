@@ -1,32 +1,27 @@
 ﻿namespace Hashx.Application;
 
-using System.CommandLine;
-using System.CommandLine.IO;
-
 /// <summary>
-/// Provides extension methods for <see cref="IConsole"/>.
+/// Provides methods for writing messages to the console.
 /// </summary>
-internal static class IConsoleExtensions
+internal static class ConsoleWriter
 {
     #region Internal Methods
 
     /// <summary>
     /// Writes a message.
     /// </summary>
-    /// <param name="console">The console.</param>
     /// <param name="message">The message.</param>
-    internal static void Write(this IConsole console, string message) => console.Out.WriteLine(message);
+    internal static void Write(string message) => Console.WriteLine(message);
 
     /// <summary>
     /// Writes an error message.
     /// </summary>
-    /// <param name="console">The console.</param>
     /// <param name="message">The message.</param>
-    internal static void WriteError(this IConsole console, string message)
+    internal static void WriteError(string message)
     {
         Console.ForegroundColor = ConsoleColor.Red;
 
-        console.Error.WriteLine(message);
+        Console.Error.WriteLine(message);
 
         Console.ResetColor();
     }
@@ -34,13 +29,12 @@ internal static class IConsoleExtensions
     /// <summary>
     /// Writes a success message.
     /// </summary>
-    /// <param name="console">The console.</param>
     /// <param name="message">The message.</param>
-    internal static void WriteSuccess(this IConsole console, string message)
+    internal static void WriteSuccess(string message)
     {
         Console.ForegroundColor = ConsoleColor.Green;
 
-        console.Out.WriteLine(message);
+        Console.WriteLine(message);
 
         Console.ResetColor();
     }

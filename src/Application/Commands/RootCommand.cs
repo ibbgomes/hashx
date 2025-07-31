@@ -11,31 +11,30 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     #region Fields
 
-    private readonly Option<HashingAlgorithm[]> algorithmsOption = new(["-a", "--algorithms"])
+    private readonly Option<HashingAlgorithm[]> algorithmsOption = new("--algorithms", "-a")
     {
         Description = "Specify the hashing algorithms (md5, sha1, sha256, sha384 or sha512)",
-        IsRequired = true,
+        Required = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
     };
 
-    private readonly Option<string> compareOption = new(["-c", "--compare"])
+    private readonly Option<string> compareOption = new("--compare", "-c")
     {
         Description = "Compare the results against a checksum",
-        IsRequired = false,
+        Required = false,
     };
 
-    private readonly Argument<FileInfo> inputArgument = new Argument<FileInfo>()
+    private readonly Argument<FileInfo> inputArgument = new Argument<FileInfo>("input")
     {
-        Name = "input",
         Description = "Specify the input file path",
         Arity = ArgumentArity.ExactlyOne,
-    }.ExistingOnly();
+    }.AcceptExistingOnly();
 
     private readonly Option<bool> jsonOption = new("--json")
     {
         Description = "Print the results in JSON format",
-        IsRequired = false,
+        Required = false,
     };
 
     #endregion
@@ -48,39 +47,39 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     public RootCommand()
         : base("A cross-platform, command-line interface, checksum utility")
     {
-        this.AddArgument(this.inputArgument);
+        this.Arguments.Add(this.inputArgument);
 
-        this.AddOption(this.algorithmsOption);
+        this.Options.Add(this.algorithmsOption);
 
-        this.AddOption(this.compareOption);
+        this.Options.Add(this.compareOption);
 
-        this.AddOption(this.jsonOption);
+        this.Options.Add(this.jsonOption);
 
-        this.AddValidator(
+        this.Validators.Add(
             (result) =>
             {
-                string? compare = result.GetValueForOption(this.compareOption);
+                string? compare = result.GetValue(this.compareOption);
 
-                bool json = result.GetValueForOption(this.jsonOption);
+                bool json = result.GetValue(this.jsonOption);
 
                 if (compare is not null && json)
                 {
-                    result.ErrorMessage = "Options '--compare' and '--json' cannot be used together.";
+                    result.AddError("Options '--compare' and '--json' cannot be used together.");
                 }
             });
 
-        this.SetHandler(
-            (context) =>
+        this.SetAction(
+            (result) =>
             {
                 RootArguments args = new()
                 {
-                    Input = context.ParseResult.GetValueForArgument(this.inputArgument),
-                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmsOption)!,
-                    Checksum = context.ParseResult.GetValueForOption(this.compareOption),
-                    Json = context.ParseResult.GetValueForOption(this.jsonOption),
+                    Input = result.GetRequiredValue(this.inputArgument),
+                    Algorithms = result.GetRequiredValue(this.algorithmsOption),
+                    Checksum = result.GetValue(this.compareOption),
+                    Json = result.GetValue(this.jsonOption),
                 };
 
-                RootHandler.Handle(args, context.Console);
+                RootHandler.Handle(args);
             });
     }
 

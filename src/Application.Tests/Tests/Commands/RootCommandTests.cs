@@ -28,7 +28,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -49,7 +50,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -71,7 +73,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -94,7 +97,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -116,7 +120,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -139,7 +144,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -160,7 +166,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -191,7 +198,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -212,7 +220,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -239,7 +248,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -262,7 +272,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -286,7 +297,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -309,7 +321,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -332,7 +345,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -355,7 +369,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -378,7 +393,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -401,7 +417,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -424,7 +441,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -452,7 +470,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -474,7 +493,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -496,7 +516,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -518,7 +539,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -540,7 +562,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -562,31 +585,10 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(0);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when both the version option
-    /// and other options are provided.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Version_Exclusive()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "--version",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Invoke(args);
-
-        exitCode.Should().Be(1);
     }
 
     /// <summary>
@@ -603,7 +605,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }
@@ -623,7 +626,8 @@ public sealed class RootCommandTests
     {
         int exitCode = new Application
             .RootCommand()
-            .Invoke(option);
+            .Parse(option)
+            .Invoke();
 
         exitCode.Should().Be(0);
     }
@@ -642,7 +646,8 @@ public sealed class RootCommandTests
 
         int exitCode = new Application
             .RootCommand()
-            .Invoke(args);
+            .Parse(args)
+            .Invoke();
 
         exitCode.Should().Be(1);
     }

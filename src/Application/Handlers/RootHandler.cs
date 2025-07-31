@@ -2,7 +2,6 @@
 
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
-using System.CommandLine;
 using System.Diagnostics.CodeAnalysis;
 using Hashx.Library;
 
@@ -17,10 +16,9 @@ internal static class RootHandler
     /// Handles the <see cref="RootCommand"/>.
     /// </summary>
     /// <param name="args">The arguments.</param>
-    /// <param name="console">The console.</param>
     /// <returns>The exit code.</returns>
     [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ensures graceful error handling.")]
-    internal static int Handle(RootArguments args, IConsole console)
+    internal static int Handle(RootArguments args)
     {
         try
         {
@@ -28,15 +26,15 @@ internal static class RootHandler
 
             if (args.Json)
             {
-                PrintResultsAsJson(args.Input, results, console);
+                PrintResultsAsJson(args.Input, results);
             }
             else
             {
-                PrintResults(results, console);
+                PrintResults(results);
 
                 if (!string.IsNullOrWhiteSpace(args.Checksum))
                 {
-                    PrintComparison(results, args.Checksum, console);
+                    PrintComparison(results, args.Checksum);
                 }
             }
 
@@ -44,7 +42,7 @@ internal static class RootHandler
         }
         catch (Exception e)
         {
-            console.WriteError($"An error occurred: {e.Message}.");
+            ConsoleWriter.WriteError($"An error occurred: {e.Message}.");
 
             return 1;
         }
@@ -73,42 +71,42 @@ internal static class RootHandler
             .AsReadOnly();
     }
 
-    private static void PrintComparison(IReadOnlyCollection<HashingResult> results, string checksum, IConsole console)
+    private static void PrintComparison(IReadOnlyCollection<HashingResult> results, string checksum)
     {
         HashingResult? match = results.FirstOrDefault(result => result.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase));
 
         if (match is not null)
         {
-            console.WriteSuccess($"{match.Algorithm} result matches the checksum.");
+            ConsoleWriter.WriteSuccess($"{match.Algorithm} result matches the checksum.");
         }
         else
         {
-            console.WriteError("No result matches the checksum.");
+            ConsoleWriter.WriteError("No result matches the checksum.");
         }
     }
 
-    private static void PrintResults(IReadOnlyCollection<HashingResult> results, IConsole console)
+    private static void PrintResults(IReadOnlyCollection<HashingResult> results)
     {
         if (results.Count == 1)
         {
-            console.Write(results.First().Value);
+            ConsoleWriter.Write(results.First().Value);
 
             return;
         }
 
         foreach (HashingResult result in results)
         {
-            console.Write($"{result.Algorithm}\t{result.Value}");
+            ConsoleWriter.Write($"{result.Algorithm}\t{result.Value}");
         }
     }
 
-    private static void PrintResultsAsJson(FileInfo input, IReadOnlyCollection<HashingResult> results, IConsole console)
+    private static void PrintResultsAsJson(FileInfo input, IReadOnlyCollection<HashingResult> results)
     {
         ExportableResult exportableResult = new(input, results);
 
         string json = JsonSerializer.Serialize(exportableResult);
 
-        console.Write(json);
+        ConsoleWriter.Write(json);
     }
 
     #endregion
