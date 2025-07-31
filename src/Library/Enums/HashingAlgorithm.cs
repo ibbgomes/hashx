@@ -29,4 +29,14 @@ public enum HashingAlgorithm
     /// The SHA512 algorithm.
     /// </summary>
     SHA512,
+
+    /// <summary>
+    /// The CRC32 algorithm.
+    /// </summary>
+    CRC32,
+
+    /// <summary>
+    /// The CRC64 algorithm.
+    /// </summary>
+    CRC64,
 }

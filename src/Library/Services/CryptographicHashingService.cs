@@ -3,10 +3,10 @@
 using System.Security.Cryptography;
 
 /// <summary>
-/// Defines the base implementation of a hashing service.
+/// Defines the base implementation of a cryptographic hashing service.
 /// </summary>
 /// <seealso cref="IHashingService"/>
-internal abstract class HashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
+internal abstract class CryptographicHashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
 {
     /// <inheritdoc/>
     public HashingAlgorithm Algorithm { get; } = algorithm;

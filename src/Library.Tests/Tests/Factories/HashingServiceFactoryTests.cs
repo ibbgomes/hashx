@@ -14,7 +14,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_GetInstance_Exception()
     {
-        const HashingAlgorithm algorithm = (HashingAlgorithm)5;
+        const HashingAlgorithm algorithm = (HashingAlgorithm)7;
 
         Action action = () => HashingServiceFactory.GetInstance(algorithm);
 
@@ -31,6 +31,8 @@ public sealed class HashingServiceFactoryTests
     [InlineData(HashingAlgorithm.SHA256)]
     [InlineData(HashingAlgorithm.SHA384)]
     [InlineData(HashingAlgorithm.SHA512)]
+    [InlineData(HashingAlgorithm.CRC32)]
+    [InlineData(HashingAlgorithm.CRC64)]
     public void HashingServiceFactory_GetInstance_Expected(HashingAlgorithm algorithm)
     {
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);

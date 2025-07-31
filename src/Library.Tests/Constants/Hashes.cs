@@ -6,6 +6,16 @@
 internal static class Hashes
 {
     /// <summary>
+    /// The CRC32 hash.
+    /// </summary>
+    internal const string CRC32 = "6610E6DB";
+
+    /// <summary>
+    /// The CRC64 hash.
+    /// </summary>
+    internal const string CRC64 = "B179D471BF9315EE";
+
+    /// <summary>
     /// The MD5 hash.
     /// </summary>
     internal const string MD5 = "72513B3437F09B729BBC6011949DEBF9";

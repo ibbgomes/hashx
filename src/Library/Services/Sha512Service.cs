@@ -3,10 +3,10 @@
 using System.Security.Cryptography;
 
 /// <summary>
-/// Defines a <see cref="SHA512"/> implementation of a hashing service.
+/// Defines a <see cref="SHA512"/> implementation of a cryptographic hashing service.
 /// </summary>
-/// <seealso cref="HashingService"/>
-internal sealed class Sha512Service : HashingService
+/// <seealso cref="CryptographicHashingService"/>
+internal sealed class Sha512Service : CryptographicHashingService
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Sha512Service"/> class.

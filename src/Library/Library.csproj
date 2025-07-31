@@ -9,4 +9,8 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="System.IO.Hashing" Version="9.0.7" />
+	</ItemGroup>
+
 </Project>

@@ -20,6 +20,14 @@
     {
       "Algorithm": "SHA512",
       "Value": "EEF9995ABC271935A9FE5BE4C8C758FE03BECB40E77A42D0FEB83F5C191551FF896AE4139F496D40E904F29896EB61CFA7B275775C2B4763CE40FF5D9EE25870"
+    },
+    {
+      "Algorithm": "CRC32",
+      "Value": "6610E6DB"
+    },
+    {
+      "Algorithm": "CRC64",
+      "Value": "B179D471BF9315EE"
     }
   ]
 }

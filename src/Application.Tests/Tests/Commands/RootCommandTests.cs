@@ -178,11 +178,15 @@ public sealed class RootCommandTests
     [InlineData("-a", "sha256")]
     [InlineData("-a", "sha384")]
     [InlineData("-a", "sha512")]
+    [InlineData("-a", "crc32")]
+    [InlineData("-a", "crc64")]
     [InlineData("--algorithms", "md5")]
     [InlineData("--algorithms", "sha1")]
     [InlineData("--algorithms", "sha256")]
     [InlineData("--algorithms", "sha384")]
     [InlineData("--algorithms", "sha512")]
+    [InlineData("--algorithms", "crc32")]
+    [InlineData("--algorithms", "crc64")]
     public void RootCommand_Algorithms_Single(string option, string value)
     {
         string[] args =

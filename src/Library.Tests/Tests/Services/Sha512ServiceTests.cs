@@ -9,7 +9,8 @@ using Xunit;
 public sealed class Sha512ServiceTests
 {
     /// <summary>
-    /// Tests that <see cref="HashingService.GetHash(FileInfo)"/> returns the expected <see cref="HashingResult"/>.
+    /// Tests that <see cref="CryptographicHashingService.GetHash(FileInfo)"/> returns the expected
+    /// <see cref="HashingResult"/>.
     /// </summary>
     [Fact]
     public void Sha512Service_GetHash_Expected()

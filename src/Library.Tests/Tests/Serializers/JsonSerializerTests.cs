@@ -23,6 +23,8 @@ public sealed class JsonSerializerTests
             new(HashingAlgorithm.SHA256, Hashes.SHA256),
             new(HashingAlgorithm.SHA384, Hashes.SHA384),
             new(HashingAlgorithm.SHA512, Hashes.SHA512),
+            new(HashingAlgorithm.CRC32, Hashes.CRC32),
+            new(HashingAlgorithm.CRC64, Hashes.CRC64),
         ];
 
         ExportableResult exportableResult = new(fileInfo, results);

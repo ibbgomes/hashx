@@ -3,10 +3,10 @@
 using System.Security.Cryptography;
 
 /// <summary>
-/// Defines a <see cref="MD5"/> implementation of a hashing service.
+/// Defines a <see cref="MD5"/> implementation of a cryptographic hashing service.
 /// </summary>
-/// <seealso cref="HashingService"/>
-internal sealed class Md5Service : HashingService
+/// <seealso cref="CryptographicHashingService"/>
+internal sealed class Md5Service : CryptographicHashingService
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Md5Service"/> class.
