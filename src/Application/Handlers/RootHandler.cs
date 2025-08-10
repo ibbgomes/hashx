@@ -48,7 +48,9 @@ internal static class RootHandler
 
     private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {
-        IEnumerable<IHashingService> services = algorithms.Select(HashingServiceFactory.GetInstance);
+        IEnumerable<IHashingService> services = algorithms
+            .Distinct()
+            .Select(HashingServiceFactory.GetInstance);
 
         ConcurrentBag<HashingResult> results = [];
 
