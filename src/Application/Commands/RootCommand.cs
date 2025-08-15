@@ -1,6 +1,7 @@
 ﻿namespace Hashx.Application;
 
 using System.CommandLine;
+using System.CommandLine.Help;
 using Hashx.Library;
 
 /// <summary>
@@ -11,7 +12,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     private readonly Option<HashingAlgorithm[]> algorithmsOption = new("--algorithms", "-a")
     {
-        Description = "Specify the hashing algorithms (md5, sha1, sha256, sha384, sha512, crc32 or crc64)",
+        Description = "Specify the hashing algorithms",
         Required = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
@@ -75,5 +76,15 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
                 RootHandler.Handle(args);
             });
+
+        foreach (Option option in this.Options)
+        {
+            if (option is HelpOption { Action: HelpAction helpAction })
+            {
+                option.Action = new AlgorithmsAction(helpAction);
+
+                break;
+            }
+        }
     }
 }

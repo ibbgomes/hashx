@@ -19,7 +19,10 @@ Arguments:
 Options:
   -?, -h, --help               Show help and usage information
   --version                    Show version information
-  -a, --algorithms (REQUIRED)  Specify the hashing algorithms (md5, sha1, sha256, sha384, sha512, crc32 or crc64)
+  -a, --algorithms (REQUIRED)  Specify the hashing algorithms
   -c, --compare                Compare the results against a checksum
   --json                       Print the results in JSON format
+
+Algorithms:
+  crc32, crc64, md5, sha1, sha256, sha384, sha512, xxh128, xxh3, xxh32, xxh64
 ```
