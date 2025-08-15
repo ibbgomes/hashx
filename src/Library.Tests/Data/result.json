@@ -2,6 +2,14 @@
   "Filename": "mock.json",
   "Hashes": [
     {
+      "Algorithm": "CRC32",
+      "Value": "6610E6DB"
+    },
+    {
+      "Algorithm": "CRC64",
+      "Value": "B179D471BF9315EE"
+    },
+    {
       "Algorithm": "MD5",
       "Value": "72513B3437F09B729BBC6011949DEBF9"
     },
@@ -22,12 +30,20 @@
       "Value": "EEF9995ABC271935A9FE5BE4C8C758FE03BECB40E77A42D0FEB83F5C191551FF896AE4139F496D40E904F29896EB61CFA7B275775C2B4763CE40FF5D9EE25870"
     },
     {
-      "Algorithm": "CRC32",
-      "Value": "6610E6DB"
+      "Algorithm": "XXH128",
+      "Value": "95A68B70FB9B756BA2D602AC9680A650"
     },
     {
-      "Algorithm": "CRC64",
-      "Value": "B179D471BF9315EE"
+      "Algorithm": "XXH3",
+      "Value": "BDED7FD1AE43547E"
+    },
+    {
+      "Algorithm": "XXH32",
+      "Value": "7BCFA63E"
+    },
+    {
+      "Algorithm": "XXH64",
+      "Value": "4C52564EFDA59585"
     }
   ]
 }

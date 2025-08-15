@@ -39,4 +39,24 @@ internal static class Hashes
     /// The SHA512 hash.
     /// </summary>
     internal const string SHA512 = "EEF9995ABC271935A9FE5BE4C8C758FE03BECB40E77A42D0FEB83F5C191551FF896AE4139F496D40E904F29896EB61CFA7B275775C2B4763CE40FF5D9EE25870";
+
+    /// <summary>
+    /// The XXH32 hash.
+    /// </summary>
+    internal const string XXH32 = "7BCFA63E";
+
+    /// <summary>
+    /// The XXH64 hash.
+    /// </summary>
+    internal const string XXH64 = "4C52564EFDA59585";
+
+    /// <summary>
+    /// The XXH128 hash.
+    /// </summary>
+    internal const string XXH128 = "95A68B70FB9B756BA2D602AC9680A650";
+
+    /// <summary>
+    /// The XXH3 hash.
+    /// </summary>
+    internal const string XXH3 = "BDED7FD1AE43547E";
 }

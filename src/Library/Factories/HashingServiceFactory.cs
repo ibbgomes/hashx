@@ -19,6 +19,10 @@ public static class HashingServiceFactory
         HashingAlgorithm.SHA512 => new Sha512Service(),
         HashingAlgorithm.CRC32 => new Crc32Service(),
         HashingAlgorithm.CRC64 => new Crc64Service(),
+        HashingAlgorithm.XXH32 => new Xxh32Service(),
+        HashingAlgorithm.XXH64 => new Xxh64Service(),
+        HashingAlgorithm.XXH128 => new Xxh128Service(),
+        HashingAlgorithm.XXH3 => new Xxh3Service(),
         _ => throw new InvalidOperationException("The specified algorithm is invalid."),
     };
 }

@@ -39,4 +39,24 @@ public enum HashingAlgorithm
     /// The CRC64 algorithm.
     /// </summary>
     CRC64,
+
+    /// <summary>
+    /// The XXH32 algorithm.
+    /// </summary>
+    XXH32,
+
+    /// <summary>
+    /// The XXH64 algorithm.
+    /// </summary>
+    XXH64,
+
+    /// <summary>
+    /// The XXH128 algorithm.
+    /// </summary>
+    XXH128,
+
+    /// <summary>
+    /// The XXH3 algorithm.
+    /// </summary>
+    XXH3,
 }
