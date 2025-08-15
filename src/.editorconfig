@@ -14,6 +14,10 @@ dotnet_diagnostic.CA5351.severity = none
 
 dotnet_diagnostic.CA1707.severity = none
 
+[/Application/Program.cs]
+
+dotnet_diagnostic.S6966.severity = none
+
 # Require file scoped namespaces
 
 csharp_style_namespace_declarations = file_scoped:warning

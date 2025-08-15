@@ -1,9 +1,3 @@
-﻿namespace Hashx.Application;
+﻿using Hashx.Application;
 
-/// <summary>
-/// Defines the starting point of the program.
-/// </summary>
-internal static class Program
-{
-    private static int Main(string[] args) => new RootCommand().Parse(args).Invoke();
-}
+return new RootCommand().Parse(args).Invoke();
