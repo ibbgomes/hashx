@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Sha256ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.SHA256);
-        result.Value.Should().Be(Hashes.SHA256);
+        Assert.Equal(HashingAlgorithm.SHA256, result.Algorithm);
+        Assert.Equal(Hashes.SHA256, result.Value);
     }
 }

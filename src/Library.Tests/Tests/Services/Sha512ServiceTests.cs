@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Sha512ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.SHA512);
-        result.Value.Should().Be(Hashes.SHA512);
+        Assert.Equal(HashingAlgorithm.SHA512, result.Algorithm);
+        Assert.Equal(Hashes.SHA512, result.Value);
     }
 }

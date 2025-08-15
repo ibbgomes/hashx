@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -37,6 +36,6 @@ public sealed class JsonSerializerTests
 
         string expected = File.ReadAllText(Data.JsonResultFilePath);
 
-        actual.Should().Be(expected);
+        Assert.Equal(expected, actual);
     }
 }

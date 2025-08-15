@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Crc64ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.CRC64);
-        result.Value.Should().Be(Hashes.CRC64);
+        Assert.Equal(HashingAlgorithm.CRC64, result.Algorithm);
+        Assert.Equal(Hashes.CRC64, result.Value);
     }
 }

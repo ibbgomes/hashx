@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Application.Tests;
 
 using System.CommandLine;
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -27,7 +26,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -49,7 +48,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -72,7 +71,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -96,7 +95,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -119,7 +118,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -143,7 +142,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -165,7 +164,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -209,7 +208,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -231,7 +230,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -255,7 +254,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -279,7 +278,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -304,7 +303,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -328,7 +327,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -352,7 +351,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -376,7 +375,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -400,7 +399,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -424,7 +423,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -448,7 +447,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -465,7 +464,7 @@ public sealed class RootCommandTests
             .Parse(option)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -485,7 +484,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -510,7 +509,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -533,7 +532,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -556,7 +555,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -579,7 +578,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -602,7 +601,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 
     /// <summary>
@@ -621,7 +620,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(0);
+        Assert.Equal(0, exitCode);
     }
 
     /// <summary>
@@ -641,6 +640,6 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        exitCode.Should().Be(1);
+        Assert.Equal(1, exitCode);
     }
 }

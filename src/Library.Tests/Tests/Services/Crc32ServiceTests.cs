@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Crc32ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.CRC32);
-        result.Value.Should().Be(Hashes.CRC32);
+        Assert.Equal(HashingAlgorithm.CRC32, result.Algorithm);
+        Assert.Equal(Hashes.CRC32, result.Value);
     }
 }

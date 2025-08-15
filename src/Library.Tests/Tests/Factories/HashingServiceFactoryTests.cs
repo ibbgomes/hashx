@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -16,9 +15,9 @@ public sealed class HashingServiceFactoryTests
     {
         const HashingAlgorithm algorithm = (HashingAlgorithm)11;
 
-        Action action = () => HashingServiceFactory.GetInstance(algorithm);
+        static void getInstance() => HashingServiceFactory.GetInstance(algorithm);
 
-        action.Should().Throw<InvalidOperationException>();
+        Assert.Throws<InvalidOperationException>(getInstance);
     }
 
     /// <summary>
@@ -41,6 +40,6 @@ public sealed class HashingServiceFactoryTests
     {
         IHashingService service = HashingServiceFactory.GetInstance(algorithm);
 
-        service.Algorithm.Should().Be(algorithm);
+        Assert.Equal(algorithm, service.Algorithm);
     }
 }

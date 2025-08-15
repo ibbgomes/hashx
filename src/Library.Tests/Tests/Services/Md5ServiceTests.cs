@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Md5ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.MD5);
-        result.Value.Should().Be(Hashes.MD5);
+        Assert.Equal(HashingAlgorithm.MD5, result.Algorithm);
+        Assert.Equal(Hashes.MD5, result.Value);
     }
 }

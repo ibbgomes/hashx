@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed class Xxh3ServiceTests
 
         HashingResult result = service.GetHash(fileInfo);
 
-        result.Algorithm.Should().Be(HashingAlgorithm.XXH3);
-        result.Value.Should().Be(Hashes.XXH3);
+        Assert.Equal(HashingAlgorithm.XXH3, result.Algorithm);
+        Assert.Equal(Hashes.XXH3, result.Value);
     }
 }
