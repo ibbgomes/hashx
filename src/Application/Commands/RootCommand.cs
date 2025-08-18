@@ -74,7 +74,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                     Json = result.GetValue(this.jsonOption),
                 };
 
-                RootHandler.Handle(args);
+                return RootHandler.Handle(args);
             });
 
         foreach (Option option in this.Options)

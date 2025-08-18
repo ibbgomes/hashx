@@ -379,11 +379,11 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided with an unexpected value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
+    /// provided with a mismatching value.
     /// </summary>
     [Fact]
-    public void RootCommand_Compare_Unexpected_1()
+    public void RootCommand_Compare_Mismatch_1()
     {
         string[] args =
         [
@@ -399,15 +399,15 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(2, exitCode);
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided with an unexpected value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
+    /// provided with a mismatching value.
     /// </summary>
     [Fact]
-    public void RootCommand_Compare_Unexpected_2()
+    public void RootCommand_Compare_Mismatch_2()
     {
         string[] args =
         [
@@ -423,7 +423,7 @@ public sealed class RootCommandTests
             .Parse(args)
             .Invoke();
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(2, exitCode);
     }
 
     /// <summary>
