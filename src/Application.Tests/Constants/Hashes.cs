@@ -8,5 +8,5 @@ internal static class Hashes
     /// <summary>
     /// The MD5 hash.
     /// </summary>
-    internal const string MD5 = "72513B3437F09B729BBC6011949DEBF9";
+    internal const string MD5 = "72513b3437f09b729bbc6011949debf9";
 }

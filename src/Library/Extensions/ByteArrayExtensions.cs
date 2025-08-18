@@ -10,5 +10,5 @@ internal static class ByteArrayExtensions
     /// </summary>
     /// <param name="bytes">The byte array.</param>
     /// <returns>The hexadecimal string.</returns>
-    internal static string ToHexString(this byte[] bytes) => Convert.ToHexString(bytes);
+    internal static string ToHexString(this byte[] bytes) => Convert.ToHexStringLower(bytes);
 }
