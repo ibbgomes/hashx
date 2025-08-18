@@ -32,7 +32,7 @@ internal static class RootHandler
 
                 if (!string.IsNullOrWhiteSpace(args.Checksum))
                 {
-                    PrintComparison(results, args.Checksum);
+                    return HandleComparison(results, args.Checksum);
                 }
             }
 
@@ -67,18 +67,20 @@ internal static class RootHandler
             .AsReadOnly();
     }
 
-    private static void PrintComparison(IReadOnlyCollection<HashingResult> results, string checksum)
+    private static int HandleComparison(IReadOnlyCollection<HashingResult> results, string checksum)
     {
-        HashingResult? match = results.FirstOrDefault(result => result.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase));
+        HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase));
 
-        if (match is not null)
-        {
-            ConsoleWriter.WriteSuccess($"{match.Algorithm} result matches the checksum.");
-        }
-        else
+        if (match is null)
         {
             ConsoleWriter.WriteError("No result matches the checksum.");
+
+            return 2;
         }
+
+        ConsoleWriter.WriteSuccess($"{match.Algorithm} result matches the checksum.");
+
+        return 0;
     }
 
     private static void PrintResults(IReadOnlyCollection<HashingResult> results)
