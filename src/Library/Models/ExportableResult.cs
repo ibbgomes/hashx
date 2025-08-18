@@ -13,5 +13,5 @@ public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> resu
     /// <summary>
     /// Gets the hashes.
     /// </summary>
-    public IEnumerable<HashingResult> Hashes { get; } = results;
+    public IDictionary<string, string> Hashes { get; } = results.ToDictionary(a => a.Algorithm.ToString().ToLowerInvariant(), v => v.Value);
 }

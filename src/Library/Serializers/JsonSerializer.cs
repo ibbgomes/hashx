@@ -1,7 +1,6 @@
 ﻿namespace Hashx.Library;
 
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 /// <summary>
 /// Defines a JSON serializer.
@@ -11,10 +10,7 @@ public static class JsonSerializer
     private static readonly JsonSerializerOptions Options = new()
     {
         WriteIndented = true,
-        Converters =
-        {
-            new JsonStringEnumConverter(),
-        }
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
     };
 
     /// <summary>
