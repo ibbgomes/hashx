@@ -6,16 +6,25 @@ using System.CommandLine.Invocation;
 using Hashx.Library;
 
 /// <summary>
-/// Provides algorithms information for the command line help.
+/// Provides custom information for the help option.
 /// </summary>
 /// <seealso cref="SynchronousCommandLineAction"/>
-internal sealed class AlgorithmsAction(HelpAction helpAction) : SynchronousCommandLineAction
+internal sealed class CustomAction(HelpAction helpAction) : SynchronousCommandLineAction
 {
     /// <inheritdoc/>
     public override int Invoke(ParseResult parseResult)
     {
         int result = helpAction.Invoke(parseResult);
 
+        PrintAlgorithms();
+
+        PrintExitCodes();
+
+        return result;
+    }
+
+    private static void PrintAlgorithms()
+    {
         IEnumerable<string> algorithms = Enum
             .GetNames<HashingAlgorithm>()
             .Select(a => a.ToLowerInvariant())
@@ -24,7 +33,13 @@ internal sealed class AlgorithmsAction(HelpAction helpAction) : SynchronousComma
         string algorithmsList = string.Join(", ", algorithms);
 
         ConsoleWriter.WriteLine($"Algorithms:\n  {algorithmsList}");
+    }
 
-        return result;
+    private static void PrintExitCodes()
+    {
+        ConsoleWriter.WriteLine("\nExit Codes:");
+        ConsoleWriter.WriteLine("  0  Success");
+        ConsoleWriter.WriteLine("  1  Error during processing");
+        ConsoleWriter.WriteLine("  2  Checksum comparison failed");
     }
 }

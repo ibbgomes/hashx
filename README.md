@@ -25,4 +25,9 @@ Options:
 
 Algorithms:
   crc32, crc64, md5, sha1, sha256, sha384, sha512, xxh128, xxh3, xxh32, xxh64
+
+Exit Codes:
+  0  Success
+  1  Error during processing
+  2  Checksum comparison failed
 ```

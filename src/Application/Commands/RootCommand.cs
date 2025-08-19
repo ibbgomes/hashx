@@ -81,7 +81,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         {
             if (option is HelpOption { Action: HelpAction helpAction })
             {
-                option.Action = new AlgorithmsAction(helpAction);
+                option.Action = new CustomAction(helpAction);
 
                 break;
             }
