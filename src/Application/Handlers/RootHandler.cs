@@ -33,7 +33,7 @@ internal static class RootHandler
             {
                 HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(args.Checksum, StringComparison.OrdinalIgnoreCase));
 
-                PrintComparison(match);
+                PrintMatch(match);
 
                 if (match is null)
                 {
@@ -72,7 +72,7 @@ internal static class RootHandler
             .AsReadOnly();
     }
 
-    private static void PrintComparison(HashingResult? match)
+    private static void PrintMatch(HashingResult? match)
     {
         if (match is not null)
         {
