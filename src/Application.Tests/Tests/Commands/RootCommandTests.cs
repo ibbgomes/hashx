@@ -307,6 +307,54 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
+    /// provided with a mismatching value.
+    /// </summary>
+    [Fact]
+    public void RootCommand_Compare_Mismatch_1()
+    {
+        string[] args =
+        [
+            Data.MockFilePath,
+            "-a",
+            "md5",
+            "-c",
+            "unexpected-hash",
+        ];
+
+        int exitCode = new Application
+            .RootCommand()
+            .Parse(args)
+            .Invoke();
+
+        Assert.Equal(2, exitCode);
+    }
+
+    /// <summary>
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
+    /// provided with a mismatching value.
+    /// </summary>
+    [Fact]
+    public void RootCommand_Compare_Mismatch_2()
+    {
+        string[] args =
+        [
+            Data.MockFilePath,
+            "--algorithms",
+            "md5",
+            "--compare",
+            "unexpected-hash",
+        ];
+
+        int exitCode = new Application
+            .RootCommand()
+            .Parse(args)
+            .Invoke();
+
+        Assert.Equal(2, exitCode);
+    }
+
+    /// <summary>
     /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
     /// provided before the algorithms option.
     /// </summary>
@@ -376,54 +424,6 @@ public sealed class RootCommandTests
             .Invoke();
 
         Assert.Equal(0, exitCode);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
-    /// provided with a mismatching value.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Compare_Mismatch_1()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "-a",
-            "md5",
-            "-c",
-            "unexpected-hash",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke();
-
-        Assert.Equal(2, exitCode);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
-    /// provided with a mismatching value.
-    /// </summary>
-    [Fact]
-    public void RootCommand_Compare_Mismatch_2()
-    {
-        string[] args =
-        [
-            Data.MockFilePath,
-            "--algorithms",
-            "md5",
-            "--compare",
-            "unexpected-hash",
-        ];
-
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke();
-
-        Assert.Equal(2, exitCode);
     }
 
     /// <summary>
