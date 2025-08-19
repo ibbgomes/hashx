@@ -1,36 +1,31 @@
 ﻿namespace Hashx.Application;
 
 /// <summary>
-/// Provides methods for writing messages to the console.
+/// Provides methods for writing colored console messages.
 /// </summary>
 internal static class ConsoleWriter
 {
     /// <summary>
-    /// Writes a message.
+    /// Writes an error message line.
     /// </summary>
-    /// <param name="message">The message.</param>
-    internal static void Write(string message) => Console.WriteLine(message);
+    /// <param name="message">The error message.</param>
+    internal static void WriteErrorLine(string message) => WriteColoredLine(message, ConsoleColor.Red);
 
     /// <summary>
-    /// Writes an error message.
+    /// Writes a message line.
     /// </summary>
     /// <param name="message">The message.</param>
-    internal static void WriteError(string message)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-
-        Console.Error.WriteLine(message);
-
-        Console.ResetColor();
-    }
+    internal static void WriteLine(string message) => Console.WriteLine(message);
 
     /// <summary>
-    /// Writes a success message.
+    /// Writes a success message line.
     /// </summary>
-    /// <param name="message">The message.</param>
-    internal static void WriteSuccess(string message)
+    /// <param name="message">The success message.</param>
+    internal static void WriteSuccessLine(string message) => WriteColoredLine(message, ConsoleColor.Green);
+
+    private static void WriteColoredLine(string message, ConsoleColor color)
     {
-        Console.ForegroundColor = ConsoleColor.Green;
+        Console.ForegroundColor = color;
 
         Console.WriteLine(message);
 

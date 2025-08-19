@@ -40,7 +40,7 @@ internal static class RootHandler
         }
         catch (Exception e)
         {
-            ConsoleWriter.WriteError($"An error occurred: {e.Message}.");
+            ConsoleWriter.WriteErrorLine($"An error occurred: {e.Message}.");
 
             return 1;
         }
@@ -73,12 +73,12 @@ internal static class RootHandler
 
         if (match is null)
         {
-            ConsoleWriter.WriteError("No result matches the checksum.");
+            ConsoleWriter.WriteErrorLine("No result matches the checksum.");
 
             return 2;
         }
 
-        ConsoleWriter.WriteSuccess($"{match.Algorithm} result matches the checksum.");
+        ConsoleWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
 
         return 0;
     }
@@ -87,14 +87,14 @@ internal static class RootHandler
     {
         if (results.Count == 1)
         {
-            ConsoleWriter.Write(results.First().Value);
+            ConsoleWriter.WriteLine(results.First().Value);
 
             return;
         }
 
         foreach (HashingResult result in results)
         {
-            ConsoleWriter.Write($"{result.Algorithm}\t{result.Value}");
+            ConsoleWriter.WriteLine($"{result.Algorithm}\t{result.Value}");
         }
     }
 
@@ -104,6 +104,6 @@ internal static class RootHandler
 
         string json = JsonSerializer.Serialize(exportableResult);
 
-        ConsoleWriter.Write(json);
+        ConsoleWriter.WriteLine(json);
     }
 }

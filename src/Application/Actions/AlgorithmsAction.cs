@@ -24,7 +24,7 @@ internal sealed class AlgorithmsAction(HelpAction helpAction) : SynchronousComma
 
         string algorithmsList = string.Join(", ", algorithms);
 
-        ConsoleWriter.Write($"Algorithms:\n  {algorithmsList}");
+        ConsoleWriter.WriteLine($"Algorithms:\n  {algorithmsList}");
 
         return result;
     }
