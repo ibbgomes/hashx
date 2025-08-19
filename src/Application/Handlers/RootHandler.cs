@@ -2,7 +2,6 @@
 
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using Hashx.Library;
 
 /// <summary>
@@ -24,14 +23,21 @@ internal static class RootHandler
             if (args.Json)
             {
                 PrintResultsAsJson(args.Input, results);
-            }
-            else
-            {
-                PrintResults(results);
 
-                if (!string.IsNullOrWhiteSpace(args.Checksum))
+                return 0;
+            }
+
+            PrintResults(results);
+
+            if (!string.IsNullOrWhiteSpace(args.Checksum))
+            {
+                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(args.Checksum, StringComparison.OrdinalIgnoreCase));
+
+                PrintComparison(match);
+
+                if (match is null)
                 {
-                    return HandleComparison(results, args.Checksum);
+                    return 2;
                 }
             }
 
@@ -66,20 +72,16 @@ internal static class RootHandler
             .AsReadOnly();
     }
 
-    private static int HandleComparison(IReadOnlyCollection<HashingResult> results, string checksum)
+    private static void PrintComparison(HashingResult? match)
     {
-        HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(checksum, StringComparison.OrdinalIgnoreCase));
-
-        if (match is null)
+        if (match is not null)
         {
-            ConsoleWriter.WriteErrorLine("No result matches the checksum.");
+            ConsoleWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
 
-            return 2;
+            return;
         }
 
-        ConsoleWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
-
-        return 0;
+        ConsoleWriter.WriteErrorLine("No result matches the checksum.");
     }
 
     private static void PrintResults(IReadOnlyCollection<HashingResult> results)
