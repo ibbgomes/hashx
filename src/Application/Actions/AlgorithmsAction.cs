@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Application;
 
-using System;
 using System.CommandLine;
 using System.CommandLine.Help;
 using System.CommandLine.Invocation;
