@@ -15,7 +15,6 @@ internal static class RootHandler
     /// </summary>
     /// <param name="args">The arguments.</param>
     /// <returns>The exit code.</returns>
-    [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ensures graceful error handling.")]
     internal static int Handle(RootArguments args)
     {
         try
