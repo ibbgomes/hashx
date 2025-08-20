@@ -14,20 +14,20 @@ Usage:
   Hashx <input> [options]
 
 Arguments:
-  <input>  Specify the input file path
+  <input>  Path to the input file
 
 Options:
   -?, -h, --help               Show help and usage information
   --version                    Show version information
-  -a, --algorithms (REQUIRED)  Specify the hashing algorithms
-  -c, --compare                Compare the results against a checksum
-  --json                       Print the results in JSON format
+  -a, --algorithms (REQUIRED)  Set the hashing algorithms
+  -c, --compare                Compare results against a checksum
+  --json                       Output results in JSON
 
 Algorithms:
   crc32, crc64, md5, sha1, sha256, sha384, sha512, xxh128, xxh3, xxh32, xxh64
 
 Exit Codes:
   0  Success
-  1  Error during processing
-  2  Checksum comparison failed
+  1  Processing error
+  2  Checksum mismatch
 ```
