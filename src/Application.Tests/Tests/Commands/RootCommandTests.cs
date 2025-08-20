@@ -319,7 +319,7 @@ public sealed class RootCommandTests
             "-a",
             "md5",
             "-c",
-            "unexpected-hash",
+            "mismatching-value",
         ];
 
         int exitCode = new Application
@@ -343,7 +343,7 @@ public sealed class RootCommandTests
             "--algorithms",
             "md5",
             "--compare",
-            "unexpected-hash",
+            "mismatching-value",
         ];
 
         int exitCode = new Application
