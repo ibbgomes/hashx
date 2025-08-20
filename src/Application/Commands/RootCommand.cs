@@ -12,7 +12,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     private readonly Option<HashingAlgorithm[]> algorithmsOption = new("--algorithms", "-a")
     {
-        Description = "Specify the hashing algorithms",
+        Description = "Set the hashing algorithms",
         Required = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
@@ -20,19 +20,19 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     private readonly Option<string> compareOption = new("--compare", "-c")
     {
-        Description = "Compare the results against a checksum",
+        Description = "Compare results against a checksum",
         Required = false,
     };
 
     private readonly Argument<FileInfo> inputArgument = new Argument<FileInfo>("input")
     {
-        Description = "Specify the input file path",
+        Description = "Path to the input file",
         Arity = ArgumentArity.ExactlyOne,
     }.AcceptExistingOnly();
 
     private readonly Option<bool> jsonOption = new("--json")
     {
-        Description = "Print the results in JSON format",
+        Description = "Output results in JSON",
         Required = false,
     };
 

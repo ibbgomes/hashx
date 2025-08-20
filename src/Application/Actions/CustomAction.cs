@@ -39,7 +39,7 @@ internal sealed class CustomAction(HelpAction helpAction) : SynchronousCommandLi
     {
         ConsoleWriter.WriteLine("\nExit Codes:");
         ConsoleWriter.WriteLine("  0  Success");
-        ConsoleWriter.WriteLine("  1  Error during processing");
-        ConsoleWriter.WriteLine("  2  Checksum comparison failed");
+        ConsoleWriter.WriteLine("  1  Processing error");
+        ConsoleWriter.WriteLine("  2  Checksum mismatch");
     }
 }
