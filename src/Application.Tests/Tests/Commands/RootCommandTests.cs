@@ -9,8 +9,7 @@ using Xunit;
 public sealed class RootCommandTests
 {
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
-    /// provided without a value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is provided without a value.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Empty()
@@ -30,8 +29,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
-    /// provided with an invalid value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is provided with an invalid value.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Invalid()
@@ -52,8 +50,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
-    /// provided with many valid values.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_1()
@@ -75,8 +72,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
-    /// provided with many valid values.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_2()
@@ -99,8 +95,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
-    /// provided with many valid values.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_3()
@@ -122,8 +117,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
-    /// provided with many valid values.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is provided with many valid values.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Many_4()
@@ -146,8 +140,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
-    /// provided before the file path argument.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is provided before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Reversed()
@@ -168,8 +161,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is
-    /// provided with a single valid value.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the algorithms option is provided with a single valid value.
     /// </summary>
     [Theory]
     [InlineData("-a", "md5")]
@@ -212,8 +204,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is
-    /// provided in uppercase.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the algorithms option is provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Algorithms_Uppercase()
@@ -234,8 +225,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided with an expected value.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is provided with an expected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Expected_1()
@@ -258,8 +248,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided with an expected value.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is provided with an expected value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Expected_2()
@@ -282,8 +271,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when both the compare and JSON
-    /// options are provided.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when both the compare and JSON options are provided.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Json()
@@ -307,8 +295,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
-    /// provided with a mismatching value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is provided with a mismatching value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Mismatch_1()
@@ -331,8 +318,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
-    /// provided with a mismatching value.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is provided with a mismatching value.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Mismatch_2()
@@ -355,8 +341,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided before the algorithms option.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is provided before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_1()
@@ -379,8 +364,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided before the algorithms option.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is provided before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_2()
@@ -403,8 +387,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is
-    /// provided before the file path argument.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the compare option is provided before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Reversed_3()
@@ -427,8 +410,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is
-    /// provided in uppercase.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the compare option is provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Compare_Uppercase()
@@ -468,8 +450,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the help option is
-    /// provided in uppercase.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the help option is provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Help_Uppercase()
@@ -488,8 +469,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
-    /// with many algorithms.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided with many algorithms.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Many()
@@ -513,8 +493,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
-    /// before the algorithms option.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided before the algorithms option.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Reversed_1()
@@ -536,8 +515,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
-    /// before the file path argument.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided before the file path argument.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Reversed_2()
@@ -559,8 +537,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided
-    /// with a single algorithm.
+    /// Tests that the <see cref="RootCommand"/> runs successfully when the JSON option is provided with a single algorithm.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Single()
@@ -582,8 +559,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the JSON option is
-    /// provided in uppercase.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the JSON option is provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Json_Uppercase()
@@ -624,8 +600,7 @@ public sealed class RootCommandTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the version option is
-    /// provided in uppercase.
+    /// Tests that the <see cref="RootCommand"/> runs unsuccessfully when the version option is provided in uppercase.
     /// </summary>
     [Fact]
     public void RootCommand_Version_Uppercase()

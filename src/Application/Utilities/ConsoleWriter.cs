@@ -1,7 +1,7 @@
 ﻿namespace Hashx.Application;
 
 /// <summary>
-/// Provides methods for writing colored console messages.
+/// Defines methods for writing console messages.
 /// </summary>
 internal static class ConsoleWriter
 {
