@@ -1,28 +1,32 @@
 ﻿namespace Hashx.Library;
 
 /// <summary>
-/// Defines an <see cref="IHashingService"/> factory.
+/// Defines a factory for creating instances of <see cref="IHashingService"/>.
 /// </summary>
 public static class HashingServiceFactory
 {
     /// <summary>
-    /// Gets an instance of an <see cref="IHashingService"/> through the specified <see cref="HashingAlgorithm"/>.
+    /// Creates an instance of <see cref="IHashingService"/> based on the specified <see cref="HashingAlgorithm"/>.
     /// </summary>
-    /// <param name="algorithm">The hashing algorithm.</param>
-    /// <returns>The hashing service instance.</returns>
-    public static IHashingService GetInstance(HashingAlgorithm algorithm) => algorithm switch
+    /// <param name="algorithm">The algorithm.</param>
+    /// <returns>The hashing service.</returns>
+    public static IHashingService Create(HashingAlgorithm algorithm) => algorithm switch
     {
-        HashingAlgorithm.MD5 => new Md5Service(),
-        HashingAlgorithm.SHA1 => new Sha1Service(),
-        HashingAlgorithm.SHA256 => new Sha256Service(),
-        HashingAlgorithm.SHA384 => new Sha384Service(),
-        HashingAlgorithm.SHA512 => new Sha512Service(),
-        HashingAlgorithm.CRC32 => new Crc32Service(),
-        HashingAlgorithm.CRC64 => new Crc64Service(),
-        HashingAlgorithm.XXH32 => new Xxh32Service(),
-        HashingAlgorithm.XXH64 => new Xxh64Service(),
-        HashingAlgorithm.XXH128 => new Xxh128Service(),
-        HashingAlgorithm.XXH3 => new Xxh3Service(),
-        _ => throw new InvalidOperationException("The specified algorithm is invalid."),
+        HashingAlgorithm.MD5 or
+        HashingAlgorithm.SHA1 or
+        HashingAlgorithm.SHA256 or
+        HashingAlgorithm.SHA384 or
+        HashingAlgorithm.SHA512
+            => CryptographicHashingServiceFactory.Create(algorithm),
+
+        HashingAlgorithm.CRC32 or
+        HashingAlgorithm.CRC64 or
+        HashingAlgorithm.XXH128 or
+        HashingAlgorithm.XXH3 or
+        HashingAlgorithm.XXH32 or
+        HashingAlgorithm.XXH64
+            => NonCryptographicHashingServiceFactory.Create(algorithm),
+
+        _ => throw new NotSupportedException($"The specified algorithm '{algorithm}' is not supported.")
     };
 }

@@ -8,21 +8,20 @@ using Xunit;
 public sealed class HashingServiceFactoryTests
 {
     /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns an <see cref="InvalidOperationException"/>.
+    /// Tests that <see cref="HashingServiceFactory.Create(HashingAlgorithm)"/> returns a <see cref="NotSupportedException"/>.
     /// </summary>
     [Fact]
-    public void HashingServiceFactory_GetInstance_Exception()
+    public void HashingServiceFactory_Create_Exception()
     {
         const HashingAlgorithm algorithm = (HashingAlgorithm)11;
 
-        static void getInstance() => HashingServiceFactory.GetInstance(algorithm);
+        static void create() => HashingServiceFactory.Create(algorithm);
 
-        Assert.Throws<InvalidOperationException>(getInstance);
+        Assert.Throws<NotSupportedException>(create);
     }
 
     /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
+    /// Tests that <see cref="HashingServiceFactory.Create(HashingAlgorithm)"/> returns the expected <see cref="IHashingService"/>.
     /// </summary>
     [Theory]
     [InlineData(HashingAlgorithm.MD5)]
@@ -36,9 +35,9 @@ public sealed class HashingServiceFactoryTests
     [InlineData(HashingAlgorithm.XXH64)]
     [InlineData(HashingAlgorithm.XXH128)]
     [InlineData(HashingAlgorithm.XXH3)]
-    public void HashingServiceFactory_GetInstance_Expected(HashingAlgorithm algorithm)
+    public void HashingServiceFactory_Create_Expected(HashingAlgorithm algorithm)
     {
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
+        IHashingService service = HashingServiceFactory.Create(algorithm);
 
         Assert.Equal(algorithm, service.Algorithm);
     }

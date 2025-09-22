@@ -1,7 +1,7 @@
 ﻿namespace Hashx.Library;
 
 /// <summary>
-/// Provides extension methods for <see cref="byte"/> arrays.
+/// Defines extension methods for <see cref="byte"/> arrays.
 /// </summary>
 internal static class ByteArrayExtensions
 {

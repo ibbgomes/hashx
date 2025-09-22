@@ -3,26 +3,21 @@
 using System.Security.Cryptography;
 
 /// <summary>
-/// Defines the base implementation of a cryptographic hashing service.
+/// Defines a cryptographic implementation of <see cref="IHashingService"/>.
 /// </summary>
 /// <seealso cref="IHashingService"/>
-internal abstract class CryptographicHashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
+internal sealed class CryptographicHashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
 {
-    /// <inheritdoc/>
-    public HashingAlgorithm Algorithm { get; } = algorithm;
+    private readonly HashAlgorithm implementation = implementation;
 
-    /// <summary>
-    /// Gets the hashing service implementation.
-    /// </summary>
-    protected HashAlgorithm Implementation { get; } = implementation;
+    public HashingAlgorithm Algorithm => algorithm;
 
-    /// <inheritdoc/>
     public HashingResult GetHash(FileInfo fileInfo)
     {
         using FileStream fileStream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
         string hash = this
-            .Implementation
+            .implementation
             .ComputeHash(fileStream)
             .ToHexString();
 

@@ -55,7 +55,7 @@ internal static class RootHandler
     {
         IEnumerable<IHashingService> services = algorithms
             .Distinct()
-            .Select(HashingServiceFactory.GetInstance);
+            .Select(HashingServiceFactory.Create);
 
         ConcurrentBag<HashingResult> results = [];
 

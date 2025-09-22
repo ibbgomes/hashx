@@ -3,30 +3,25 @@
 using System.IO.Hashing;
 
 /// <summary>
-/// Defines the base implementation of a non-cryptographic hashing service.
+/// Defines a non-cryptographic implementation of <see cref="IHashingService"/>
 /// </summary>
 /// <seealso cref="IHashingService"/>
-internal abstract class NonCryptographicHashingService(HashingAlgorithm algorithm, NonCryptographicHashAlgorithm implementation) : IHashingService
+internal sealed class NonCryptographicHashingService(HashingAlgorithm algorithm, NonCryptographicHashAlgorithm implementation) : IHashingService
 {
-    /// <inheritdoc/>
-    public HashingAlgorithm Algorithm { get; } = algorithm;
+    private readonly NonCryptographicHashAlgorithm implementation = implementation;
 
-    /// <summary>
-    /// Gets the hashing service implementation.
-    /// </summary>
-    protected NonCryptographicHashAlgorithm Implementation { get; } = implementation;
+    public HashingAlgorithm Algorithm => algorithm;
 
-    /// <inheritdoc/>
     public HashingResult GetHash(FileInfo fileInfo)
     {
         using FileStream fileStream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
         this
-            .Implementation
+            .implementation
             .Append(fileStream);
 
         string hash = this
-            .Implementation
+            .implementation
             .GetCurrentHash()
             .ToHexString();
 
