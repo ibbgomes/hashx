@@ -69,7 +69,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         {
             if (option is HelpOption { Action: HelpAction helpAction })
             {
-                option.Action = new CustomAction(helpAction);
+                option.Action = new CustomHelpAction(helpAction);
 
                 break;
             }

@@ -6,10 +6,10 @@ using System.CommandLine.Invocation;
 using Hashx.Library;
 
 /// <summary>
-/// Provides custom information for the help option.
+/// Defines an action that provides custom information for the help option.
 /// </summary>
 /// <seealso cref="SynchronousCommandLineAction"/>
-internal sealed class CustomAction(HelpAction helpAction) : SynchronousCommandLineAction
+internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousCommandLineAction
 {
     /// <inheritdoc/>
     public override int Invoke(ParseResult parseResult)
