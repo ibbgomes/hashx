@@ -2,22 +2,23 @@
 
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
+using System.CommandLine;
+using System.CommandLine.Invocation;
 using Hashx.Library;
 
 /// <summary>
-/// Defines the <see cref="RootCommand"/> handler.
+/// Defines the <see cref="RootCommand"/> action.
 /// </summary>
-internal static class RootHandler
+/// <seealso cref="SynchronousCommandLineAction"/>
+internal sealed class RootAction : SynchronousCommandLineAction
 {
-    /// <summary>
-    /// Handles the <see cref="RootCommand"/>.
-    /// </summary>
-    /// <param name="args">The arguments.</param>
-    /// <returns>The exit code.</returns>
-    internal static int Handle(RootArguments args)
+    /// <inheritdoc/>
+    public override int Invoke(ParseResult parseResult)
     {
         try
         {
+            RootArguments args = GetArguments(parseResult);
+
             IReadOnlyCollection<HashingResult> results = GetResults(args.Input, args.Algorithms);
 
             if (args.Json)
@@ -50,6 +51,14 @@ internal static class RootHandler
             return 1;
         }
     }
+
+    private static RootArguments GetArguments(ParseResult parseResult) => new()
+    {
+        Input = parseResult.GetRequiredValue(RootCommand.InputArgument),
+        Algorithms = parseResult.GetRequiredValue(RootCommand.AlgorithmsOption),
+        Checksum = parseResult.GetValue(RootCommand.CompareOption),
+        Json = parseResult.GetValue(RootCommand.JsonOption),
+    };
 
     private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {

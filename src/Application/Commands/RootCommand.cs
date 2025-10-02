@@ -10,7 +10,7 @@ using Hashx.Library;
 /// <seealso cref="System.CommandLine.RootCommand"/>
 internal sealed class RootCommand : System.CommandLine.RootCommand
 {
-    private readonly Option<HashingAlgorithm[]> algorithmsOption = new("--algorithms", "-a")
+    internal static readonly Option<HashingAlgorithm[]> AlgorithmsOption = new("--algorithms", "-a")
     {
         Description = "Set the hashing algorithms",
         Required = true,
@@ -18,19 +18,19 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         AllowMultipleArgumentsPerToken = true,
     };
 
-    private readonly Option<string> compareOption = new("--compare", "-c")
+    internal static readonly Option<string> CompareOption = new("--compare", "-c")
     {
         Description = "Compare results against a checksum",
         Required = false,
     };
 
-    private readonly Argument<FileInfo> inputArgument = new Argument<FileInfo>("input")
+    internal static readonly Argument<FileInfo> InputArgument = new Argument<FileInfo>("input")
     {
         Description = "Path to the input file",
         Arity = ArgumentArity.ExactlyOne,
     }.AcceptExistingOnly();
 
-    private readonly Option<bool> jsonOption = new("--json")
+    internal static readonly Option<bool> JsonOption = new("--json")
     {
         Description = "Output results in JSON",
         Required = false,
@@ -42,20 +42,20 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     public RootCommand()
         : base("A cross-platform, command-line interface, checksum utility")
     {
-        this.Arguments.Add(this.inputArgument);
+        this.Arguments.Add(InputArgument);
 
-        this.Options.Add(this.algorithmsOption);
+        this.Options.Add(AlgorithmsOption);
 
-        this.Options.Add(this.compareOption);
+        this.Options.Add(CompareOption);
 
-        this.Options.Add(this.jsonOption);
+        this.Options.Add(JsonOption);
 
         this.Validators.Add(
             (result) =>
             {
-                string? compare = result.GetValue(this.compareOption);
+                string? compare = result.GetValue(CompareOption);
 
-                bool json = result.GetValue(this.jsonOption);
+                bool json = result.GetValue(JsonOption);
 
                 if (compare is not null && json)
                 {
@@ -63,19 +63,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 }
             });
 
-        this.SetAction(
-            (result) =>
-            {
-                RootArguments args = new()
-                {
-                    Input = result.GetRequiredValue(this.inputArgument),
-                    Algorithms = result.GetRequiredValue(this.algorithmsOption),
-                    Checksum = result.GetValue(this.compareOption),
-                    Json = result.GetValue(this.jsonOption),
-                };
-
-                return RootHandler.Handle(args);
-            });
+        this.SetAction((result) => new RootAction().Invoke(result));
 
         foreach (Option option in this.Options)
         {
