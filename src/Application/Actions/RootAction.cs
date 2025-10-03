@@ -17,7 +17,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         try
         {
-            RootArguments args = GetArguments(parseResult);
+            RootArguments args = new(parseResult);
 
             IReadOnlyCollection<HashingResult> results = GetResults(args.Input, args.Algorithms);
 
@@ -51,14 +51,6 @@ internal sealed class RootAction : SynchronousCommandLineAction
             return 1;
         }
     }
-
-    private static RootArguments GetArguments(ParseResult parseResult) => new()
-    {
-        Input = parseResult.GetRequiredValue(RootCommand.InputArgument),
-        Algorithms = parseResult.GetRequiredValue(RootCommand.AlgorithmsOption),
-        Checksum = parseResult.GetValue(RootCommand.CompareOption),
-        Json = parseResult.GetValue(RootCommand.JsonOption),
-    };
 
     private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
     {
