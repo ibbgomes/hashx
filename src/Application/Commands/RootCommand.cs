@@ -51,7 +51,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         this.Options.Add(JsonOption);
 
         this.Validators.Add(
-            (result) =>
+            result =>
             {
                 string? compare = result.GetValue(CompareOption);
 
@@ -63,7 +63,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
                 }
             });
 
-        this.SetAction((result) => new RootAction().Invoke(result));
+        this.SetAction(result => new RootAction().Invoke(result));
 
         foreach (Option option in this.Options)
         {
