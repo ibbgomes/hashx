@@ -16,14 +16,16 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
     {
         int result = helpAction.Invoke(parseResult);
 
-        PrintAlgorithms();
+        InvocationContext context = new(parseResult);
 
-        PrintExitCodes();
+        PrintAlgorithms(context);
+
+        PrintExitCodes(context);
 
         return result;
     }
 
-    private static void PrintAlgorithms()
+    private static void PrintAlgorithms(InvocationContext context)
     {
         IEnumerable<string> algorithms = Enum
             .GetNames<HashingAlgorithm>()
@@ -32,14 +34,14 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
 
         string algorithmsList = string.Join(", ", algorithms);
 
-        ConsoleWriter.WriteLine($"Algorithms:\n  {algorithmsList}");
+        context.Output.WriteLine($"Algorithms:\n  {algorithmsList}");
     }
 
-    private static void PrintExitCodes()
+    private static void PrintExitCodes(InvocationContext context)
     {
-        ConsoleWriter.WriteLine("\nExit Codes:");
-        ConsoleWriter.WriteLine("  0  Success");
-        ConsoleWriter.WriteLine("  1  Processing error");
-        ConsoleWriter.WriteLine("  2  Checksum mismatch");
+        context.Output.WriteLine("\nExit Codes:");
+        context.Output.WriteLine("  0  Success");
+        context.Output.WriteLine("  1  Processing error");
+        context.Output.WriteLine("  2  Checksum mismatch");
     }
 }

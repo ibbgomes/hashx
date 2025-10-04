@@ -15,26 +15,28 @@ internal sealed class RootAction : SynchronousCommandLineAction
     /// <inheritdoc/>
     public override int Invoke(ParseResult parseResult)
     {
+        InvocationContext context = new(parseResult);
+
         try
         {
-            RootArguments args = new(parseResult);
+            RootArguments arguments = new(parseResult);
 
-            IReadOnlyCollection<HashingResult> results = GetResults(args.Input, args.Algorithms);
+            IReadOnlyCollection<HashingResult> results = GetResults(arguments.Input, arguments.Algorithms);
 
-            if (args.Json)
+            if (arguments.Json)
             {
-                PrintResultsAsJson(args.Input, results);
+                PrintResultsAsJson(context.Output, arguments.Input, results);
 
                 return 0;
             }
 
-            PrintResults(results);
+            PrintResults(context.Output, results);
 
-            if (!string.IsNullOrWhiteSpace(args.Checksum))
+            if (!string.IsNullOrWhiteSpace(arguments.Checksum))
             {
-                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(args.Checksum, StringComparison.OrdinalIgnoreCase));
+                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Checksum, StringComparison.OrdinalIgnoreCase));
 
-                PrintMatch(match);
+                PrintMatch(context.Output, context.Error, match);
 
                 if (match is null)
                 {
@@ -46,7 +48,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
         }
         catch (Exception e)
         {
-            ConsoleWriter.WriteErrorLine($"An error occurred: {e.Message}.");
+            context.Output.WriteErrorLine($"An error occurred: {e.Message}.");
 
             return 1;
         }
@@ -73,39 +75,39 @@ internal sealed class RootAction : SynchronousCommandLineAction
             .AsReadOnly();
     }
 
-    private static void PrintMatch(HashingResult? match)
+    private static void PrintMatch(TextWriter outputWriter, TextWriter errorWriter, HashingResult? match)
     {
         if (match is not null)
         {
-            ConsoleWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
+            outputWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
 
             return;
         }
 
-        ConsoleWriter.WriteErrorLine("No result matches the checksum.");
+        errorWriter.WriteErrorLine("No result matches the checksum.");
     }
 
-    private static void PrintResults(IReadOnlyCollection<HashingResult> results)
+    private static void PrintResults(TextWriter outputWriter, IReadOnlyCollection<HashingResult> results)
     {
         if (results.Count == 1)
         {
-            ConsoleWriter.WriteLine(results.First().Value);
+            outputWriter.WriteLine(results.First().Value);
 
             return;
         }
 
         foreach (HashingResult result in results)
         {
-            ConsoleWriter.WriteLine($"{result.Algorithm}\t{result.Value}");
+            outputWriter.WriteLine($"{result.Algorithm}\t{result.Value}");
         }
     }
 
-    private static void PrintResultsAsJson(FileInfo input, IReadOnlyCollection<HashingResult> results)
+    private static void PrintResultsAsJson(TextWriter outputWriter, FileInfo input, IReadOnlyCollection<HashingResult> results)
     {
         ExportableResult exportableResult = new(input, results);
 
         string json = JsonSerializer.Serialize(exportableResult);
 
-        ConsoleWriter.WriteLine(json);
+        outputWriter.WriteLine(json);
     }
 }
