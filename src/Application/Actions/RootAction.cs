@@ -62,7 +62,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
         ConcurrentBag<HashingResult> results = [];
 
-        Parallel.ForEach(services, (service) =>
+        Parallel.ForEach(services, service =>
         {
             HashingResult result = service.GetHash(input);
 
