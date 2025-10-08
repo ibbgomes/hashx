@@ -34,12 +34,14 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
 
         string algorithmsList = string.Join(", ", algorithms);
 
-        context.Output.WriteLine($"Algorithms:\n  {algorithmsList}");
+        context.Output.WriteLine($"Algorithms:");
+        context.Output.WriteLine($"  {algorithmsList}");
     }
 
     private static void PrintExitCodes(InvocationContext context)
     {
-        context.Output.WriteLine("\nExit Codes:");
+        context.Output.WriteLine();
+        context.Output.WriteLine("Exit Codes:");
         context.Output.WriteLine("  0  Success");
         context.Output.WriteLine("  1  Processing error");
         context.Output.WriteLine("  2  Checksum mismatch");
