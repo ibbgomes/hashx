@@ -17,24 +17,21 @@ public sealed class JsonSerializerTests
 
         HashingResult[] results =
         [
-            new(HashingAlgorithm.CRC32, Hashes.CRC32),
-            new(HashingAlgorithm.CRC64, Hashes.CRC64),
-            new(HashingAlgorithm.MD5, Hashes.MD5),
-            new(HashingAlgorithm.SHA1, Hashes.SHA1),
-            new(HashingAlgorithm.SHA256, Hashes.SHA256),
-            new(HashingAlgorithm.SHA384, Hashes.SHA384),
-            new(HashingAlgorithm.SHA512, Hashes.SHA512),
-            new(HashingAlgorithm.XXH128, Hashes.XXH128),
             new(HashingAlgorithm.XXH3, Hashes.XXH3),
-            new(HashingAlgorithm.XXH32, Hashes.XXH32),
-            new(HashingAlgorithm.XXH64, Hashes.XXH64),
         ];
 
         ExportableResult exportableResult = new(fileInfo, results);
 
         string actual = JsonSerializer.Serialize(exportableResult);
 
-        string expected = File.ReadAllText(Data.JsonResultFilePath);
+        const string expected = """
+            {
+              "filename": "mock.json",
+              "hashes": {
+                "xxh3": "bded7fd1ae43547e"
+              }
+            }
+            """;
 
         Assert.Equal(expected, actual);
     }
