@@ -36,7 +36,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 
@@ -71,7 +71,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 
@@ -113,7 +113,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 
@@ -149,7 +149,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 
@@ -182,7 +182,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(2, exitCode);
+        Assert.Equal(ExitCodes.ChecksumMismatch, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 
@@ -221,7 +221,7 @@ public sealed class RootActionTests
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
+        Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 

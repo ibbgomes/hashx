@@ -27,7 +27,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
             {
                 PrintResultsAsJson(context.Output, arguments.Input, results);
 
-                return 0;
+                return ExitCodes.Success;
             }
 
             PrintResults(context.Output, results);
@@ -40,17 +40,17 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
                 if (match is null)
                 {
-                    return 2;
+                    return ExitCodes.ChecksumMismatch;
                 }
             }
 
-            return 0;
+            return ExitCodes.Success;
         }
         catch (Exception e)
         {
             context.Output.WriteErrorLine($"An error occurred: {e.Message}.");
 
-            return 1;
+            return ExitCodes.ProcessingError;
         }
     }
 

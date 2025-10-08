@@ -42,8 +42,8 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
     {
         context.Output.WriteLine();
         context.Output.WriteLine("Exit Codes:");
-        context.Output.WriteLine("  0  Success");
-        context.Output.WriteLine("  1  Processing error");
-        context.Output.WriteLine("  2  Checksum mismatch");
+        context.Output.WriteLine($"  {ExitCodes.Success}  Success");
+        context.Output.WriteLine($"  {ExitCodes.ProcessingError}  Processing error");
+        context.Output.WriteLine($"  {ExitCodes.ChecksumMismatch}  Checksum mismatch");
     }
 }

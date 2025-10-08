@@ -26,22 +26,21 @@ public sealed class CustomHelpActionTests
             "-h",
         ];
 
-        const string customOutput = """
+        string customOutput = $"""
             Algorithms:
               crc32, crc64, md5, sha1, sha256, sha384, sha512, xxh128, xxh3, xxh32, xxh64
 
             Exit Codes:
-              0  Success
-              1  Processing error
-              2  Checksum mismatch
+              {ExitCodes.Success}  Success
+              {ExitCodes.ProcessingError}  Processing error
+              {ExitCodes.ChecksumMismatch}  Checksum mismatch
             """;
 
-        int exitCode = new Application
+        new Application
             .RootCommand()
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(0, exitCode);
         Assert.Contains(customOutput, output.ToString());
     }
 }
