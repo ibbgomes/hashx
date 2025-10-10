@@ -31,6 +31,21 @@ internal static class Hashes
     internal const string SHA256 = "2ad4bd189e207f62c3ef73f253ca72f528f0b37593d1fe7cea1d69136397c26c";
 
     /// <summary>
+    /// The SHA3-256 hash.
+    /// </summary>
+    internal const string SHA3_256 = "d8f6dc349e954b41b37d4f1b0018ced70f02ec3ec9c90c8879b3b50c42589cd8";
+
+    /// <summary>
+    /// The SHA3-384 hash.
+    /// </summary>
+    internal const string SHA3_384 = "552a1423084266664d4bca20cc084670a076188a0a83a40a81d8fb57e12296d7eb982d023e76a30606b886d8228541c3";
+
+    /// <summary>
+    /// The SHA3-512 hash.
+    /// </summary>
+    internal const string SHA3_512 = "96dee00b3f1d5087e864b909a81289cc4448496c4282e1da8872a355d36fbb36ee0c5089ecc8b0afd7fefc18f50e74c30b45780b6f514a36ca5b13634f407690";
+
+    /// <summary>
     /// The SHA384 hash.
     /// </summary>
     internal const string SHA384 = "754b2a1b1ac5b9194c3e1a3cbcf9fbe1d8fc41328601d011926ee30cd9164e42eb009642afea9a809446025999539b62";

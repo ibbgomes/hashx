@@ -62,8 +62,8 @@ public sealed class RootActionTests
         ];
 
         string expectedOutput = $"""
-            XXH64	{Hashes.XXH64}
-            XXH3	{Hashes.XXH3}{Environment.NewLine}
+            XXH3	{Hashes.XXH3}
+            XXH64	{Hashes.XXH64}{Environment.NewLine}
             """;
 
         int exitCode = new Application
@@ -79,13 +79,16 @@ public sealed class RootActionTests
     /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the algorithms option is provided with a single valid value.
     /// </summary>
     [Theory]
-    [InlineData("-a", "crc32", Hashes.CRC32)]
-    [InlineData("-a", "crc64", Hashes.CRC64)]
     [InlineData("-a", "md5", Hashes.MD5)]
     [InlineData("-a", "sha1", Hashes.SHA1)]
     [InlineData("-a", "sha256", Hashes.SHA256)]
     [InlineData("-a", "sha384", Hashes.SHA384)]
     [InlineData("-a", "sha512", Hashes.SHA512)]
+    [InlineData("-a", "sha3_256", Hashes.SHA3_256)]
+    [InlineData("-a", "sha3_384", Hashes.SHA3_384)]
+    [InlineData("-a", "sha3_512", Hashes.SHA3_512)]
+    [InlineData("-a", "crc32", Hashes.CRC32)]
+    [InlineData("-a", "crc64", Hashes.CRC64)]
     [InlineData("-a", "xxh3", Hashes.XXH3)]
     [InlineData("-a", "xxh32", Hashes.XXH32)]
     [InlineData("-a", "xxh64", Hashes.XXH64)]

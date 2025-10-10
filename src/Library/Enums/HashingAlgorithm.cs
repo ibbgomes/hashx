@@ -31,6 +31,21 @@ public enum HashingAlgorithm
     SHA512,
 
     /// <summary>
+    /// The SHA3-256 algorithm.
+    /// </summary>
+    SHA3_256,
+
+    /// <summary>
+    /// The SHA3-384 algorithm.
+    /// </summary>
+    SHA3_384,
+
+    /// <summary>
+    /// The SHA3-512 algorithm.
+    /// </summary>
+    SHA3_512,
+
+    /// <summary>
     /// The CRC32 algorithm.
     /// </summary>
     CRC32,
@@ -39,6 +54,11 @@ public enum HashingAlgorithm
     /// The CRC64 algorithm.
     /// </summary>
     CRC64,
+
+    /// <summary>
+    /// The XXH3 algorithm.
+    /// </summary>
+    XXH3,
 
     /// <summary>
     /// The XXH32 algorithm.
@@ -54,9 +74,4 @@ public enum HashingAlgorithm
     /// The XXH128 algorithm.
     /// </summary>
     XXH128,
-
-    /// <summary>
-    /// The XXH3 algorithm.
-    /// </summary>
-    XXH3,
 }

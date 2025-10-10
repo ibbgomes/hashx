@@ -57,6 +57,54 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
+    /// Tests that <see cref="CryptographicHashingService.GetHash(FileInfo)"/> returns the expected SHA3-256 result.
+    /// </summary>
+    [Fact]
+    public void CryptographicHashingService_GetHash_SHA3_256()
+    {
+        CryptographicHashingService service = new(HashingAlgorithm.SHA3_256, SHA3_256.Create());
+
+        FileInfo fileInfo = new(Data.MockFilePath);
+
+        HashingResult result = service.GetHash(fileInfo);
+
+        Assert.Equal(HashingAlgorithm.SHA3_256, result.Algorithm);
+        Assert.Equal(Hashes.SHA3_256, result.Value);
+    }
+
+    /// <summary>
+    /// Tests that <see cref="CryptographicHashingService.GetHash(FileInfo)"/> returns the expected SHA3-384 result.
+    /// </summary>
+    [Fact]
+    public void CryptographicHashingService_GetHash_SHA3_384()
+    {
+        CryptographicHashingService service = new(HashingAlgorithm.SHA3_384, SHA3_384.Create());
+
+        FileInfo fileInfo = new(Data.MockFilePath);
+
+        HashingResult result = service.GetHash(fileInfo);
+
+        Assert.Equal(HashingAlgorithm.SHA3_384, result.Algorithm);
+        Assert.Equal(Hashes.SHA3_384, result.Value);
+    }
+
+    /// <summary>
+    /// Tests that <see cref="CryptographicHashingService.GetHash(FileInfo)"/> returns the expected SHA3-512 result.
+    /// </summary>
+    [Fact]
+    public void CryptographicHashingService_GetHash_SHA3_512()
+    {
+        CryptographicHashingService service = new(HashingAlgorithm.SHA3_512, SHA3_512.Create());
+
+        FileInfo fileInfo = new(Data.MockFilePath);
+
+        HashingResult result = service.GetHash(fileInfo);
+
+        Assert.Equal(HashingAlgorithm.SHA3_512, result.Algorithm);
+        Assert.Equal(Hashes.SHA3_512, result.Value);
+    }
+
+    /// <summary>
     /// Tests that <see cref="CryptographicHashingService.GetHash(FileInfo)"/> returns the expected SHA384 result.
     /// </summary>
     [Fact]

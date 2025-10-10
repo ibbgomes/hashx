@@ -16,6 +16,9 @@ public sealed class CryptographicHashingServiceFactoryTests
     [InlineData(HashingAlgorithm.SHA256)]
     [InlineData(HashingAlgorithm.SHA384)]
     [InlineData(HashingAlgorithm.SHA512)]
+    [InlineData(HashingAlgorithm.SHA3_256)]
+    [InlineData(HashingAlgorithm.SHA3_384)]
+    [InlineData(HashingAlgorithm.SHA3_512)]
     public void CryptographicHashingServiceFactory_Create_Expected(HashingAlgorithm algorithm)
     {
         CryptographicHashingService service = CryptographicHashingServiceFactory.Create(algorithm);

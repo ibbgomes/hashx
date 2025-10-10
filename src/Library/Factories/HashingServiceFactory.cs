@@ -16,7 +16,10 @@ public static class HashingServiceFactory
         HashingAlgorithm.SHA1 or
         HashingAlgorithm.SHA256 or
         HashingAlgorithm.SHA384 or
-        HashingAlgorithm.SHA512
+        HashingAlgorithm.SHA512 or
+        HashingAlgorithm.SHA3_256 or
+        HashingAlgorithm.SHA3_384 or
+        HashingAlgorithm.SHA3_512
             => CryptographicHashingServiceFactory.Create(algorithm),
 
         HashingAlgorithm.CRC32 or

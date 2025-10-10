@@ -21,6 +21,9 @@ internal static class CryptographicHashingServiceFactory
             HashingAlgorithm.SHA256 => SHA256.Create(),
             HashingAlgorithm.SHA384 => SHA384.Create(),
             HashingAlgorithm.SHA512 => SHA512.Create(),
+            HashingAlgorithm.SHA3_256 => SHA3_256.Create(),
+            HashingAlgorithm.SHA3_384 => SHA3_384.Create(),
+            HashingAlgorithm.SHA3_512 => SHA3_512.Create(),
         };
 
         return new(algorithm, implementation);

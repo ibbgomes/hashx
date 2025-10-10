@@ -17,6 +17,10 @@ dotnet_diagnostic.CS8509.severity = none
 dotnet_diagnostic.CA5350.severity = none
 dotnet_diagnostic.CA5351.severity = none
 
+[Library/Enums/HashingAlgorithm.cs]
+
+dotnet_diagnostic.CA1707.severity = none
+
 [Application/Program.cs]
 
 dotnet_diagnostic.S6966.severity = none

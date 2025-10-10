@@ -28,7 +28,7 @@ public sealed class CustomHelpActionTests
 
         string customOutput = $"""
             Algorithms:
-              crc32, crc64, md5, sha1, sha256, sha384, sha512, xxh128, xxh3, xxh32, xxh64
+              crc32, crc64, md5, sha1, sha256, sha3_256, sha3_384, sha3_512, sha384, sha512, xxh128, xxh3, xxh32, xxh64
 
             Exit Codes:
               {ExitCodes.Success}  Success
