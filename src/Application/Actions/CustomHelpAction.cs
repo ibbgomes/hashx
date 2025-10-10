@@ -34,7 +34,7 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
 
         string algorithmsList = string.Join(", ", algorithms);
 
-        context.Output.WriteLine($"Algorithms:");
+        context.Output.WriteLine("Algorithms:");
         context.Output.WriteLine($"  {algorithmsList}");
     }
 
