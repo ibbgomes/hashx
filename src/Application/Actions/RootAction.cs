@@ -96,9 +96,11 @@ internal sealed class RootAction : SynchronousCommandLineAction
             return;
         }
 
+        int width = results.Max(r => r.Algorithm.ToString().Length) + Formatting.Padding;
+
         foreach (HashingResult result in results)
         {
-            outputWriter.WriteLine($"{result.Algorithm}\t{result.Value}");
+            outputWriter.WriteLine(result.Algorithm.ToString().PadRight(width) + result.Value);
         }
     }
 
