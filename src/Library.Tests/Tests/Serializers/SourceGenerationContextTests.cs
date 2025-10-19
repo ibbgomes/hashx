@@ -1,17 +1,18 @@
 ﻿namespace Hashx.Library.Tests;
 
+using System.Text.Json;
 using Xunit;
 
 /// <summary>
-/// Defines unit tests for <see cref="JsonSerializer"/>.
+/// Defines unit tests for <see cref="SourceGenerationContext"/>.
 /// </summary>
-public sealed class JsonSerializerTests
+public sealed class SourceGenerationContextTests
 {
     /// <summary>
-    /// Tests the <see cref="JsonSerializer.Serialize(object)"/> returns the expected <see cref="string"/>.
+    /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="ExportableResult"/> produces the expected JSON string.
     /// </summary>
     [Fact]
-    public void JsonSerializer_Serialize_Expected()
+    public void SourceGenerationContext_ExportableResult_Expected()
     {
         FileInfo fileInfo = new(Data.MockFilePath);
 
@@ -22,7 +23,7 @@ public sealed class JsonSerializerTests
 
         ExportableResult exportableResult = new(fileInfo, results);
 
-        string actual = JsonSerializer.Serialize(exportableResult);
+        string actual = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
 
         const string expected = """
             {

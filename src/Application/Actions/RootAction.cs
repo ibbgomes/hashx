@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.Text.Json;
 using Hashx.Library;
 
 /// <summary>
@@ -108,7 +109,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         ExportableResult exportableResult = new(input, results);
 
-        string json = JsonSerializer.Serialize(exportableResult);
+        string json = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
 
         outputWriter.WriteLine(json);
     }
