@@ -8,10 +8,10 @@ public class HashingResult(HashingAlgorithm algorithm, string value)
     /// <summary>
     /// Gets the hashing operation algorithm.
     /// </summary>
-    public HashingAlgorithm Algorithm { get; } = algorithm;
+    public HashingAlgorithm Algorithm => algorithm;
 
     /// <summary>
     /// Gets the hashing operation value.
     /// </summary>
-    public string Value { get; } = value;
+    public string Value => value;
 }

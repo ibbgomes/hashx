@@ -11,10 +11,10 @@ internal sealed class InvocationContext(ParseResult parseResult)
     /// <summary>
     /// Gets the error text writer.
     /// </summary>
-    internal TextWriter Error { get; } = parseResult.InvocationConfiguration.Error;
+    internal TextWriter Error => parseResult.InvocationConfiguration.Error;
 
     /// <summary>
     /// Gets the output text writer.
     /// </summary>
-    internal TextWriter Output { get; } = parseResult.InvocationConfiguration.Output;
+    internal TextWriter Output => parseResult.InvocationConfiguration.Output;
 }

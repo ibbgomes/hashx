@@ -11,20 +11,20 @@ internal sealed class RootArguments(ParseResult parseResult)
     /// <summary>
     /// Gets the hashing algorithms.
     /// </summary>
-    internal HashingAlgorithm[] Algorithms { get; } = parseResult.GetRequiredValue(RootCommand.AlgorithmsOption);
+    internal HashingAlgorithm[] Algorithms => parseResult.GetRequiredValue(RootCommand.AlgorithmsOption);
 
     /// <summary>
     /// Gets the checksum that should be compared against the results.
     /// </summary>
-    internal string? Checksum { get; } = parseResult.GetValue(RootCommand.CompareOption);
+    internal string? Checksum => parseResult.GetValue(RootCommand.CompareOption);
 
     /// <summary>
     /// Gets the input file.
     /// </summary>
-    internal FileInfo Input { get; } = parseResult.GetRequiredValue(RootCommand.InputArgument);
+    internal FileInfo Input => parseResult.GetRequiredValue(RootCommand.InputArgument);
 
     /// <summary>
     /// Gets a value indicating whether the results should be printed in JSON.
     /// </summary>
-    internal bool Json { get; } = parseResult.GetValue(RootCommand.JsonOption);
+    internal bool Json => parseResult.GetValue(RootCommand.JsonOption);
 }

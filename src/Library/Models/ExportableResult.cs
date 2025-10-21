@@ -8,10 +8,10 @@ public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> resu
     /// <summary>
     /// Gets the filename.
     /// </summary>
-    public string Filename { get; } = fileInfo.Name;
+    public string Filename => fileInfo.Name;
 
     /// <summary>
     /// Gets the hashes.
     /// </summary>
-    public IDictionary<string, string> Hashes { get; } = results.ToDictionary(r => r.Algorithm.ToString().ToLowerInvariant(), r => r.Value);
+    public IDictionary<string, string> Hashes => results.ToDictionary(r => r.Algorithm.ToString().ToLowerInvariant(), r => r.Value);
 }
