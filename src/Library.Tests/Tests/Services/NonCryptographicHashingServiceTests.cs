@@ -16,7 +16,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.CRC32, new Crc32());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -32,7 +32,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.CRC64, new Crc64());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -48,7 +48,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.XXH128, new XxHash128());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -64,7 +64,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.XXH3, new XxHash3());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -80,7 +80,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.XXH32, new XxHash32());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -96,7 +96,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         NonCryptographicHashingService service = new(HashingAlgorithm.XXH64, new XxHash64());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 

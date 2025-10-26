@@ -16,7 +16,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.MD5, MD5.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -32,7 +32,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA1, SHA1.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -48,7 +48,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA256, SHA256.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -64,7 +64,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA3_256, SHA3_256.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -80,7 +80,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA3_384, SHA3_384.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -96,7 +96,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA3_512, SHA3_512.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -112,7 +112,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA384, SHA384.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 
@@ -128,7 +128,7 @@ public sealed class CryptographicHashingServiceTests
     {
         CryptographicHashingService service = new(HashingAlgorithm.SHA512, SHA512.Create());
 
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult result = service.GetHash(fileInfo);
 

@@ -23,7 +23,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "xxh3"
@@ -55,7 +55,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "xxh64",
@@ -104,7 +104,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             option,
             value,
         ];
@@ -135,7 +135,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "-c",
@@ -171,7 +171,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "-c",
@@ -204,7 +204,7 @@ public sealed class RootActionTests
 
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "--json",
@@ -236,7 +236,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
         ];
 
@@ -255,7 +255,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "invalid"
         ];
@@ -275,7 +275,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "--algorithms",
             "xxh3"
         ];
@@ -295,7 +295,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "-a",
@@ -317,7 +317,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "-c",
@@ -340,7 +340,7 @@ public sealed class RootActionTests
     {
         string[] args =
         [
-            Data.MockFilePath,
+            Data.InputFilePath,
             "-a",
             "xxh3",
             "--compare",

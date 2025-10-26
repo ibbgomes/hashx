@@ -1,12 +1,12 @@
 ﻿namespace Hashx.Application.Tests;
 
 /// <summary>
-/// Defines file paths used in unit tests.
+/// Defines data used in unit tests.
 /// </summary>
 internal static class Data
 {
     /// <summary>
-    /// The mock file path.
+    /// The input file path.
     /// </summary>
-    internal const string MockFilePath = "Data/mock.json";
+    internal const string InputFilePath = "Data/mock.json";
 }

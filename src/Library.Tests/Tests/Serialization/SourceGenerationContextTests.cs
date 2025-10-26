@@ -14,7 +14,7 @@ public sealed class SourceGenerationContextTests
     [Fact]
     public void SourceGenerationContext_ExportableResult_Expected()
     {
-        FileInfo fileInfo = new(Data.MockFilePath);
+        FileInfo fileInfo = new(Data.InputFilePath);
 
         HashingResult[] results =
         [
