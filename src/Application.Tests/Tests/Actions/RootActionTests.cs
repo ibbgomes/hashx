@@ -214,7 +214,7 @@ public sealed class RootActionTests
             {
               "filename": "mock.json",
               "hashes": {
-                "xxh3": "bded7fd1ae43547e"
+                "xxh3": "{{Hashes.XXH3}}"
               }
             }{{Environment.NewLine}}
             """;

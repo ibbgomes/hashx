@@ -25,11 +25,11 @@ public sealed class SourceGenerationContextTests
 
         string actual = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
 
-        const string expected = """
+        const string expected = $$"""
             {
               "filename": "mock.json",
               "hashes": {
-                "xxh3": "bded7fd1ae43547e"
+                "xxh3": "{{Hashes.XXH3}}"
               }
             }
             """;
