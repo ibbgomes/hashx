@@ -49,7 +49,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
         }
         catch (Exception e)
         {
-            context.Output.WriteErrorLine($"An error occurred: {e.Message}.");
+            context.Output.WriteLine($"An error occurred: {e.Message}.");
 
             return ExitCodes.ProcessingError;
         }
@@ -80,12 +80,12 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         if (match is not null)
         {
-            outputWriter.WriteSuccessLine($"{match.Algorithm} result matches the checksum.");
+            outputWriter.WriteLine($"{match.Algorithm} result matches the checksum.");
 
             return;
         }
 
-        errorWriter.WriteErrorLine("No result matches the checksum.");
+        errorWriter.WriteLine("No result matches the checksum.");
     }
 
     private static void PrintResults(TextWriter outputWriter, IReadOnlyCollection<HashingResult> results)
