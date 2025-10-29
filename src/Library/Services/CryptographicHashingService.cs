@@ -8,18 +8,13 @@ using System.Security.Cryptography;
 /// <seealso cref="IHashingService"/>
 internal sealed class CryptographicHashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
 {
-    private readonly HashAlgorithm implementation = implementation;
-
     public HashingAlgorithm Algorithm => algorithm;
 
     public HashingResult GetHash(FileInfo fileInfo)
     {
-        using FileStream fileStream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
+        using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-        string hash = this
-            .implementation
-            .ComputeHash(fileStream)
-            .ToHexString();
+        string hash = implementation.ComputeHash(stream).ToHexString();
 
         return new(this.Algorithm, hash);
     }
