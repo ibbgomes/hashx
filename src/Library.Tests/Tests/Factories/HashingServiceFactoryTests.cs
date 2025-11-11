@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using FluentAssertions;
 using Xunit;
 
 /// <summary>
@@ -8,24 +7,21 @@ using Xunit;
 /// </summary>
 public sealed class HashingServiceFactoryTests
 {
-    #region Public Methods
-
     /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns an <see cref="InvalidOperationException"/>.
+    /// Tests that <see cref="HashingServiceFactory.Create(HashingAlgorithm)"/> returns a <see cref="NotSupportedException"/>.
     /// </summary>
     [Fact]
-    public void HashingServiceFactory_GetInstance_Exception()
+    public void HashingServiceFactory_Create_Exception()
     {
-        const HashingAlgorithm algorithm = (HashingAlgorithm)5;
+        const HashingAlgorithm algorithm = (HashingAlgorithm)14;
 
-        Action action = () => HashingServiceFactory.GetInstance(algorithm);
+        static void create() => HashingServiceFactory.Create(algorithm);
 
-        action.Should().Throw<InvalidOperationException>();
+        Assert.Throws<NotSupportedException>(create);
     }
 
     /// <summary>
-    /// Tests that <see cref="HashingServiceFactory.GetInstance(HashingAlgorithm)"/> returns the
-    /// expected <see cref="IHashingService"/>.
+    /// Tests that <see cref="HashingServiceFactory.Create(HashingAlgorithm)"/> returns the expected <see cref="IHashingService"/>.
     /// </summary>
     [Theory]
     [InlineData(HashingAlgorithm.MD5)]
@@ -33,12 +29,19 @@ public sealed class HashingServiceFactoryTests
     [InlineData(HashingAlgorithm.SHA256)]
     [InlineData(HashingAlgorithm.SHA384)]
     [InlineData(HashingAlgorithm.SHA512)]
-    public void HashingServiceFactory_GetInstance_Expected(HashingAlgorithm algorithm)
+    [InlineData(HashingAlgorithm.SHA3_256)]
+    [InlineData(HashingAlgorithm.SHA3_384)]
+    [InlineData(HashingAlgorithm.SHA3_512)]
+    [InlineData(HashingAlgorithm.CRC32)]
+    [InlineData(HashingAlgorithm.CRC64)]
+    [InlineData(HashingAlgorithm.XXH3)]
+    [InlineData(HashingAlgorithm.XXH32)]
+    [InlineData(HashingAlgorithm.XXH64)]
+    [InlineData(HashingAlgorithm.XXH128)]
+    public void HashingServiceFactory_Create_Expected(HashingAlgorithm algorithm)
     {
-        IHashingService service = HashingServiceFactory.GetInstance(algorithm);
+        IHashingService service = HashingServiceFactory.Create(algorithm);
 
-        service.Algorithm.Should().Be(algorithm);
+        Assert.Equal(algorithm, service.Algorithm);
     }
-
-    #endregion
 }

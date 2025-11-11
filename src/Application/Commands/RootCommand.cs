@@ -1,6 +1,7 @@
 ﻿namespace Hashx.Application;
 
 using System.CommandLine;
+using System.CommandLine.Help;
 using Hashx.Library;
 
 /// <summary>
@@ -9,38 +10,31 @@ using Hashx.Library;
 /// <seealso cref="System.CommandLine.RootCommand"/>
 internal sealed class RootCommand : System.CommandLine.RootCommand
 {
-    #region Fields
-
-    private readonly Option<HashingAlgorithm[]> algorithmsOption = new(["-a", "--algorithms"])
+    internal static readonly Option<HashingAlgorithm[]> AlgorithmsOption = new("--algorithms", "-a")
     {
-        Description = "Specify the hashing algorithms (md5, sha1, sha256, sha384 or sha512)",
-        IsRequired = true,
+        Description = "Set the hashing algorithms",
+        Required = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
     };
 
-    private readonly Option<string> compareOption = new(["-c", "--compare"])
+    internal static readonly Option<string> CompareOption = new("--compare", "-c")
     {
-        Description = "Compare the results against a checksum",
-        IsRequired = false,
+        Description = "Compare results against a checksum",
+        Required = false,
     };
 
-    private readonly Argument<FileInfo> inputArgument = new Argument<FileInfo>()
+    internal static readonly Argument<FileInfo> InputArgument = new Argument<FileInfo>("input")
     {
-        Name = "input",
-        Description = "Specify the input file path",
+        Description = "Path to the input file",
         Arity = ArgumentArity.ExactlyOne,
-    }.ExistingOnly();
+    }.AcceptExistingOnly();
 
-    private readonly Option<bool> jsonOption = new("--json")
+    internal static readonly Option<bool> JsonOption = new("--json")
     {
-        Description = "Print the results in JSON format",
-        IsRequired = false,
+        Description = "Output results in JSON",
+        Required = false,
     };
-
-    #endregion
-
-    #region Constructors
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RootCommand"/> class.
@@ -48,41 +42,37 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     public RootCommand()
         : base("A cross-platform, command-line interface, checksum utility")
     {
-        this.AddArgument(this.inputArgument);
+        this.Arguments.Add(InputArgument);
 
-        this.AddOption(this.algorithmsOption);
+        this.Options.Add(AlgorithmsOption);
 
-        this.AddOption(this.compareOption);
+        this.Options.Add(CompareOption);
 
-        this.AddOption(this.jsonOption);
+        this.Options.Add(JsonOption);
 
-        this.AddValidator(
-            (result) =>
+        this.Validators.Add(
+            result =>
             {
-                string? compare = result.GetValueForOption(this.compareOption);
+                string? compare = result.GetValue(CompareOption);
 
-                bool json = result.GetValueForOption(this.jsonOption);
+                bool json = result.GetValue(JsonOption);
 
                 if (compare is not null && json)
                 {
-                    result.ErrorMessage = "Options '--compare' and '--json' cannot be used together.";
+                    result.AddError("Options '--compare' and '--json' cannot be used together.");
                 }
             });
 
-        this.SetHandler(
-            (context) =>
+        this.SetAction(result => new RootAction().Invoke(result));
+
+        foreach (Option option in this.Options)
+        {
+            if (option is HelpOption { Action: HelpAction helpAction })
             {
-                RootArguments args = new()
-                {
-                    Input = context.ParseResult.GetValueForArgument(this.inputArgument),
-                    Algorithms = context.ParseResult.GetValueForOption(this.algorithmsOption)!,
-                    Checksum = context.ParseResult.GetValueForOption(this.compareOption),
-                    Json = context.ParseResult.GetValueForOption(this.jsonOption),
-                };
+                option.Action = new CustomHelpAction(helpAction);
 
-                RootHandler.Handle(args, context.Console);
-            });
+                break;
+            }
+        }
     }
-
-    #endregion
 }

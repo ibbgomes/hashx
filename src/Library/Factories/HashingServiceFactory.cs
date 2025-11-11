@@ -1,26 +1,35 @@
 ﻿namespace Hashx.Library;
 
 /// <summary>
-/// Defines an <see cref="IHashingService"/> factory.
+/// Defines a factory for creating instances of <see cref="IHashingService"/>.
 /// </summary>
 public static class HashingServiceFactory
 {
-    #region Public Methods
-
     /// <summary>
-    /// Gets an instance of an <see cref="IHashingService"/> through the specified <see cref="HashingAlgorithm"/>.
+    /// Creates an instance of <see cref="IHashingService"/> based on the specified <see cref="HashingAlgorithm"/>.
     /// </summary>
-    /// <param name="algorithm">The hashing algorithm.</param>
-    /// <returns>The hashing service instance.</returns>
-    public static IHashingService GetInstance(HashingAlgorithm algorithm) => algorithm switch
+    /// <param name="algorithm">The algorithm.</param>
+    /// <returns>The hashing service.</returns>
+    public static IHashingService Create(HashingAlgorithm algorithm) => algorithm switch
     {
-        HashingAlgorithm.MD5 => new Md5Service(),
-        HashingAlgorithm.SHA1 => new Sha1Service(),
-        HashingAlgorithm.SHA256 => new Sha256Service(),
-        HashingAlgorithm.SHA384 => new Sha384Service(),
-        HashingAlgorithm.SHA512 => new Sha512Service(),
-        _ => throw new InvalidOperationException("The specified algorithm is invalid."),
-    };
+        HashingAlgorithm.MD5 or
+        HashingAlgorithm.SHA1 or
+        HashingAlgorithm.SHA256 or
+        HashingAlgorithm.SHA384 or
+        HashingAlgorithm.SHA512 or
+        HashingAlgorithm.SHA3_256 or
+        HashingAlgorithm.SHA3_384 or
+        HashingAlgorithm.SHA3_512
+            => CryptographicHashingServiceFactory.Create(algorithm),
 
-    #endregion
+        HashingAlgorithm.CRC32 or
+        HashingAlgorithm.CRC64 or
+        HashingAlgorithm.XXH128 or
+        HashingAlgorithm.XXH3 or
+        HashingAlgorithm.XXH32 or
+        HashingAlgorithm.XXH64
+            => NonCryptographicHashingServiceFactory.Create(algorithm),
+
+        _ => throw new NotSupportedException($"The specified algorithm '{algorithm}' is not supported.")
+    };
 }

@@ -4,15 +4,26 @@
 
 dotnet_diagnostic.IDE0130.severity = none
 
-[/Library/Services/*.cs]
-
-dotnet_diagnostic.CA2000.severity = none
-dotnet_diagnostic.CA5350.severity = none
-dotnet_diagnostic.CA5351.severity = none
-
 [*/Tests/*/*.cs]
 
 dotnet_diagnostic.CA1707.severity = none
+
+[{Library/Factories/CryptographicHashingServiceFactory.cs,Library/Factories/NonCryptographicHashingServiceFactory.cs}]
+
+dotnet_diagnostic.CS8509.severity = none
+
+[{Library/Factories/CryptographicHashingServiceFactory.cs,Library.Tests/Tests/Services/CryptographicHashingServiceTests.cs}]
+
+dotnet_diagnostic.CA5350.severity = none
+dotnet_diagnostic.CA5351.severity = none
+
+[Library/Enums/HashingAlgorithm.cs]
+
+dotnet_diagnostic.CA1707.severity = none
+
+[Application/Program.cs]
+
+dotnet_diagnostic.S6966.severity = none
 
 # Require file scoped namespaces
 

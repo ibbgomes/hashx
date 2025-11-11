@@ -5,17 +5,13 @@
 /// </summary>
 public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> results)
 {
-    #region Public Properties
-
     /// <summary>
     /// Gets the filename.
     /// </summary>
-    public string Filename { get; } = fileInfo.Name;
+    public string Filename => fileInfo.Name;
 
     /// <summary>
     /// Gets the hashes.
     /// </summary>
-    public IEnumerable<HashingResult> Hashes { get; } = results;
-
-    #endregion
+    public IDictionary<string, string> Hashes => results.ToDictionary(r => r.Algorithm.ToString().ToLowerInvariant(), r => r.Value);
 }
