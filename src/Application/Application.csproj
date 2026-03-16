@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<AssemblyName>Hashx</AssemblyName>
+		<AssemblyName>hashx</AssemblyName>
 		<RootNamespace>Hashx.Application</RootNamespace>
 	</PropertyGroup>
 

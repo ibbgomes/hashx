@@ -11,7 +11,7 @@ Description:
   A cross-platform, command-line interface, checksum utility
 
 Usage:
-  Hashx <input> [options]
+  hashx <input> [options]
 
 Arguments:
   <input>  Path to the input file
