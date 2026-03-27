@@ -1,7 +1,5 @@
 ﻿namespace Hashx.Application;
 
-using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Text.Json;
@@ -18,11 +16,15 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         InvocationContext context = new(parseResult);
 
+        RootArguments arguments = new(parseResult);
+
+        ChecksumService checksumService = new();
+
         try
         {
-            RootArguments arguments = new(parseResult);
+            using Stream stream = arguments.Input.OpenRead();
 
-            IReadOnlyCollection<HashingResult> results = GetResults(arguments.Input, arguments.Algorithms);
+            IReadOnlyCollection<HashingResult> results = checksumService.GetChecksums(stream, arguments.Algorithms);
 
             if (arguments.Json)
             {
@@ -53,27 +55,6 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
             return ExitCodes.ProcessingError;
         }
-    }
-
-    private static ReadOnlyCollection<HashingResult> GetResults(FileInfo input, IEnumerable<HashingAlgorithm> algorithms)
-    {
-        IEnumerable<IHashingService> services = algorithms
-            .Distinct()
-            .Select(HashingServiceFactory.Create);
-
-        ConcurrentBag<HashingResult> results = [];
-
-        Parallel.ForEach(services, service =>
-        {
-            HashingResult result = service.GetHash(input);
-
-            results.Add(result);
-        });
-
-        return results
-            .OrderBy(x => x.Algorithm)
-            .ToList()
-            .AsReadOnly();
     }
 
     private static void PrintMatch(TextWriter outputWriter, TextWriter errorWriter, HashingResult? match)

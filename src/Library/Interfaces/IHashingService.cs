@@ -1,19 +1,25 @@
 ﻿namespace Hashx.Library;
 
 /// <summary>
-/// Defines the interface of a hashing service.
+/// Defines a service for computing hashes incrementally.
 /// </summary>
-public interface IHashingService
+/// <seealso cref="IDisposable"/>
+internal interface IHashingService : IDisposable
 {
     /// <summary>
-    /// Gets the hashing service algorithm.
+    /// Gets the algorithm used by this service.
     /// </summary>
     HashingAlgorithm Algorithm { get; }
 
     /// <summary>
-    /// Gets a <see cref="HashingResult"/> from the specified <see cref="FileInfo"/>.
+    /// Appends the specified data to the hash computation.
     /// </summary>
-    /// <param name="fileInfo">The file information.</param>
+    /// <param name="data">The data.</param>
+    void Append(ReadOnlySpan<byte> data);
+
+    /// <summary>
+    /// Gets the <see cref="HashingResult"/> and resets the hash computation.
+    /// </summary>
     /// <returns>The hashing result.</returns>
-    HashingResult GetHash(FileInfo fileInfo);
+    HashingResult GetHashAndReset();
 }

@@ -6,15 +6,21 @@ using System.Security.Cryptography;
 /// Defines a cryptographic implementation of <see cref="IHashingService"/>.
 /// </summary>
 /// <seealso cref="IHashingService"/>
-internal sealed class CryptographicHashingService(HashingAlgorithm algorithm, HashAlgorithm implementation) : IHashingService
+internal sealed class CryptographicHashingService(HashingAlgorithm algorithm, IncrementalHash implementation) : IHashingService
 {
+    /// <inheritdoc/>
     public HashingAlgorithm Algorithm => algorithm;
 
-    public HashingResult GetHash(FileInfo fileInfo)
-    {
-        using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
+    /// <inheritdoc/>
+    public void Append(ReadOnlySpan<byte> data) => implementation.AppendData(data);
 
-        string hash = implementation.ComputeHash(stream).ToHexString();
+    /// <inheritdoc/>
+    public void Dispose() => implementation.Dispose();
+
+    /// <inheritdoc/>
+    public HashingResult GetHashAndReset()
+    {
+        string hash = implementation.GetHashAndReset().ToHexString();
 
         return new(this.Algorithm, hash);
     }

@@ -3,14 +3,14 @@
 /// <summary>
 /// Defines a factory for creating instances of <see cref="IHashingService"/>.
 /// </summary>
-public static class HashingServiceFactory
+internal static class HashingServiceFactory
 {
     /// <summary>
     /// Creates an instance of <see cref="IHashingService"/> based on the specified <see cref="HashingAlgorithm"/>.
     /// </summary>
     /// <param name="algorithm">The algorithm.</param>
     /// <returns>The hashing service.</returns>
-    public static IHashingService Create(HashingAlgorithm algorithm) => algorithm switch
+    internal static IHashingService Create(HashingAlgorithm algorithm) => algorithm switch
     {
         HashingAlgorithm.MD5 or
         HashingAlgorithm.SHA1 or

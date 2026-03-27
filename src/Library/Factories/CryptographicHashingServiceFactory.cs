@@ -14,17 +14,19 @@ internal static class CryptographicHashingServiceFactory
     /// <returns>The cryptographic hashing service.</returns>
     internal static CryptographicHashingService Create(HashingAlgorithm algorithm)
     {
-        HashAlgorithm implementation = algorithm switch
+        HashAlgorithmName algorithmName = algorithm switch
         {
-            HashingAlgorithm.MD5 => MD5.Create(),
-            HashingAlgorithm.SHA1 => SHA1.Create(),
-            HashingAlgorithm.SHA256 => SHA256.Create(),
-            HashingAlgorithm.SHA384 => SHA384.Create(),
-            HashingAlgorithm.SHA512 => SHA512.Create(),
-            HashingAlgorithm.SHA3_256 => SHA3_256.Create(),
-            HashingAlgorithm.SHA3_384 => SHA3_384.Create(),
-            HashingAlgorithm.SHA3_512 => SHA3_512.Create(),
+            HashingAlgorithm.MD5 => HashAlgorithmName.MD5,
+            HashingAlgorithm.SHA1 => HashAlgorithmName.SHA1,
+            HashingAlgorithm.SHA256 => HashAlgorithmName.SHA256,
+            HashingAlgorithm.SHA384 => HashAlgorithmName.SHA384,
+            HashingAlgorithm.SHA512 => HashAlgorithmName.SHA512,
+            HashingAlgorithm.SHA3_256 => HashAlgorithmName.SHA3_256,
+            HashingAlgorithm.SHA3_384 => HashAlgorithmName.SHA3_384,
+            HashingAlgorithm.SHA3_512 => HashAlgorithmName.SHA3_512,
         };
+
+        IncrementalHash implementation = IncrementalHash.CreateHash(algorithmName);
 
         return new(algorithm, implementation);
     }
