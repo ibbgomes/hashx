@@ -8,15 +8,19 @@ using System.IO.Hashing;
 /// <seealso cref="IHashingService"/>
 internal sealed class NonCryptographicHashingService(HashingAlgorithm algorithm, NonCryptographicHashAlgorithm implementation) : IHashingService
 {
+    /// <inheritdoc/>
     public HashingAlgorithm Algorithm => algorithm;
 
-    public HashingResult GetHash(FileInfo fileInfo)
+    /// <inheritdoc/>
+    public void Append(ReadOnlySpan<byte> data) => implementation.Append(data);
+
+    /// <inheritdoc/>
+    public void Dispose() { }
+
+    /// <inheritdoc/>
+    public HashingResult GetHashAndReset()
     {
-        using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-        implementation.Append(stream);
-
-        string hash = implementation.GetCurrentHash().ToHexString();
+        string hash = implementation.GetHashAndReset().ToHexString();
 
         return new(this.Algorithm, hash);
     }
