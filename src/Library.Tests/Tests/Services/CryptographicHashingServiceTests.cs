@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System.IO;
 using System.Security.Cryptography;
 using Xunit;
 
@@ -17,9 +16,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.MD5, IncrementalHash.CreateHash(HashAlgorithmName.MD5));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -35,9 +32,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA1, IncrementalHash.CreateHash(HashAlgorithmName.SHA1));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -53,9 +48,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA256, IncrementalHash.CreateHash(HashAlgorithmName.SHA256));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -71,9 +64,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA3_256, IncrementalHash.CreateHash(HashAlgorithmName.SHA3_256));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -89,9 +80,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA3_384, IncrementalHash.CreateHash(HashAlgorithmName.SHA3_384));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -107,9 +96,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA3_512, IncrementalHash.CreateHash(HashAlgorithmName.SHA3_512));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -125,9 +112,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA384, IncrementalHash.CreateHash(HashAlgorithmName.SHA384));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -143,9 +128,7 @@ public sealed class CryptographicHashingServiceTests
     {
         using CryptographicHashingService service = new(HashingAlgorithm.SHA512, IncrementalHash.CreateHash(HashAlgorithmName.SHA512));
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 

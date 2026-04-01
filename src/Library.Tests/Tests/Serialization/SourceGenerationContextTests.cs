@@ -14,20 +14,20 @@ public sealed class SourceGenerationContextTests
     [Fact]
     public void SourceGenerationContext_ExportableResult_Expected()
     {
-        FileInfo fileInfo = new(Data.InputFilePath);
+        FileInfo file = new("dummy.json");
 
         HashingResult[] results =
         [
             new(HashingAlgorithm.XXH3, Hashes.XXH3),
         ];
 
-        ExportableResult exportableResult = new(fileInfo, results);
+        ExportableResult exportableResult = new(file, results);
 
         string actual = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
 
         const string expected = $$"""
             {
-              "filename": "mock.json",
+              "filename": "dummy.json",
               "hashes": {
                 "xxh3": "{{Hashes.XXH3}}"
               }

@@ -15,9 +15,7 @@ public sealed class ChecksumServiceTests
     {
         ChecksumService service = new();
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        MemoryStream stream = new(data);
+        using MemoryStream stream = new(Input.Bytes);
 
         HashingResult result = service.GetChecksums(stream, HashingAlgorithm.XXH3).First();
 

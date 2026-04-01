@@ -1,6 +1,5 @@
 ﻿namespace Hashx.Library.Tests;
 
-using System.IO;
 using System.IO.Hashing;
 using Xunit;
 
@@ -17,9 +16,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.CRC32, new Crc32());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -35,9 +32,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.CRC64, new Crc64());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -53,9 +48,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.XXH128, new XxHash128());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -71,9 +64,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.XXH3, new XxHash3());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -89,9 +80,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.XXH32, new XxHash32());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 
@@ -107,9 +96,7 @@ public sealed class NonCryptographicHashingServiceTests
     {
         using NonCryptographicHashingService service = new(HashingAlgorithm.XXH64, new XxHash64());
 
-        byte[] data = File.ReadAllBytes(Data.InputFilePath);
-
-        service.Append(data);
+        service.Append(Input.Bytes);
 
         HashingResult result = service.GetHashAndReset();
 

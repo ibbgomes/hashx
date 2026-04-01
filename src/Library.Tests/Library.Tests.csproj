@@ -18,10 +18,4 @@
 		<ProjectReference Include="..\Library\Library.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Update="Data\mock.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 </Project>
