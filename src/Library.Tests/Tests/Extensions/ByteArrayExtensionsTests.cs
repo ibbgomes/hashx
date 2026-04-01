@@ -1,7 +1,7 @@
 ﻿namespace Hashx.Library.Tests;
 
-using Xunit;
 using Hashx.Library;
+using Xunit;
 
 /// <summary>
 /// Defines unit tests for <see cref="ByteArrayExtensions"/>.
@@ -14,11 +14,9 @@ public sealed class ByteArrayExtensionsTests
     [Fact]
     public void ByteArrayExtensions_ToHexString_Expected()
     {
-        byte[] bytes = [0x00, 0x01, 0x02, 0x03];
-
         const string expected = "00010203";
 
-        string actual = bytes.ToHexString();
+        string actual = Input.Bytes.ToHexString();
 
         Assert.Equal(expected, actual);
     }
