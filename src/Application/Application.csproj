@@ -18,4 +18,8 @@
 		<ProjectReference Include="..\Library\Library.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="Hashx.Application.Tests" />
+	</ItemGroup>
+
 </Project>
