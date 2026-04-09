@@ -1,14 +1,16 @@
-﻿namespace Hashx.Library;
+﻿namespace Hashx.Application;
+
+using Hashx.Library;
 
 /// <summary>
-/// Defines an exportable result.
+/// Defines a checksum report.
 /// </summary>
-public class ExportableResult(FileInfo? fileInfo, IEnumerable<HashingResult> results)
+internal sealed class ChecksumReport(FileInfo? file, IEnumerable<HashingResult> results)
 {
     /// <summary>
     /// Gets the source.
     /// </summary>
-    public string Source => fileInfo?.Name ?? "stdin";
+    public string Source => file?.Name ?? "stdin";
 
     /// <summary>
     /// Gets the hashes.
