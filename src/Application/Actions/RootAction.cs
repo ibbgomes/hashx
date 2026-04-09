@@ -103,9 +103,9 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
     private static void PrintResultsAsJson(TextWriter outputWriter, FileInfo? input, IReadOnlyCollection<HashingResult> results)
     {
-        ExportableResult exportableResult = new(input, results);
+        ChecksumReport report = new(input, results);
 
-        string json = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
+        string json = JsonSerializer.Serialize(report, SourceGenerationContext.Default.ChecksumReport);
 
         outputWriter.WriteLine(json);
     }

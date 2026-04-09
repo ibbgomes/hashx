@@ -1,6 +1,7 @@
-﻿namespace Hashx.Library.Tests;
+﻿namespace Hashx.Application.Tests;
 
 using System.Text.Json;
+using Hashx.Library;
 using Xunit;
 
 /// <summary>
@@ -9,10 +10,10 @@ using Xunit;
 public sealed class SourceGenerationContextTests
 {
     /// <summary>
-    /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="ExportableResult"/> produces the expected JSON string.
+    /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="ChecksumReport"/> produces the expected JSON string.
     /// </summary>
     [Fact]
-    public void SourceGenerationContext_ExportableResult_Expected()
+    public void SourceGenerationContext_ChecksumReport_Expected()
     {
         FileInfo file = new("dummy.json");
 
@@ -21,9 +22,9 @@ public sealed class SourceGenerationContextTests
             new(HashingAlgorithm.XXH3, Hashes.XXH3),
         ];
 
-        ExportableResult exportableResult = new(file, results);
+        ChecksumReport report = new(file, results);
 
-        string actual = JsonSerializer.Serialize(exportableResult, SourceGenerationContext.Default.ExportableResult);
+        string actual = JsonSerializer.Serialize(report, SourceGenerationContext.Default.ChecksumReport);
 
         const string expected = $$"""
             {
