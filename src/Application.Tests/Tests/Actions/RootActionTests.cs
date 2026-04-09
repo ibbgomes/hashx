@@ -190,6 +190,36 @@ public sealed class RootActionTests
     }
 
     /// <summary>
+    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the input argument is missing and no input is redirected from stdin.
+    /// </summary>
+    [Fact]
+    public void RootAction_Output_Input_Missing()
+    {
+        StringWriter output = new();
+
+        InvocationConfiguration configuration = new()
+        {
+            Output = output,
+        };
+
+        string[] args =
+        [
+            "-a",
+            "xxh3"
+        ];
+
+        string expectedOutput = $"An error occurred: No input was provided.{Environment.NewLine}";
+
+        int exitCode = new Application
+            .RootCommand()
+            .Parse(args)
+            .Invoke(configuration);
+
+        Assert.Equal(ExitCodes.ProcessingError, exitCode);
+        Assert.Equal(expectedOutput, output.ToString());
+    }
+
+    /// <summary>
     /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the JSON option is provided.
     /// </summary>
     [Fact]
@@ -212,7 +242,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $$"""
             {
-              "filename": "mock.json",
+              "source": "mock.json",
               "hashes": {
                 "xxh3": "{{Hashes.XXH3}}"
               }
@@ -352,25 +382,6 @@ public sealed class RootActionTests
             .Parse(args);
 
         Assert.Empty(parseResult.Errors);
-    }
-
-    /// <summary>
-    /// Tests that the <see cref="RootAction"/> parsing fails when the input argument is missing
-    /// </summary>
-    [Fact]
-    public void RootAction_Parsing_Input_Missing()
-    {
-        string[] args =
-        [
-            "-a",
-            "xxh3"
-        ];
-
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
-
-        Assert.NotEmpty(parseResult.Errors);
     }
 
     /// <summary>
