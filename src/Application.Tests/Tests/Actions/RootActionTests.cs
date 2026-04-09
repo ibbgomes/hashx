@@ -9,10 +9,10 @@ using Xunit;
 public sealed class RootActionTests
 {
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the algorithms option is provided with a duplicate valid value.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the algorithms option is provided with a duplicate valid value.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Algorithms_Duplicate()
+    public void RootAction_Invocation_Algorithms_Duplicate()
     {
         StringWriter output = new();
 
@@ -41,10 +41,10 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the algorithms option is provided with many valid values.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the algorithms option is provided with many valid values.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Algorithms_Many()
+    public void RootAction_Invocation_Algorithms_Many()
     {
         StringWriter output = new();
 
@@ -76,7 +76,7 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the algorithms option is provided with a single valid value.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the algorithms option is provided with a single valid value.
     /// </summary>
     [Theory]
     [InlineData("-a", "md5", Hashes.MD5)]
@@ -93,7 +93,7 @@ public sealed class RootActionTests
     [InlineData("-a", "xxh32", Hashes.XXH32)]
     [InlineData("-a", "xxh64", Hashes.XXH64)]
     [InlineData("-a", "xxh128", Hashes.XXH128)]
-    public void RootAction_Output_Algorithms_Single(string option, string value, string hash)
+    public void RootAction_Invocation_Algorithms_Single(string option, string value, string hash)
     {
         StringWriter output = new();
 
@@ -121,10 +121,10 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the compare option is provided with a matching value.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the compare option is provided with a matching value.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Compare_Match()
+    public void RootAction_Invocation_Compare_Match()
     {
         StringWriter output = new();
 
@@ -157,10 +157,10 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the compare option is provided with a non-matching value.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the compare option is provided with a non-matching value.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Compare_Mismatch()
+    public void RootAction_Invocation_Compare_Mismatch()
     {
         StringWriter output = new();
 
@@ -190,10 +190,10 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the input argument is missing and no input is redirected from stdin.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the input argument is missing and no input is redirected from stdin.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Input_Missing()
+    public void RootAction_Invocation_Input_Missing()
     {
         StringWriter output = new();
 
@@ -220,10 +220,10 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> returns the expected exit code and output when the JSON option is provided.
+    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the JSON option is provided.
     /// </summary>
     [Fact]
-    public void RootAction_Output_Json()
+    public void RootAction_Invocation_Json()
     {
         StringWriter output = new();
 
