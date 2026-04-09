@@ -11,10 +11,10 @@ Description:
   A cross-platform, command-line interface, checksum utility
 
 Usage:
-  hashx <input> [options]
+  hashx [<input>] [options]
 
 Arguments:
-  <input>  Path to the input file
+  <input>  Path to the input file. If none, reads from stdin
 
 Options:
   -a, --algorithms <algorithms> (REQUIRED)  Set the hashing algorithms
