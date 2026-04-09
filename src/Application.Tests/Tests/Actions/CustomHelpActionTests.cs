@@ -9,10 +9,10 @@ using Xunit;
 public sealed class CustomHelpActionTests
 {
     /// <summary>
-    /// Tests that the <see cref="CustomHelpAction"/> returns the expected exit code and custom output when the help option is provided.
+    /// Tests that the <see cref="CustomHelpAction"/> invocation returns the expected exit code and custom output when the help option is provided.
     /// </summary>
     [Fact]
-    public void CustomHelpAction_Output_Help()
+    public void CustomHelpAction_Invocation_Help()
     {
         StringWriter output = new();
 
