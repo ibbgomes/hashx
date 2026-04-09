@@ -3,12 +3,12 @@
 /// <summary>
 /// Defines an exportable result.
 /// </summary>
-public class ExportableResult(FileInfo fileInfo, IEnumerable<HashingResult> results)
+public class ExportableResult(FileInfo? fileInfo, IEnumerable<HashingResult> results)
 {
     /// <summary>
-    /// Gets the filename.
+    /// Gets the source.
     /// </summary>
-    public string Filename => fileInfo.Name;
+    public string Source => fileInfo?.Name ?? "stdin";
 
     /// <summary>
     /// Gets the hashes.

@@ -21,7 +21,7 @@ internal sealed class RootArguments(ParseResult parseResult)
     /// <summary>
     /// Gets the input file.
     /// </summary>
-    internal FileInfo Input => parseResult.GetRequiredValue(RootCommand.InputArgument);
+    internal FileInfo? Input => parseResult.GetValue(RootCommand.InputArgument);
 
     /// <summary>
     /// Gets a value indicating whether the results should be printed in JSON.

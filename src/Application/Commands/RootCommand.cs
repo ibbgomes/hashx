@@ -26,8 +26,8 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     internal static readonly Argument<FileInfo> InputArgument = new Argument<FileInfo>("input")
     {
-        Description = "Path to the input file",
-        Arity = ArgumentArity.ExactlyOne,
+        Description = "Path to the input file. If none, reads from stdin",
+        Arity = ArgumentArity.ZeroOrOne,
     }.AcceptExistingOnly();
 
     internal static readonly Option<bool> JsonOption = new("--json")

@@ -27,7 +27,7 @@ public sealed class SourceGenerationContextTests
 
         const string expected = $$"""
             {
-              "filename": "dummy.json",
+              "source": "dummy.json",
               "hashes": {
                 "xxh3": "{{Hashes.XXH3}}"
               }

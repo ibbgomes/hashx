@@ -18,11 +18,11 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
         RootArguments arguments = new(parseResult);
 
-        ChecksumService checksumService = new();
-
         try
         {
-            using Stream stream = arguments.Input.OpenRead();
+            using Stream stream = GetInputStream(arguments.Input);
+
+            ChecksumService checksumService = new();
 
             IReadOnlyCollection<HashingResult> results = checksumService.GetChecksums(stream, arguments.Algorithms);
 
@@ -51,10 +51,25 @@ internal sealed class RootAction : SynchronousCommandLineAction
         }
         catch (Exception e)
         {
-            context.Output.WriteLine($"An error occurred: {e.Message}.");
+            context.Output.WriteLine($"An error occurred: {e.Message}");
 
             return ExitCodes.ProcessingError;
         }
+    }
+
+    private static Stream GetInputStream(FileInfo? input)
+    {
+        if (input is not null)
+        {
+            return input.OpenRead();
+        }
+
+        if (Console.IsInputRedirected)
+        {
+            return Console.OpenStandardInput();
+        }
+
+        throw new InvalidOperationException("No input was provided.");
     }
 
     private static void PrintMatch(TextWriter outputWriter, TextWriter errorWriter, HashingResult? match)
@@ -86,7 +101,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
         }
     }
 
-    private static void PrintResultsAsJson(TextWriter outputWriter, FileInfo input, IReadOnlyCollection<HashingResult> results)
+    private static void PrintResultsAsJson(TextWriter outputWriter, FileInfo? input, IReadOnlyCollection<HashingResult> results)
     {
         ExportableResult exportableResult = new(input, results);
 
