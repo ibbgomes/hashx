@@ -199,7 +199,7 @@ public sealed class RootActionTests
 
         InvocationConfiguration configuration = new()
         {
-            Output = output,
+            Error = output
         };
 
         string[] args =

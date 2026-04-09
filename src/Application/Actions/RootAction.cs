@@ -51,7 +51,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
         }
         catch (Exception e)
         {
-            context.Output.WriteLine($"An error occurred: {e.Message}");
+            context.Error.WriteLine($"An error occurred: {e.Message}");
 
             return ExitCodes.ProcessingError;
         }
