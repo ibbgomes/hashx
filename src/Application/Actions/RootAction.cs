@@ -37,7 +37,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
             if (!string.IsNullOrWhiteSpace(arguments.Hash))
             {
-                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Hash, StringComparison.OrdinalIgnoreCase));
+                HashingResult? match = results.FirstOrDefault(r => r.Hash.Equals(arguments.Hash, StringComparison.OrdinalIgnoreCase));
 
                 PrintMatch(context.Output, context.Error, match);
 
@@ -88,7 +88,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         if (results.Count == 1)
         {
-            outputWriter.WriteLine(results.First().Value);
+            outputWriter.WriteLine(results.First().Hash);
 
             return;
         }
@@ -97,7 +97,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
         foreach (HashingResult result in results)
         {
-            outputWriter.WriteLine(result.Algorithm.ToString().PadRight(width) + result.Value);
+            outputWriter.WriteLine(result.Algorithm.ToString().PadRight(width) + result.Hash);
         }
     }
 

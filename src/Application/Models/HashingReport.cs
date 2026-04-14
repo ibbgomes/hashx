@@ -15,5 +15,5 @@ internal sealed class HashingReport(FileInfo? file, IEnumerable<HashingResult> r
     /// <summary>
     /// Gets the hashes.
     /// </summary>
-    public IReadOnlyDictionary<string, string> Hashes => results.ToDictionary(r => r.Algorithm.ToString().ToLowerInvariant(), r => r.Value);
+    public IReadOnlyDictionary<string, string> Hashes => results.ToDictionary(r => r.Algorithm.ToString().ToLowerInvariant(), r => r.Hash);
 }
