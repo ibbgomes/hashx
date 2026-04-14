@@ -62,8 +62,8 @@ public sealed class RootActionTests
         ];
 
         string expectedOutput = $"""
-            XXH3   {Hashes.XXH3}
-            XXH64  {Hashes.XXH64}{Environment.NewLine}
+            xxh3   {Hashes.XXH3}
+            xxh64  {Hashes.XXH64}{Environment.NewLine}
             """;
 
         int exitCode = new Application

@@ -97,7 +97,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
         foreach (HashingResult result in results)
         {
-            outputWriter.WriteLine(result.Algorithm.ToString().PadRight(width) + result.Hash);
+            outputWriter.WriteLine(result.Algorithm.ToString().ToLowerInvariant().PadRight(width) + result.Hash);
         }
     }
 
