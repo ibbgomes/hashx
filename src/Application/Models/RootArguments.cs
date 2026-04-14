@@ -14,7 +14,7 @@ internal sealed class RootArguments(ParseResult parseResult)
     internal HashingAlgorithm[] Algorithms => parseResult.GetRequiredValue(RootCommand.AlgorithmsOption);
 
     /// <summary>
-    /// Gets the value that should be compared against the results.
+    /// Gets the value to compare against the results.
     /// </summary>
     internal string? Value => parseResult.GetValue(RootCommand.CompareOption);
 
@@ -24,7 +24,7 @@ internal sealed class RootArguments(ParseResult parseResult)
     internal FileInfo? Input => parseResult.GetValue(RootCommand.InputArgument);
 
     /// <summary>
-    /// Gets a value indicating whether the results should be printed in JSON.
+    /// Gets a value indicating whether to format the output as JSON.
     /// </summary>
     internal bool Json => parseResult.GetValue(RootCommand.JsonOption);
 }
