@@ -144,7 +144,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $"""
             {Hashes.XXH3}
-            XXH3 result matches the value.{Environment.NewLine}
+            XXH3 result matches the expected hash.{Environment.NewLine}
             """;
 
         int exitCode = new Application
@@ -178,14 +178,14 @@ public sealed class RootActionTests
             Hashes.XXH64,
         ];
 
-        string expectedOutput = $"No result matches the value.{Environment.NewLine}";
+        string expectedOutput = $"No result matches the expected hash.{Environment.NewLine}";
 
         int exitCode = new Application
             .RootCommand()
             .Parse(args)
             .Invoke(configuration);
 
-        Assert.Equal(ExitCodes.ValueMismatch, exitCode);
+        Assert.Equal(ExitCodes.HashMismatch, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
     }
 

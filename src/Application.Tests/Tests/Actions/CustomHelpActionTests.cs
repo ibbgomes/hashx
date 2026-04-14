@@ -33,7 +33,7 @@ public sealed class CustomHelpActionTests
             Exit Codes:
               {ExitCodes.Success}  Success
               {ExitCodes.ProcessingError}  Processing error
-              {ExitCodes.ValueMismatch}  Value mismatch
+              {ExitCodes.HashMismatch}  Value mismatch
             """;
 
         new Application
