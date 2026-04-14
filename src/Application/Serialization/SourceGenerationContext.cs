@@ -8,6 +8,6 @@ using System.Text.Json.Serialization;
 /// Defines the source generation context for <see cref="JsonSerializer"/>.
 /// </summary>
 [ExcludeFromCodeCoverage]
-[JsonSerializable(typeof(ChecksumReport))]
+[JsonSerializable(typeof(HashingReport))]
 [JsonSourceGenerationOptions(WriteIndented = true, PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
 internal sealed partial class SourceGenerationContext : JsonSerializerContext;

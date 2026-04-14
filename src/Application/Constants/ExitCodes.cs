@@ -6,9 +6,9 @@
 internal static class ExitCodes
 {
     /// <summary>
-    /// Indicates that a checksum mismatch occurred.
+    /// Indicates that a value mismatch occurred.
     /// </summary>
-    internal const int ChecksumMismatch = 2;
+    internal const int ValueMismatch = 2;
 
     /// <summary>
     /// Indicates that an error occurred during application processing.

@@ -17,7 +17,7 @@ dotnet_diagnostic.CS8509.severity = none
 dotnet_diagnostic.CA5350.severity = none
 dotnet_diagnostic.CA5351.severity = none
 
-[Library/Services/ChecksumService.cs]
+[Library/Services/MultiHashingService.cs]
 
 dotnet_diagnostic.IDE0305.severity = none
 

@@ -10,10 +10,10 @@ using Xunit;
 public sealed class SourceGenerationContextTests
 {
     /// <summary>
-    /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="ChecksumReport"/> produces the expected JSON string.
+    /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="HashingReport"/> produces the expected JSON string.
     /// </summary>
     [Fact]
-    public void SourceGenerationContext_ChecksumReport_Expected()
+    public void SourceGenerationContext_HashingReport_Expected()
     {
         FileInfo file = new("dummy.json");
 
@@ -22,9 +22,9 @@ public sealed class SourceGenerationContextTests
             new(HashingAlgorithm.XXH3, Hashes.XXH3),
         ];
 
-        ChecksumReport report = new(file, results);
+        HashingReport report = new(file, results);
 
-        string actual = JsonSerializer.Serialize(report, SourceGenerationContext.Default.ChecksumReport);
+        string actual = JsonSerializer.Serialize(report, SourceGenerationContext.Default.HashingReport);
 
         const string expected = $$"""
             {
