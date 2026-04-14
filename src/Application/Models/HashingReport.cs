@@ -3,9 +3,9 @@
 using Hashx.Library;
 
 /// <summary>
-/// Defines a checksum report.
+/// Defines a hashing report.
 /// </summary>
-internal sealed class ChecksumReport(FileInfo? file, IEnumerable<HashingResult> results)
+internal sealed class HashingReport(FileInfo? file, IEnumerable<HashingResult> results)
 {
     /// <summary>
     /// Gets the source.

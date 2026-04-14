@@ -20,7 +20,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     internal static readonly Option<string> CompareOption = new("--compare", "-c")
     {
-        Description = "Compare results against a checksum",
+        Description = "Compare results against a value",
         Required = false,
     };
 
@@ -40,7 +40,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     /// Initializes a new instance of the <see cref="RootCommand"/> class.
     /// </summary>
     public RootCommand()
-        : base("A cross-platform, command-line interface, checksum utility")
+        : base("A cross-platform, command-line interface, hashing utility")
     {
         this.Arguments.Add(InputArgument);
 

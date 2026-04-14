@@ -22,9 +22,9 @@ internal sealed class RootAction : SynchronousCommandLineAction
         {
             using Stream stream = GetInputStream(arguments.Input);
 
-            ChecksumService checksumService = new();
+            MultiHashingService hashingService = new();
 
-            IReadOnlyCollection<HashingResult> results = checksumService.GetChecksums(stream, arguments.Algorithms);
+            IReadOnlyCollection<HashingResult> results = hashingService.GetHashes(stream, arguments.Algorithms);
 
             if (arguments.Json)
             {
@@ -35,15 +35,15 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
             PrintResults(context.Output, results);
 
-            if (!string.IsNullOrWhiteSpace(arguments.Checksum))
+            if (!string.IsNullOrWhiteSpace(arguments.Value))
             {
-                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Checksum, StringComparison.OrdinalIgnoreCase));
+                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Value, StringComparison.OrdinalIgnoreCase));
 
                 PrintMatch(context.Output, context.Error, match);
 
                 if (match is null)
                 {
-                    return ExitCodes.ChecksumMismatch;
+                    return ExitCodes.ValueMismatch;
                 }
             }
 
@@ -76,12 +76,12 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         if (match is not null)
         {
-            outputWriter.WriteLine($"{match.Algorithm} result matches the checksum.");
+            outputWriter.WriteLine($"{match.Algorithm} result matches the value.");
 
             return;
         }
 
-        errorWriter.WriteLine("No result matches the checksum.");
+        errorWriter.WriteLine("No result matches the value.");
     }
 
     private static void PrintResults(TextWriter outputWriter, IReadOnlyCollection<HashingResult> results)
@@ -103,9 +103,9 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
     private static void PrintResultsAsJson(TextWriter outputWriter, FileInfo? input, IReadOnlyCollection<HashingResult> results)
     {
-        ChecksumReport report = new(input, results);
+        HashingReport report = new(input, results);
 
-        string json = JsonSerializer.Serialize(report, SourceGenerationContext.Default.ChecksumReport);
+        string json = JsonSerializer.Serialize(report, SourceGenerationContext.Default.HashingReport);
 
         outputWriter.WriteLine(json);
     }

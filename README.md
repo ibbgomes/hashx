@@ -2,13 +2,13 @@
 
 ![Build](https://github.com/ibbgomes/hashx/workflows/Build/badge.svg)
 
-A cross-platform, command-line interface, checksum utility. 🔐
+A cross-platform, command-line interface, hashing utility. 🔐
 
 ## Usage
 
 ```txt
 Description:
-  A cross-platform, command-line interface, checksum utility
+  A cross-platform, command-line interface, hashing utility
 
 Usage:
   hashx [<input>] [options]
@@ -18,7 +18,7 @@ Arguments:
 
 Options:
   -a, --algorithms <algorithms> (REQUIRED)  Set the hashing algorithms
-  -c, --compare <compare>                   Compare results against a checksum
+  -c, --compare <compare>                   Compare results against a value
   --json                                    Output results in JSON
   -?, -h, --help                            Show help and usage information
   --version                                 Show version information
@@ -29,5 +29,5 @@ Algorithms:
 Exit Codes:
   0  Success
   1  Processing error
-  2  Checksum mismatch
+  2  Value mismatch
 ```

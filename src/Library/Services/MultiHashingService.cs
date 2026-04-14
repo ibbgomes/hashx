@@ -3,15 +3,15 @@
 using System.Buffers;
 
 /// <summary>
-/// Defines a implementation of <see cref="IChecksumService"/>.
+/// Defines a implementation of <see cref="IMultiHashingService"/>.
 /// </summary>
-/// <seealso cref="IChecksumService"/>
-public sealed class ChecksumService : IChecksumService
+/// <seealso cref="IMultiHashingService"/>
+public sealed class MultiHashingService : IMultiHashingService
 {
     private const int BufferLength = 128 * 1024;
 
     /// <inheritdoc/>
-    public IReadOnlyCollection<HashingResult> GetChecksums(Stream stream, params IEnumerable<HashingAlgorithm> algorithms)
+    public IReadOnlyCollection<HashingResult> GetHashes(Stream stream, params IEnumerable<HashingAlgorithm> algorithms)
     {
         IHashingService[] services = algorithms
             .Distinct()
