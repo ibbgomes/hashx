@@ -16,7 +16,7 @@ internal static class ExitCodes
     internal const int ProcessingError = 1;
 
     /// <summary>
-    /// Indicates that a value mismatch occurred.
+    /// Indicates that a hash mismatch occurred.
     /// </summary>
-    internal const int ValueMismatch = 2;
+    internal const int HashMismatch = 2;
 }

@@ -14,9 +14,9 @@ internal sealed class RootArguments(ParseResult parseResult)
     internal HashingAlgorithm[] Algorithms => parseResult.GetRequiredValue(RootCommand.AlgorithmsOption);
 
     /// <summary>
-    /// Gets the value to compare against the results.
+    /// Gets the expected hash to compare against the results.
     /// </summary>
-    internal string? Value => parseResult.GetValue(RootCommand.CompareOption);
+    internal string? Hash => parseResult.GetValue(RootCommand.CompareOption);
 
     /// <summary>
     /// Gets the input file.

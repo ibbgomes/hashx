@@ -35,15 +35,15 @@ internal sealed class RootAction : SynchronousCommandLineAction
 
             PrintResults(context.Output, results);
 
-            if (!string.IsNullOrWhiteSpace(arguments.Value))
+            if (!string.IsNullOrWhiteSpace(arguments.Hash))
             {
-                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Value, StringComparison.OrdinalIgnoreCase));
+                HashingResult? match = results.FirstOrDefault(r => r.Value.Equals(arguments.Hash, StringComparison.OrdinalIgnoreCase));
 
                 PrintMatch(context.Output, context.Error, match);
 
                 if (match is null)
                 {
-                    return ExitCodes.ValueMismatch;
+                    return ExitCodes.HashMismatch;
                 }
             }
 
@@ -76,12 +76,12 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         if (match is not null)
         {
-            outputWriter.WriteLine($"{match.Algorithm} result matches the value.");
+            outputWriter.WriteLine($"{match.Algorithm} result matches the expected hash.");
 
             return;
         }
 
-        errorWriter.WriteLine("No result matches the value.");
+        errorWriter.WriteLine("No result matches the expected hash.");
     }
 
     private static void PrintResults(TextWriter outputWriter, IReadOnlyCollection<HashingResult> results)

@@ -12,7 +12,8 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 {
     internal static readonly Option<HashingAlgorithm[]> AlgorithmsOption = new("--algorithms", "-a")
     {
-        Description = "Set the hashing algorithms",
+        Description = "Set one or more space-separated algorithms",
+        HelpName = "list",
         Required = true,
         Arity = ArgumentArity.OneOrMore,
         AllowMultipleArgumentsPerToken = true,
@@ -20,7 +21,8 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
     internal static readonly Option<string> CompareOption = new("--compare", "-c")
     {
-        Description = "Compare results against a value",
+        Description = "Compare results against an expected hash",
+        HelpName = "hash",
         Required = false,
     };
 
