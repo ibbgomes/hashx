@@ -6,9 +6,9 @@
 internal static class ExitCodes
 {
     /// <summary>
-    /// Indicates that a value mismatch occurred.
+    /// Indicates that the application executed successfully.
     /// </summary>
-    internal const int ValueMismatch = 2;
+    internal const int Success = 0;
 
     /// <summary>
     /// Indicates that an error occurred during application processing.
@@ -16,7 +16,7 @@ internal static class ExitCodes
     internal const int ProcessingError = 1;
 
     /// <summary>
-    /// Indicates that the application executed successfully.
+    /// Indicates that a value mismatch occurred.
     /// </summary>
-    internal const int Success = 0;
+    internal const int ValueMismatch = 2;
 }
