@@ -21,7 +21,7 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.CRC32, result.Algorithm);
-        Assert.Equal(Hashes.CRC32, result.Value);
+        Assert.Equal(Hashes.CRC32, result.Hash);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.CRC64, result.Algorithm);
-        Assert.Equal(Hashes.CRC64, result.Value);
+        Assert.Equal(Hashes.CRC64, result.Hash);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.XXH128, result.Algorithm);
-        Assert.Equal(Hashes.XXH128, result.Value);
+        Assert.Equal(Hashes.XXH128, result.Hash);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.XXH3, result.Algorithm);
-        Assert.Equal(Hashes.XXH3, result.Value);
+        Assert.Equal(Hashes.XXH3, result.Hash);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.XXH32, result.Algorithm);
-        Assert.Equal(Hashes.XXH32, result.Value);
+        Assert.Equal(Hashes.XXH32, result.Hash);
     }
 
     /// <summary>
@@ -101,6 +101,6 @@ public sealed class NonCryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.XXH64, result.Algorithm);
-        Assert.Equal(Hashes.XXH64, result.Value);
+        Assert.Equal(Hashes.XXH64, result.Hash);
     }
 }

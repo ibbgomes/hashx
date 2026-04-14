@@ -20,6 +20,6 @@ public sealed class MultiHashingServiceTests
         HashingResult result = service.GetHashes(stream, HashingAlgorithm.XXH3).First();
 
         Assert.Equal(HashingAlgorithm.XXH3, result.Algorithm);
-        Assert.Equal(Hashes.XXH3, result.Value);
+        Assert.Equal(Hashes.XXH3, result.Hash);
     }
 }

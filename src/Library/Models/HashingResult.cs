@@ -3,15 +3,15 @@
 /// <summary>
 /// Defines a hashing operation result.
 /// </summary>
-public class HashingResult(HashingAlgorithm algorithm, string value)
+public sealed class HashingResult(HashingAlgorithm algorithm, string hash)
 {
     /// <summary>
-    /// Gets the hashing operation algorithm.
+    /// Gets the algorithm.
     /// </summary>
     public HashingAlgorithm Algorithm => algorithm;
 
     /// <summary>
-    /// Gets the hashing operation value.
+    /// Gets the hash.
     /// </summary>
-    public string Value => value;
+    public string Hash => hash;
 }

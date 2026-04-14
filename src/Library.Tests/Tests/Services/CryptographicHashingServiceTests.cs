@@ -21,7 +21,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.MD5, result.Algorithm);
-        Assert.Equal(Hashes.MD5, result.Value);
+        Assert.Equal(Hashes.MD5, result.Hash);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA1, result.Algorithm);
-        Assert.Equal(Hashes.SHA1, result.Value);
+        Assert.Equal(Hashes.SHA1, result.Hash);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA256, result.Algorithm);
-        Assert.Equal(Hashes.SHA256, result.Value);
+        Assert.Equal(Hashes.SHA256, result.Hash);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA3_256, result.Algorithm);
-        Assert.Equal(Hashes.SHA3_256, result.Value);
+        Assert.Equal(Hashes.SHA3_256, result.Hash);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA3_384, result.Algorithm);
-        Assert.Equal(Hashes.SHA3_384, result.Value);
+        Assert.Equal(Hashes.SHA3_384, result.Hash);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA3_512, result.Algorithm);
-        Assert.Equal(Hashes.SHA3_512, result.Value);
+        Assert.Equal(Hashes.SHA3_512, result.Hash);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA384, result.Algorithm);
-        Assert.Equal(Hashes.SHA384, result.Value);
+        Assert.Equal(Hashes.SHA384, result.Hash);
     }
 
     /// <summary>
@@ -133,6 +133,6 @@ public sealed class CryptographicHashingServiceTests
         HashingResult result = service.GetHashAndReset();
 
         Assert.Equal(HashingAlgorithm.SHA512, result.Algorithm);
-        Assert.Equal(Hashes.SHA512, result.Value);
+        Assert.Equal(Hashes.SHA512, result.Hash);
     }
 }
