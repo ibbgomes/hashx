@@ -10,6 +10,13 @@
 		<OutputType>Exe</OutputType>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<PublishAot>true</PublishAot>
+		<OptimizationPreference>speed</OptimizationPreference>
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<StackTraceSupport>false</StackTraceSupport>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="System.CommandLine" Version="2.0.6" />
 	</ItemGroup>
