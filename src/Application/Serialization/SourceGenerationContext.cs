@@ -9,5 +9,4 @@ using System.Text.Json.Serialization;
 /// </summary>
 [ExcludeFromCodeCoverage]
 [JsonSerializable(typeof(HashingReport))]
-[JsonSourceGenerationOptions(WriteIndented = true, PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
 internal sealed partial class SourceGenerationContext : JsonSerializerContext;

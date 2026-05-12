@@ -2,6 +2,7 @@
 
 using System.CommandLine;
 using System.CommandLine.Invocation;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using Hashx.Library;
 
@@ -11,6 +12,15 @@ using Hashx.Library;
 /// <seealso cref="SynchronousCommandLineAction"/>
 internal sealed class RootAction : SynchronousCommandLineAction
 {
+    private static readonly JsonSerializerOptions serializerOptions = new()
+    {
+        WriteIndented = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
+    private static readonly SourceGenerationContext serializerContext = new(serializerOptions);
+
     /// <inheritdoc/>
     public override int Invoke(ParseResult parseResult)
     {
@@ -105,7 +115,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         HashingReport report = new(input, results);
 
-        string json = JsonSerializer.Serialize(report, SourceGenerationContext.Default.HashingReport);
+        string json = JsonSerializer.Serialize(report, serializerContext.HashingReport);
 
         outputWriter.WriteLine(json);
     }
