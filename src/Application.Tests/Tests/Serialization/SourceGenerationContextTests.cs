@@ -1,5 +1,6 @@
 ﻿namespace Hashx.Application.Tests;
 
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using Hashx.Library;
 using Xunit;
@@ -9,13 +10,22 @@ using Xunit;
 /// </summary>
 public sealed class SourceGenerationContextTests
 {
+    private static readonly JsonSerializerOptions serializerOptions = new()
+    {
+        WriteIndented = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
+    private static readonly SourceGenerationContext serializerContext = new(serializerOptions);
+
     /// <summary>
     /// Tests that using <see cref="SourceGenerationContext"/> to serialize <see cref="HashingReport"/> produces the expected JSON string.
     /// </summary>
     [Fact]
     public void SourceGenerationContext_HashingReport_Expected()
     {
-        FileInfo file = new("dummy.json");
+        FileInfo file = new("r&d.json");
 
         HashingResult[] results =
         [
@@ -24,11 +34,11 @@ public sealed class SourceGenerationContextTests
 
         HashingReport report = new(file, results);
 
-        string actual = JsonSerializer.Serialize(report, SourceGenerationContext.Default.HashingReport);
+        string actual = JsonSerializer.Serialize(report, serializerContext.HashingReport);
 
         const string expected = $$"""
             {
-              "source": "dummy.json",
+              "source": "r&d.json",
               "hashes": {
                 "xxh3": "{{Hashes.XXH3}}"
               }
