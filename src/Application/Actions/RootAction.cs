@@ -71,7 +71,12 @@ internal sealed class RootAction : SynchronousCommandLineAction
     {
         if (input is not null)
         {
-            return input.OpenRead();
+            FileStreamOptions options = new()
+            {
+                Options = FileOptions.SequentialScan,
+            };
+
+            return new FileStream(input.FullName, options);
         }
 
         if (Console.IsInputRedirected)
