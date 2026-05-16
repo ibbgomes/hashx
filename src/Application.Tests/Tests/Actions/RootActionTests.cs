@@ -340,7 +340,7 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> parsing fails when both the compare and JSON options are provided.
+    /// Tests that the <see cref="RootAction"/> parsing succeeds when both the compare and JSON options are provided.
     /// </summary>
     [Fact]
     public void RootAction_Parsing_Compare_Json()
@@ -359,7 +359,7 @@ public sealed class RootActionTests
             .RootCommand()
             .Parse(args);
 
-        Assert.NotEmpty(result.Errors);
+        Assert.Empty(result.Errors);
     }
 
     /// <summary>
