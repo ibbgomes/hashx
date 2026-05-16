@@ -1,6 +1,6 @@
-﻿namespace Hashx.Application;
+﻿using Hashx.Library;
 
-using Hashx.Library;
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines a hashing report.

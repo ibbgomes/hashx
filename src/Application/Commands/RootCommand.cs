@@ -1,8 +1,8 @@
-﻿namespace Hashx.Application;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using System.CommandLine.Help;
 using Hashx.Library;
+
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines the root command.

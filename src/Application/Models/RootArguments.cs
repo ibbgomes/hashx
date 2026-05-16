@@ -1,7 +1,7 @@
-﻿namespace Hashx.Application;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using Hashx.Library;
+
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines the <see cref="RootCommand"/> arguments.

@@ -1,7 +1,6 @@
-﻿namespace Hashx.Library.Tests;
+﻿using Xunit;
 
-using Hashx.Library;
-using Xunit;
+namespace Hashx.Library.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="ByteArrayExtensions"/>.
