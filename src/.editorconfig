@@ -1,34 +1,47 @@
-# Disabled rules
-
 [*.cs]
+
+# Require file-scoped namespaces
+
+csharp_style_namespace_declarations = file_scoped:warning
+
+# Require usings to be outside the namespace
+
+csharp_using_directive_placement = outside_namespace:warning
+
+# Allow namespaces to differ from folder structure
 
 dotnet_diagnostic.IDE0130.severity = none
 
-[*/Tests/*/*.cs]
+[{*/Tests/*/*.cs,Library/Enums/HashingAlgorithm.cs}]
+
+# Allow underscores
 
 dotnet_diagnostic.CA1707.severity = none
 
 [{Library/Factories/CryptographicHashingServiceFactory.cs,Library/Factories/NonCryptographicHashingServiceFactory.cs}]
 
+# Allow non-exhaustive switch expressions
+
 dotnet_diagnostic.CS8509.severity = none
 
 [{Library/Factories/CryptographicHashingServiceFactory.cs,Library.Tests/Tests/Services/CryptographicHashingServiceTests.cs}]
 
+# Allow weak cryptographic algorithms
+
 dotnet_diagnostic.CA5350.severity = none
+
+# Allow broken cryptographic algorithms
+
 dotnet_diagnostic.CA5351.severity = none
 
 [Library/Services/MultiHashingService.cs]
 
+# Ignore collection initialization simplification
+
 dotnet_diagnostic.IDE0305.severity = none
-
-[Library/Enums/HashingAlgorithm.cs]
-
-dotnet_diagnostic.CA1707.severity = none
 
 [Application/Program.cs]
 
+# Allow synchronous methods where awaitable equivalents exist
+
 dotnet_diagnostic.S6966.severity = none
-
-# Require file scoped namespaces
-
-csharp_style_namespace_declarations = file_scoped:warning
