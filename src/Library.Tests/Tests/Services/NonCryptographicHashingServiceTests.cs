@@ -1,7 +1,7 @@
-﻿namespace Hashx.Library.Tests;
-
-using System.IO.Hashing;
+﻿using System.IO.Hashing;
 using Xunit;
+
+namespace Hashx.Library.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="NonCryptographicHashingService"/>.

@@ -1,6 +1,6 @@
-﻿namespace Hashx.Library;
+﻿using System.Security.Cryptography;
 
-using System.Security.Cryptography;
+namespace Hashx.Library;
 
 /// <summary>
 /// Defines a cryptographic implementation of <see cref="IHashingService"/>.

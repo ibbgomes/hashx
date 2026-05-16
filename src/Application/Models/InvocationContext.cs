@@ -1,7 +1,7 @@
-﻿namespace Hashx.Application;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using System.CommandLine.Invocation;
+
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines the context for a <see cref="CommandLineAction"/> invocation.

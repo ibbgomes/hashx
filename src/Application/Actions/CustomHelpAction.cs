@@ -1,9 +1,9 @@
-﻿namespace Hashx.Application;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using System.CommandLine.Help;
 using System.CommandLine.Invocation;
 using Hashx.Library;
+
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines an action that provides custom information for the help option.

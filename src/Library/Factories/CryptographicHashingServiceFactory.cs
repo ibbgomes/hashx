@@ -1,6 +1,6 @@
-﻿namespace Hashx.Library;
+﻿using System.Security.Cryptography;
 
-using System.Security.Cryptography;
+namespace Hashx.Library;
 
 /// <summary>
 /// Defines a factory for creating instances of <see cref="CryptographicHashingService"/>.

@@ -1,6 +1,6 @@
-﻿namespace Hashx.Library;
+﻿using System.Buffers;
 
-using System.Buffers;
+namespace Hashx.Library;
 
 /// <summary>
 /// Defines an implementation of <see cref="IMultiHashingService"/>.

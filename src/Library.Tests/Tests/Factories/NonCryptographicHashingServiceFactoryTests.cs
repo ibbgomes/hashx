@@ -1,6 +1,6 @@
-﻿namespace Hashx.Library.Tests;
+﻿using Xunit;
 
-using Xunit;
+namespace Hashx.Library.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="NonCryptographicHashingServiceFactory"/>.

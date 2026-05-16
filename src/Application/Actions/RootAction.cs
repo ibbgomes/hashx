@@ -1,10 +1,10 @@
-﻿namespace Hashx.Application;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Hashx.Library;
+
+namespace Hashx.Application;
 
 /// <summary>
 /// Defines the <see cref="RootCommand"/> action.

@@ -1,7 +1,7 @@
-﻿namespace Hashx.Application.Tests;
-
-using System.CommandLine;
+﻿using System.CommandLine;
 using Xunit;
+
+namespace Hashx.Application.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="RootAction"/>.

@@ -1,9 +1,9 @@
-﻿namespace Hashx.Application.Tests;
-
-using System.Text.Encodings.Web;
+﻿using System.Text.Encodings.Web;
 using System.Text.Json;
 using Hashx.Library;
 using Xunit;
+
+namespace Hashx.Application.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="SourceGenerationContext"/>.

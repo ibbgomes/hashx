@@ -1,7 +1,7 @@
-﻿namespace Hashx.Library.Tests;
-
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using Xunit;
+
+namespace Hashx.Library.Tests;
 
 /// <summary>
 /// Defines unit tests for <see cref="CryptographicHashingService"/>.
