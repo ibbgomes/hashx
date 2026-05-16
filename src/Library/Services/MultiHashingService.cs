@@ -8,7 +8,7 @@ using System.Buffers;
 /// <seealso cref="IMultiHashingService"/>
 public sealed class MultiHashingService : IMultiHashingService
 {
-    private const int BufferLength = 128 * 1024;
+    private const int BufferSize = 128 * 1024;
 
     /// <inheritdoc/>
     public IReadOnlyCollection<HashingResult> GetHashes(Stream stream, params IEnumerable<HashingAlgorithm> algorithms)
@@ -18,7 +18,7 @@ public sealed class MultiHashingService : IMultiHashingService
             .Select(HashingServiceFactory.Create)
             .ToArray();
 
-        byte[] buffer = ArrayPool<byte>.Shared.Rent(BufferLength);
+        byte[] buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
 
         try
         {
