@@ -1,7 +1,7 @@
 ﻿namespace Hashx.Application;
 
 /// <summary>
-/// Defines exit codes used in the application.
+/// Defines exit codes used by the application.
 /// </summary>
 internal static class ExitCodes
 {
