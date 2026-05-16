@@ -3,7 +3,7 @@
 using System.Buffers;
 
 /// <summary>
-/// Defines a implementation of <see cref="IMultiHashingService"/>.
+/// Defines an implementation of <see cref="IMultiHashingService"/>.
 /// </summary>
 /// <seealso cref="IMultiHashingService"/>
 public sealed class MultiHashingService : IMultiHashingService
