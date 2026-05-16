@@ -1,7 +1,7 @@
 ﻿namespace Hashx.Application;
 
 /// <summary>
-/// Defines formatting configurations used in the application.
+/// Defines formatting configurations used by the application.
 /// </summary>
 internal static class Formatting
 {
