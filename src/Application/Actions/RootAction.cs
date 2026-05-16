@@ -39,22 +39,27 @@ internal sealed class RootAction : SynchronousCommandLineAction
             if (arguments.Json)
             {
                 PrintResultsAsJson(context.Output, arguments.Input, results);
+            }
+            else
+            {
+                PrintResults(context.Output, results);
+            }
 
+            if (string.IsNullOrWhiteSpace(arguments.Hash))
+            {
                 return ExitCodes.Success;
             }
 
-            PrintResults(context.Output, results);
+            HashingResult? match = results.FirstOrDefault(r => r.Hash.Equals(arguments.Hash, StringComparison.OrdinalIgnoreCase));
 
-            if (!string.IsNullOrWhiteSpace(arguments.Hash))
+            if (!arguments.Json)
             {
-                HashingResult? match = results.FirstOrDefault(r => r.Hash.Equals(arguments.Hash, StringComparison.OrdinalIgnoreCase));
-
                 PrintMatch(context.Output, context.Error, match);
+            }
 
-                if (match is null)
-                {
-                    return ExitCodes.HashMismatch;
-                }
+            if (match is null)
+            {
+                return ExitCodes.HashMismatch;
             }
 
             return ExitCodes.Success;

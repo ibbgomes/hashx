@@ -52,19 +52,6 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
 
         this.Options.Add(JsonOption);
 
-        this.Validators.Add(
-            result =>
-            {
-                string? compare = result.GetValue(CompareOption);
-
-                bool json = result.GetValue(JsonOption);
-
-                if (compare is not null && json)
-                {
-                    result.AddError("Options '--compare' and '--json' cannot be used together.");
-                }
-            });
-
         this.SetAction(result => new RootAction().Invoke(result));
 
         foreach (Option option in this.Options)
