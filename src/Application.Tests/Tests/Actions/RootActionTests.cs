@@ -31,10 +31,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $"{Hashes.XXH3}{Environment.NewLine}";
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -66,10 +63,7 @@ public sealed class RootActionTests
             xxh64  {Hashes.XXH64}{Environment.NewLine}
             """;
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -111,10 +105,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $"{hash}{Environment.NewLine}";
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -147,10 +138,7 @@ public sealed class RootActionTests
             XXH3 result matches the expected hash.{Environment.NewLine}
             """;
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -180,10 +168,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $"No result matches the expected hash.{Environment.NewLine}";
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.HashMismatch, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -210,10 +195,7 @@ public sealed class RootActionTests
 
         string expectedOutput = $"An error occurred: No input was provided.{Environment.NewLine}";
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.ProcessingError, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -249,10 +231,7 @@ public sealed class RootActionTests
             }{{Environment.NewLine}}
             """;
 
-        int exitCode = new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Equal(ExitCodes.Success, exitCode);
         Assert.Equal(expectedOutput, output.ToString());
@@ -270,11 +249,9 @@ public sealed class RootActionTests
             "-a",
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(parseResult.Errors);
+        Assert.NotEmpty(result.Errors);
     }
 
     /// <summary>
@@ -290,11 +267,9 @@ public sealed class RootActionTests
             "invalid"
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(parseResult.Errors);
+        Assert.NotEmpty(result.Errors);
     }
 
     /// <summary>
@@ -310,11 +285,9 @@ public sealed class RootActionTests
             "xxh3"
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.Empty(parseResult.Errors);
+        Assert.Empty(result.Errors);
     }
 
     /// <summary>
@@ -332,11 +305,9 @@ public sealed class RootActionTests
             "xxh64",
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.Empty(parseResult.Errors);
+        Assert.Empty(result.Errors);
     }
 
     /// <summary>
@@ -355,9 +326,7 @@ public sealed class RootActionTests
             "--json",
         ];
 
-        ParseResult result = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
         Assert.Empty(result.Errors);
     }
@@ -377,11 +346,9 @@ public sealed class RootActionTests
             Hashes.XXH3,
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.Empty(parseResult.Errors);
+        Assert.Empty(result.Errors);
     }
 
     /// <summary>
@@ -397,10 +364,8 @@ public sealed class RootActionTests
             "xxh3"
         ];
 
-        ParseResult parseResult = new Application
-            .RootCommand()
-            .Parse(args);
+        ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(parseResult.Errors);
+        Assert.NotEmpty(result.Errors);
     }
 }
