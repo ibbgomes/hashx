@@ -36,10 +36,7 @@ public sealed class CustomHelpActionTests
               {ExitCodes.HashMismatch}  Hash mismatch
             """;
 
-        new Application
-            .RootCommand()
-            .Parse(args)
-            .Invoke(configuration);
+        new RootCommand().Parse(args).Invoke(configuration);
 
         Assert.Contains(customOutput, output.ToString());
     }
