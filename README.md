@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/ibbgomes/hashx/workflows/Build/badge.svg)
 
-A cross-platform, command-line interface, hashing utility. 🔐
+A performant, cross-platform, command-line hashing utility. 🔐
 
 ## Usage
 
