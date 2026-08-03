@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<Version>4.1.0</Version>
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-		<Copyright>Ivo Gomes © 2026. All Rights Reserved.</Copyright>
+		<Copyright>Copyright © 2026 Ivo Gomes</Copyright>
 	</PropertyGroup>
 
 	<PropertyGroup>
