@@ -45,7 +45,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
                 PrintResults(context.Output, results);
             }
 
-            if (string.IsNullOrWhiteSpace(arguments.Hash))
+            if (arguments.Hash is null)
             {
                 return ExitCodes.Success;
             }
