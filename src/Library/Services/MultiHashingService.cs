@@ -39,7 +39,7 @@ public sealed class MultiHashingService : IMultiHashingService
         }
         finally
         {
-            ArrayPool<byte>.Shared.Return(buffer);
+            ArrayPool<byte>.Shared.Return(buffer, true);
 
             foreach (IHashingService service in services)
             {
