@@ -79,6 +79,7 @@ internal sealed class RootAction : SynchronousCommandLineAction
             FileStreamOptions options = new()
             {
                 Options = FileOptions.SequentialScan,
+                BufferSize = 0
             };
 
             return new FileStream(input.FullName, options);
