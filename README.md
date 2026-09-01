@@ -8,7 +8,7 @@ A performant, cross-platform, command-line hashing utility. 🔐
 
 ```txt
 Description:
-  A cross-platform, command-line interface, hashing utility
+  A performant, cross-platform, command-line hashing utility
 
 Usage:
   hashx [<input>] [options]
