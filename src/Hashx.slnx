@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Benchmarks/">
+    <Project Path="Library.Benchmarks/Library.Benchmarks.csproj" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
     <File Path="Directory.Build.props" />
