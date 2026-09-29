@@ -18,6 +18,12 @@ dotnet_diagnostic.IDE0130.severity = none
 
 dotnet_diagnostic.CA1707.severity = none
 
+[*/Benchmarks/*.cs]
+
+# Allow undisposed fields
+
+dotnet_diagnostic.CA1001.severity = none
+
 [{Library/Factories/CryptographicHashingServiceFactory.cs,Library/Factories/NonCryptographicHashingServiceFactory.cs}]
 
 # Allow non-exhaustive switch expressions

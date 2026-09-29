@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<AssemblyName>Hashx.Library.Benchmarks</AssemblyName>
 		<RootNamespace>Hashx.Library.Benchmarks</RootNamespace>
 	</PropertyGroup>
 
