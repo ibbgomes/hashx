@@ -42,7 +42,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
     /// Initializes a new instance of the <see cref="RootCommand"/> class.
     /// </summary>
     public RootCommand()
-        : base("A cross-platform, command-line interface, hashing utility")
+        : base("A performant, cross-platform, command-line hashing utility")
     {
         this.Arguments.Add(InputArgument);
 
