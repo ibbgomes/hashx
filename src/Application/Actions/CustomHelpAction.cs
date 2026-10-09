@@ -32,7 +32,7 @@ internal sealed class CustomHelpAction(HelpAction helpAction) : SynchronousComma
             .Select(a => a.ToLowerInvariant())
             .Order();
 
-        string algorithmsList = string.Join(", ", algorithms);
+        string algorithmsList = string.Join(' ', algorithms);
 
         context.Output.WriteLine("Algorithms:");
         context.Output.WriteLine($"  {algorithmsList}");
