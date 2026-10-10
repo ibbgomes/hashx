@@ -16,4 +16,4 @@ jobs:
       - name: Build
         run: dotnet build src/Hashx.slnx -c release /warnaserror
       - name: Test
-        run: dotnet test src/Hashx.slnx
+        run: dotnet test src/Hashx.slnx -c Release --no-build
