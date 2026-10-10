@@ -1,12 +1,22 @@
+[*]
+
+# Require final newline
+
+insert_final_newline = true
+
 [*.cs]
 
-# Require file-scoped namespaces
+# Require system usings to be placed first
 
-csharp_style_namespace_declarations = file_scoped:warning
+dotnet_sort_system_directives_first = true
 
 # Require usings to be outside the namespace
 
 csharp_using_directive_placement = outside_namespace:warning
+
+# Require file-scoped namespaces
+
+csharp_style_namespace_declarations = file_scoped:warning
 
 # Allow namespaces to differ from folder structure
 
