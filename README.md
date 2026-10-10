@@ -1,6 +1,6 @@
 # Hashx
 
-![Build](https://github.com/ibbgomes/hashx/workflows/Build/badge.svg)
+![Build](https://github.com/ibbgomes/hashx/actions/workflows/build.yml/badge.svg)
 
 A performant, cross-platform, command-line hashing utility. 🔐
 
