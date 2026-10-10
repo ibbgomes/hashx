@@ -251,7 +251,7 @@ public sealed class RootActionTests
 
         ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(result.Errors);
+        Assert.Single(result.Errors);
     }
 
     /// <summary>
@@ -269,7 +269,7 @@ public sealed class RootActionTests
 
         ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(result.Errors);
+        Assert.Single(result.Errors);
     }
 
     /// <summary>
@@ -406,6 +406,6 @@ public sealed class RootActionTests
 
         ParseResult result = new RootCommand().Parse(args);
 
-        Assert.NotEmpty(result.Errors);
+        Assert.Single(result.Errors);
     }
 }
