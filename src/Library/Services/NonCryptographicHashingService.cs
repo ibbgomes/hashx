@@ -20,8 +20,10 @@ internal sealed class NonCryptographicHashingService(HashingAlgorithm algorithm,
     /// <inheritdoc/>
     public HashingResult GetHashAndReset()
     {
-        string hash = implementation.GetHashAndReset().ToHexString();
+        Span<byte> digest = stackalloc byte[implementation.HashLengthInBytes];
 
-        return new(this.Algorithm, hash);
+        implementation.GetHashAndReset(digest);
+
+        return new(this.Algorithm, digest.ToHexString());
     }
 }
