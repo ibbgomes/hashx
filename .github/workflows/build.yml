@@ -1,4 +1,3 @@
-name: Build
 on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
