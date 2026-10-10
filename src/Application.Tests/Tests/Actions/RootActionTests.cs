@@ -175,36 +175,6 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the compare option is provided with an empty value.
-    /// </summary>
-    [Fact]
-    public void RootAction_Invocation_Compare_Empty()
-    {
-        StringWriter output = new();
-
-        InvocationConfiguration configuration = new()
-        {
-            Error = output
-        };
-
-        string[] args =
-        [
-            Input.FilePath,
-            "-a",
-            "xxh3",
-            "-c",
-            ""
-        ];
-
-        string expectedOutput = $"No result matches the expected hash.{Environment.NewLine}";
-
-        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
-
-        Assert.Equal(ExitCodes.HashMismatch, exitCode);
-        Assert.Equal(expectedOutput, output.ToString());
-    }
-
-    /// <summary>
     /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the input argument is missing and no input is redirected from stdin.
     /// </summary>
     [Fact]
@@ -338,6 +308,46 @@ public sealed class RootActionTests
         ParseResult result = new RootCommand().Parse(args);
 
         Assert.Empty(result.Errors);
+    }
+
+    /// <summary>
+    /// Tests that the <see cref="RootAction"/> parsing fails when the compare option is provided with an empty value.
+    /// </summary>
+    [Fact]
+    public void RootAction_Parsing_Compare_Empty()
+    {
+        string[] args =
+        [
+            Input.FilePath,
+            "-a",
+            "xxh3",
+            "-c",
+            ""
+        ];
+
+        ParseResult result = new RootCommand().Parse(args);
+
+        Assert.Single(result.Errors);
+    }
+
+    /// <summary>
+    /// Tests that the <see cref="RootAction"/> parsing fails when the compare option is provided with an invalid hexadecimal value.
+    /// </summary>
+    [Fact]
+    public void RootAction_Parsing_Compare_Invalid()
+    {
+        string[] args =
+        [
+            Input.FilePath,
+            "-a",
+            "xxh3",
+            "-c",
+            "invalid"
+        ];
+
+        ParseResult result = new RootCommand().Parse(args);
+
+        Assert.Single(result.Errors);
     }
 
     /// <summary>

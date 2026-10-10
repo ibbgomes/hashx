@@ -24,6 +24,7 @@ internal sealed class RootCommand : System.CommandLine.RootCommand
         Description = "Compare results against an expected hash",
         HelpName = "hash",
         Required = false,
+        Validators = { CompareOptionValidator.Validate },
     };
 
     internal static readonly Argument<FileInfo> InputArgument = new Argument<FileInfo>("input")
