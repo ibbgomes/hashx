@@ -10,6 +10,8 @@ public sealed class MultiHashingService : IMultiHashingService
 {
     private const int BufferSize = 128 * 1024;
 
+    private const int ParallelThreshold = 2;
+
     /// <inheritdoc/>
     public IReadOnlyCollection<HashingResult> GetHashes(Stream stream, params IEnumerable<HashingAlgorithm> algorithms)
     {
@@ -24,6 +26,18 @@ public sealed class MultiHashingService : IMultiHashingService
         {
             while (stream.Read(buffer) is int bytesRead and not 0)
             {
+                if (services.Length >= ParallelThreshold)
+                {
+                    Parallel.ForEach(services, service =>
+                    {
+                        ReadOnlySpan<byte> data = buffer.AsSpan()[..bytesRead];
+
+                        service.Append(data);
+                    });
+
+                    continue;
+                }
+
                 ReadOnlySpan<byte> data = buffer.AsSpan()[..bytesRead];
 
                 foreach (IHashingService service in services)
