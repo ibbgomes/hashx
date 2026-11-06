@@ -8,7 +8,7 @@ namespace Hashx.Library;
 /// <seealso cref="IMultiHashingService"/>
 public sealed class MultiHashingService : IMultiHashingService
 {
-    private const int BufferSize = 128 * 1024;
+    private const int BufferSize = 1024 * 1024;
 
     private const int ParallelThreshold = 2;
 
