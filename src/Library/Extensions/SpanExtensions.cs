@@ -10,5 +10,5 @@ internal static class SpanExtensions
     /// </summary>
     /// <param name="bytes">The byte span.</param>
     /// <returns>The hexadecimal string.</returns>
-    internal static string ToHexString(this Span<byte> bytes) => Convert.ToHexStringLower(bytes);
+    internal static string ToHexString(this ReadOnlySpan<byte> bytes) => Convert.ToHexStringLower(bytes);
 }
