@@ -8,7 +8,7 @@ namespace Hashx.Library.Tests;
 public sealed class SpanExtensionsTests
 {
     /// <summary>
-    /// Tests that <see cref="SpanExtensions.ToHexString(Span{byte})"/> returns the expected hexadecimal string.
+    /// Tests that <see cref="SpanExtensions.ToHexString(ReadOnlySpan{byte})"/> returns the expected hexadecimal string.
     /// </summary>
     [Fact]
     public void SpanExtensions_ToHexString_Expected()

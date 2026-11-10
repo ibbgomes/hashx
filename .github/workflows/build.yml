@@ -11,7 +11,7 @@ jobs:
       - name: Setup
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: 11.0.x
       - name: Build
         run: dotnet build src/Hashx.slnx -c release /warnaserror
       - name: Test
