@@ -11,47 +11,47 @@ public enum HashingAlgorithm
     MD5,
 
     /// <summary>
-    /// The SHA1 algorithm.
+    /// The SHA-1 algorithm.
     /// </summary>
     SHA1,
 
     /// <summary>
-    /// The SHA256 algorithm.
+    /// The SHA-256 algorithm.
     /// </summary>
     SHA256,
 
     /// <summary>
-    /// The SHA384 algorithm.
+    /// The SHA-384 algorithm.
     /// </summary>
     SHA384,
 
     /// <summary>
-    /// The SHA512 algorithm.
+    /// The SHA-512 algorithm.
     /// </summary>
     SHA512,
 
     /// <summary>
-    /// The SHA3-256 algorithm.
+    /// The SHA-3-256 algorithm.
     /// </summary>
     SHA3_256,
 
     /// <summary>
-    /// The SHA3-384 algorithm.
+    /// The SHA-3-384 algorithm.
     /// </summary>
     SHA3_384,
 
     /// <summary>
-    /// The SHA3-512 algorithm.
+    /// The SHA-3-512 algorithm.
     /// </summary>
     SHA3_512,
 
     /// <summary>
-    /// The CRC32 algorithm.
+    /// The CRC-32 algorithm.
     /// </summary>
     CRC32,
 
     /// <summary>
-    /// The CRC64 algorithm.
+    /// The CRC-64 algorithm.
     /// </summary>
     CRC64,
 
