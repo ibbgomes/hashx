@@ -25,7 +25,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA1 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-1 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA1()
@@ -41,7 +41,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA256 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-256 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA256()
@@ -57,7 +57,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA3-256 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-3-256 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA3_256()
@@ -73,7 +73,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA3-384 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-3-384 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA3_384()
@@ -89,7 +89,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA3-512 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-3-512 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA3_512()
@@ -105,7 +105,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA384 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-384 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA384()
@@ -121,7 +121,7 @@ public sealed class CryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA512 result.
+    /// Tests that <see cref="CryptographicHashingService.GetHashAndReset()"/> returns the expected SHA-512 result.
     /// </summary>
     [Fact]
     public void CryptographicHashingService_GetHashAndReset_SHA512()

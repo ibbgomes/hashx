@@ -9,7 +9,7 @@ namespace Hashx.Library.Tests;
 public sealed class NonCryptographicHashingServiceTests
 {
     /// <summary>
-    /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected CRC32 result.
+    /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected CRC-32 result.
     /// </summary>
     [Fact]
     public void NonCryptographicHashingService_GetHashAndReset_CRC32()
@@ -25,7 +25,7 @@ public sealed class NonCryptographicHashingServiceTests
     }
 
     /// <summary>
-    /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected CRC64 result.
+    /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected CRC-64 result.
     /// </summary>
     [Fact]
     public void NonCryptographicHashingService_GetHashAndReset_CRC64()
