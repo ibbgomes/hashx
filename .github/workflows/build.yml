@@ -8,6 +8,7 @@ jobs:
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_TEST_RUNNER: Microsoft.Testing.Platform
     steps:
       - name: Checkout
         uses: actions/checkout@v7
