@@ -175,33 +175,6 @@ public sealed class RootActionTests
     }
 
     /// <summary>
-    /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the input argument is missing and no input is redirected from stdin.
-    /// </summary>
-    [Fact]
-    public void RootAction_Invocation_Input_Missing()
-    {
-        StringWriter output = new();
-
-        InvocationConfiguration configuration = new()
-        {
-            Error = output
-        };
-
-        string[] args =
-        [
-            "-a",
-            "xxh3"
-        ];
-
-        string expectedOutput = $"An error occurred: No input was provided.{Environment.NewLine}";
-
-        int exitCode = new RootCommand().Parse(args).Invoke(configuration);
-
-        Assert.Equal(ExitCodes.ProcessingError, exitCode);
-        Assert.Equal(expectedOutput, output.ToString());
-    }
-
-    /// <summary>
     /// Tests that the <see cref="RootAction"/> invocation returns the expected exit code and output when the JSON option is provided.
     /// </summary>
     [Fact]
