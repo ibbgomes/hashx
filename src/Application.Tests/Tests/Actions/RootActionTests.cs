@@ -81,6 +81,7 @@ public sealed class RootActionTests
     [InlineData("-a", "sha3_256", Hashes.SHA3_256)]
     [InlineData("-a", "sha3_384", Hashes.SHA3_384)]
     [InlineData("-a", "sha3_512", Hashes.SHA3_512)]
+    [InlineData("-a", "adler32", Hashes.ADLER32)]
     [InlineData("-a", "crc32", Hashes.CRC32)]
     [InlineData("-a", "crc64", Hashes.CRC64)]
     [InlineData("-a", "xxh3", Hashes.XXH3)]

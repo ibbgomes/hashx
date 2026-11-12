@@ -51,6 +51,11 @@ public enum HashingAlgorithm
     CRC32,
 
     /// <summary>
+    /// The ADLER-32 algorithm.
+    /// </summary>
+    ADLER32,
+
+    /// <summary>
     /// The CRC-64 algorithm.
     /// </summary>
     CRC64,

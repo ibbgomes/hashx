@@ -6,6 +6,11 @@
 internal static class Hashes
 {
     /// <summary>
+    /// The ADLER-32 hash.
+    /// </summary>
+    internal const string ADLER32 = "000e0007";
+
+    /// <summary>
     /// The CRC-32 hash.
     /// </summary>
     internal const string CRC32 = "1386b98b";

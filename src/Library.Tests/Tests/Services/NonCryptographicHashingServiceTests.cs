@@ -9,6 +9,22 @@ namespace Hashx.Library.Tests;
 public sealed class NonCryptographicHashingServiceTests
 {
     /// <summary>
+    /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected ADLER-32 result.
+    /// </summary>
+    [Fact]
+    public void NonCryptographicHashingService_GetHashAndReset_ADLER32()
+    {
+        using NonCryptographicHashingService service = new(HashingAlgorithm.ADLER32, new Adler32());
+
+        service.Append(Input.Bytes);
+
+        HashingResult result = service.GetHashAndReset();
+
+        Assert.Equal(HashingAlgorithm.ADLER32, result.Algorithm);
+        Assert.Equal(Hashes.ADLER32, result.Hash);
+    }
+
+    /// <summary>
     /// Tests that <see cref="NonCryptographicHashingService.GetHashAndReset()"/> returns the expected CRC-32 result.
     /// </summary>
     [Fact]

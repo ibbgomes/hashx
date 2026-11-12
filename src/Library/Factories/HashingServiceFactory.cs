@@ -22,6 +22,7 @@ internal static class HashingServiceFactory
         HashingAlgorithm.SHA3_512
             => CryptographicHashingServiceFactory.Create(algorithm),
 
+        HashingAlgorithm.ADLER32 or
         HashingAlgorithm.CRC32 or
         HashingAlgorithm.CRC64 or
         HashingAlgorithm.XXH128 or
