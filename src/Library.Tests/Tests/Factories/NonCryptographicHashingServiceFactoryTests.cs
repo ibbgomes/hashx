@@ -11,6 +11,7 @@ public sealed class NonCryptographicHashingServiceFactoryTests
     /// Tests that <see cref="NonCryptographicHashingServiceFactory.Create(HashingAlgorithm)"/> returns the expected <see cref="NonCryptographicHashingService"/>.
     /// </summary>
     [Theory]
+    [InlineData(HashingAlgorithm.ADLER32)]
     [InlineData(HashingAlgorithm.CRC32)]
     [InlineData(HashingAlgorithm.CRC64)]
     [InlineData(HashingAlgorithm.XXH3)]

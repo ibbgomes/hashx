@@ -16,6 +16,7 @@ internal static class NonCryptographicHashingServiceFactory
     {
         NonCryptographicHashAlgorithm implementation = algorithm switch
         {
+            HashingAlgorithm.ADLER32 => new Adler32(),
             HashingAlgorithm.CRC32 => new Crc32(),
             HashingAlgorithm.CRC64 => new Crc64(),
             HashingAlgorithm.XXH128 => new XxHash128(),

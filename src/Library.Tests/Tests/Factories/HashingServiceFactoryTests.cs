@@ -13,7 +13,7 @@ public sealed class HashingServiceFactoryTests
     [Fact]
     public void HashingServiceFactory_Create_Exception()
     {
-        const HashingAlgorithm algorithm = (HashingAlgorithm)14;
+        const HashingAlgorithm algorithm = (HashingAlgorithm)15;
 
         static void create() => HashingServiceFactory.Create(algorithm);
 
@@ -32,6 +32,7 @@ public sealed class HashingServiceFactoryTests
     [InlineData(HashingAlgorithm.SHA3_256)]
     [InlineData(HashingAlgorithm.SHA3_384)]
     [InlineData(HashingAlgorithm.SHA3_512)]
+    [InlineData(HashingAlgorithm.ADLER32)]
     [InlineData(HashingAlgorithm.CRC32)]
     [InlineData(HashingAlgorithm.CRC64)]
     [InlineData(HashingAlgorithm.XXH3)]
