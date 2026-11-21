@@ -16,7 +16,7 @@ jobs:
       - name: Setup
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 11.0.x
+          dotnet-version: latest
       - name: Build
         run: dotnet build -c release /warnaserror
       - name: Test
