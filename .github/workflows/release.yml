@@ -1,0 +1,47 @@
+name: Release
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  release:
+    name: ${{ matrix.rid }}
+    strategy:
+      matrix:
+        include:
+          - rid: win-x64
+            os: windows-latest
+            ext: .exe
+          - rid: win-arm64
+            os: windows-latest
+            ext: .exe
+          - rid: linux-x64
+            os: ubuntu-latest
+          - rid: linux-arm64
+            os: ubuntu-26.04-arm
+          - rid: osx-x64
+            os: macos-latest
+          - rid: osx-arm64
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: src/Application
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: latest
+      - name: Publish
+        run: dotnet publish -r ${{ matrix.rid }} -o out
+      - name: Upload
+        run: |
+          mv out/hashx${{ matrix.ext }} hashx-${{ matrix.rid }}${{ matrix.ext }}
+          gh release upload ${{ github.event.release.tag_name }} hashx-${{ matrix.rid }}${{ matrix.ext }}
